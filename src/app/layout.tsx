@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Hind_Siliguri, Inter } from "next/font/google";
+import { Noto_Sans_Bengali, Inter } from "next/font/google";
 import "./globals.css";
 
-const hindSiliguri = Hind_Siliguri({
-  weight: ["300", "400", "500", "600", "700"],
-  subsets: ["bengali", "latin"],
-  variable: "--font-hind",
+const notoBengali = Noto_Sans_Bengali({
+  weight: ["400", "500", "600", "700"],
+  subsets: ["bengali"],
+  variable: "--font-bengali",
   display: "swap",
 });
 
@@ -51,7 +51,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="bn" className={`${hindSiliguri.variable} ${inter.variable}`} suppressHydrationWarning>
+    <html lang="bn" className={`${notoBengali.variable} ${inter.variable}`} suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
