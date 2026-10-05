@@ -85,19 +85,8 @@ export default function BookReaderModal({
       return `https://docs.google.com/viewer?url=${encodeURIComponent(book.downloadUrl)}&embedded=true`;
     }
 
-    // Nextcloud Cloud link: egovcloud public preview
-    if (book.downloadUrl.includes('drive.egovcloud.gov.bd/index.php/s/')) {
-      // Removing /download gives the interactive Nextcloud PDF viewer
-      return book.downloadUrl.replace(/\/download\/?$/, '');
-    }
-
-    // Google Drive file preview
-    if (book.downloadUrl.includes('drive.google.com/file/d/')) {
-      return book.downloadUrl.replace(/\/view(\?.*)?$/, '/preview');
-    }
-
-    // Fallback: Google Docs viewer
-    return `https://docs.google.com/viewer?url=${encodeURIComponent(book.downloadUrl)}&embedded=true`;
+    // Same-origin Next.js PDF proxy stream completely bypasses X-Frame-Options & CORS blocking!
+    return `/api/pdf?url=${encodeURIComponent(book.downloadUrl)}`;
   };
 
   const embedUrl = getEmbedUrl();
