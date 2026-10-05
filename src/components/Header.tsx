@@ -36,8 +36,7 @@ export default function Header({
   useEffect(() => {
     // Check initial theme preference
     const storedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    if (storedTheme === 'dark' || (!storedTheme && prefersDark)) {
+    if (storedTheme === 'dark') {
       document.documentElement.classList.add('dark');
       setIsDark(true);
     } else {
@@ -157,13 +156,20 @@ export default function Header({
             <button
               id="header-theme-toggle"
               onClick={toggleTheme}
-              className="p-2 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white rounded-xl bg-slate-100/80 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/60 transition"
-              aria-label="Toggle Theme"
+              className="p-2 sm:px-3 sm:py-2 text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white rounded-xl bg-slate-100/90 dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700/60 transition flex items-center gap-1.5 text-xs font-semibold"
+              aria-label={isDark ? "হোয়াইট মোড চালু করুন" : "ডার্ক মোড চালু করুন"}
+              title={isDark ? "হোয়াইট মোড চালু করুন" : "ডার্ক মোড চালু করুন"}
             >
               {isDark ? (
-                <Sun className="w-4 h-4 text-amber-400" />
+                <>
+                  <Sun className="w-4 h-4 text-amber-500" />
+                  <span className="hidden md:inline">হোয়াইট মোড</span>
+                </>
               ) : (
-                <Moon className="w-4 h-4 text-slate-600" />
+                <>
+                  <Moon className="w-4 h-4 text-slate-700" />
+                  <span className="hidden md:inline">ডার্ক মোড</span>
+                </>
               )}
             </button>
 
@@ -200,8 +206,14 @@ export default function Header({
                 </button>
               ))}
             </div>
-            <div className="pt-2 border-t border-slate-200 dark:border-slate-800 flex justify-between items-center text-xs text-slate-500 dark:text-slate-400">
-              <span>জাতীয় শিক্ষাক্রম ও পাঠ্যপুস্তক বোর্ড (NCTB)</span>
+            <div className="pt-3 border-t border-slate-200 dark:border-slate-800 flex justify-between items-center text-xs">
+              <button
+                onClick={toggleTheme}
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-bold border border-slate-200 dark:border-slate-700"
+              >
+                {isDark ? <Sun className="w-4 h-4 text-amber-500" /> : <Moon className="w-4 h-4 text-slate-700" />}
+                <span>{isDark ? "হোয়াইট মোড" : "ডার্ক মোড"}</span>
+              </button>
               <span className="font-semibold text-emerald-600 dark:text-emerald-400">janao.click</span>
             </div>
           </div>
