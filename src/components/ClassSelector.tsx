@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { CLASS_SHORTCUTS } from '@/data/nctbData';
-import { GraduationCap, BookOpen, Building2, School, Award, Sparkles } from 'lucide-react';
 
 interface ClassSelectorProps {
   selectedClass: string;
@@ -17,101 +16,42 @@ export default function ClassSelector({
   selectedCategory,
   onSelectCategory,
 }: ClassSelectorProps) {
-  const getIcon = (cat: string) => {
-    switch (cat) {
-      case 'primary':
-        return <GraduationCap className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />;
-      case 'secondary':
-        return <BookOpen className="w-5 h-5 text-blue-600 dark:text-blue-400" />;
-      case 'ibtedai':
-        return <Building2 className="w-5 h-5 text-teal-600 dark:text-teal-400" />;
-      case 'dakhil':
-        return <School className="w-5 h-5 text-cyan-600 dark:text-cyan-400" />;
-      case 'college':
-        return <Award className="w-5 h-5 text-rose-600 dark:text-rose-400" />;
-      default:
-        return <Sparkles className="w-5 h-5 text-emerald-600" />;
-    }
-  };
-
-  const getBorderColor = (cat: string) => {
-    switch (cat) {
-      case 'primary':
-        return 'hover:border-emerald-400/80';
-      case 'secondary':
-        return 'hover:border-blue-400/80';
-      case 'ibtedai':
-        return 'hover:border-teal-400/80';
-      case 'dakhil':
-        return 'hover:border-cyan-400/80';
-      case 'college':
-        return 'hover:border-rose-400/80';
-      default:
-        return 'hover:border-emerald-400/80';
-    }
-  };
-
   return (
-    <section id="categories" className="py-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
+    <section id="categories" className="max-w-6xl mx-auto px-4 sm:px-6 py-8">
+      <div className="flex items-center justify-between mb-4 pb-2 border-b border-gray-200 dark:border-gray-800">
         <div>
-          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 mb-1">
-            <span>দ্রুত শ্রেণি নির্বাচন</span>
-            <span className="w-8 h-[2px] bg-emerald-500 rounded-full"></span>
-          </div>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">
-            শ্রেণি অনুযায়ী পাঠ্যবইসমূহ
+          <h2 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">
+            শ্রেণি নির্বাচন করুন
           </h2>
-          <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
-            আপনার কাঙ্ক্ষিত শ্রেণির বাটনে ক্লিক করে সংশ্লিষ্ট সকল বই দেখুন ও ডাউনলোড করুন।
+          <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
+            সংশ্লিষ্ট শ্রেণির সব বিষয়ের পাঠ্যবই দেখতে শ্রেণি বাটনে ক্লিক করুন।
           </p>
         </div>
 
-        {/* Reset / All filter button */}
         {(selectedClass !== 'all' || selectedCategory !== 'all') && (
           <button
             onClick={() => {
               onSelectClass('all');
               onSelectCategory('all');
             }}
-            className="self-start sm:self-auto text-xs px-3.5 py-1.5 rounded-lg bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 font-semibold hover:bg-emerald-200 transition border border-emerald-300 dark:border-emerald-800"
+            className="text-xs text-emerald-700 dark:text-emerald-400 hover:underline font-semibold"
           >
-            সব বই একসাথে দেখুন (Reset Filter)
+            সব বই একসাথে দেখুন (Reset)
           </button>
         )}
       </div>
 
-      {/* Grid of Class Groups */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {CLASS_SHORTCUTS.map((group) => {
-          const isCategoryActive = selectedCategory === group.category;
           return (
             <div
               key={group.groupTitleBn}
-              className={`glass-card rounded-2xl p-5 transition-all duration-200 ${getBorderColor(
-                group.category
-              )} ${
-                isCategoryActive
-                  ? 'ring-2 ring-emerald-500/70 shadow-lg shadow-emerald-500/10'
-                  : 'hover:shadow-md'
-              }`}
+              className="bg-white dark:bg-[#0f172a] border border-gray-200 dark:border-gray-800 rounded-lg p-4"
             >
-              {/* Group Title Header */}
-              <div className="flex items-center justify-between pb-3.5 mb-3.5 border-b border-slate-200/80 dark:border-slate-800">
-                <div className="flex items-center gap-2.5">
-                  <div className="p-2 rounded-xl bg-slate-100 dark:bg-slate-800/80">
-                    {getIcon(group.category)}
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-slate-900 dark:text-white text-base">
-                      {group.groupTitleBn}
-                    </h3>
-                    <span className="text-[11px] text-slate-400 capitalize">
-                      {group.category} Education
-                    </span>
-                  </div>
-                </div>
-
+              <div className="flex items-center justify-between mb-3">
+                <h3 className="font-bold text-sm text-gray-900 dark:text-white">
+                  {group.groupTitleBn}
+                </h3>
                 <button
                   onClick={() => {
                     onSelectCategory(group.category);
@@ -119,14 +59,14 @@ export default function ClassSelector({
                     const elem = document.querySelector('#books-section');
                     if (elem) elem.scrollIntoView({ behavior: 'smooth' });
                   }}
-                  className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 hover:underline"
+                  className="text-xs text-emerald-700 dark:text-emerald-400 hover:underline font-medium"
                 >
-                  সব দেখুন →
+                  সব দেখুন
                 </button>
               </div>
 
-              {/* Class Number Buttons (Just like competitor but modernized) */}
-              <div className="flex flex-wrap items-center gap-2">
+              {/* Clean square/compact numeric buttons like competitor */}
+              <div className="flex flex-wrap gap-2">
                 {group.classes.map((cls) => {
                   const isSelected = selectedClass === cls.id;
                   return (
@@ -138,17 +78,14 @@ export default function ClassSelector({
                         const elem = document.querySelector('#books-section');
                         if (elem) elem.scrollIntoView({ behavior: 'smooth' });
                       }}
-                      className={`group relative flex-1 min-w-[50px] py-2 px-2.5 rounded-xl text-center font-bold transition-all duration-200 ${
+                      className={`w-11 h-11 rounded border flex flex-col items-center justify-center font-bold transition ${
                         isSelected
-                          ? 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-md shadow-emerald-600/30 scale-105'
-                          : 'bg-slate-100/90 dark:bg-slate-800/90 text-slate-800 dark:text-slate-200 hover:bg-emerald-500 hover:text-white dark:hover:bg-emerald-600'
+                          ? 'bg-emerald-700 text-white border-emerald-700'
+                          : 'bg-gray-50 dark:bg-gray-800 text-gray-800 dark:text-gray-200 border-gray-300 dark:border-gray-700 hover:bg-emerald-50 dark:hover:bg-emerald-950/40 hover:border-emerald-600 hover:text-emerald-700'
                       }`}
                       title={cls.label}
                     >
-                      <span className="text-base sm:text-lg block leading-none">{cls.num}</span>
-                      <span className="text-[10px] block opacity-80 mt-1 font-normal truncate">
-                        {cls.label.replace('শ্রেণি', '')}
-                      </span>
+                      <span className="text-base leading-none">{cls.num}</span>
                     </button>
                   );
                 })}
@@ -157,27 +94,22 @@ export default function ClassSelector({
           );
         })}
 
-        {/* Notice & Routine Quick Tile */}
-        <div className="glass-card rounded-2xl p-5 border-dashed border-2 border-emerald-300/70 dark:border-emerald-800/70 flex flex-col justify-between bg-gradient-to-br from-emerald-50/50 to-teal-50/30 dark:from-emerald-950/20 dark:to-teal-950/10">
+        {/* Quick notice box */}
+        <div className="bg-emerald-50/60 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-900/60 rounded-lg p-4 flex flex-col justify-between">
           <div>
-            <div className="flex items-center gap-2 text-emerald-700 dark:text-emerald-400 font-bold text-sm mb-2">
-              <Sparkles className="w-4 h-4" />
-              <span>রুটিন, সিলেবাস ও নোটিশ</span>
-            </div>
-            <h3 className="font-extrabold text-slate-900 dark:text-white text-lg">
-              পরীক্ষা ও বোর্ডের আপডেট
+            <h3 className="font-bold text-sm text-emerald-900 dark:text-emerald-300">
+              নোটিশ ও পরীক্ষার সিলেবাস
             </h3>
-            <p className="text-xs text-slate-600 dark:text-slate-400 mt-1.5 leading-relaxed">
-              এসএসসি ও এইচএসসি পরীক্ষার রুটিন, রেজাল্ট পুনঃনিরীক্ষণ নিয়মাবলি ও বৃত্তির ফল।
+            <p className="text-xs text-emerald-800/80 dark:text-emerald-400/80 mt-1 leading-relaxed">
+              এসএসসি, দাখিল ও এইচএসসি পরীক্ষার রুটিন এবং খাতা চ্যালেঞ্জের নিয়মাবলী সরাসরি দেখুন।
             </p>
           </div>
-
-          <div className="mt-4 pt-3 border-t border-emerald-200/60 dark:border-emerald-900/60 flex items-center justify-between">
+          <div className="mt-3">
             <a
               href="#notices"
-              className="w-full text-center py-2.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold shadow-md shadow-emerald-600/25 transition"
+              className="inline-block text-xs font-bold text-white bg-emerald-700 hover:bg-emerald-800 px-3.5 py-1.5 rounded transition"
             >
-              নোটিশ বোর্ডে যান →
+              নোটিশ ও রুটিন দেখুন →
             </a>
           </div>
         </div>

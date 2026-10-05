@@ -10,7 +10,6 @@ import BookDetailModal from '@/components/BookDetailModal';
 import NoticeBoard from '@/components/NoticeBoard';
 import CategoryBrowser from '@/components/CategoryBrowser';
 import BookmarkDrawer from '@/components/BookmarkDrawer';
-import FAQSection from '@/components/FAQSection';
 import Footer from '@/components/Footer';
 import { BOOKS_DATA, Book } from '@/data/nctbData';
 
@@ -25,7 +24,7 @@ export default function Home() {
 
   const searchInputRef = useRef<HTMLInputElement>(null);
 
-  // Load bookmarks from localStorage on client mount
+  // Load saved bookmarks from localStorage
   useEffect(() => {
     try {
       const saved = localStorage.getItem('janao_bookmarked_ids');
@@ -37,7 +36,6 @@ export default function Home() {
     }
   }, []);
 
-  // Save bookmarks
   const toggleBookmark = (id: string) => {
     setBookmarkedIds((prev) => {
       let updated: string[];
@@ -71,24 +69,12 @@ export default function Home() {
     }
   };
 
-  // Keyboard shortcut '/' to focus search
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === '/' && document.activeElement !== searchInputRef.current) {
-        e.preventDefault();
-        focusSearchInput();
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
-
   const bookmarkedBooks = BOOKS_DATA.filter((b) => bookmarkedIds.includes(b.id));
 
   return (
-    <div id="main" className="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100">
+    <div id="main" className="min-h-screen flex flex-col bg-white dark:bg-[#0b0f19] text-gray-900 dark:text-gray-100 font-sans">
       
-      {/* 1. Header with navigation & theme toggle */}
+      {/* 1. Header Navigation */}
       <Header
         onSearchFocus={focusSearchInput}
         savedCount={bookmarkedIds.length}
@@ -108,21 +94,20 @@ export default function Home() {
         }}
       />
 
-      {/* 3. Hero Section with Live Search and Trust Stats */}
+      {/* 3. Hero & Search */}
       <HeroSection
         searchQuery={searchQuery}
         onSearchChange={setSearchQuery}
         selectedYear={selectedYear}
         onYearChange={(year) => {
           setSelectedYear(year);
-          // If searching or filtering, bring to books
           const elem = document.querySelector('#books-section');
           if (elem) elem.scrollIntoView({ behavior: 'smooth' });
         }}
         searchInputRef={searchInputRef}
       />
 
-      {/* 4. Quick Class Selector Grid (elevating competitor's numeric pill selector) */}
+      {/* 4. Class Quick Selector Grid */}
       <ClassSelector
         selectedClass={selectedClass}
         onSelectClass={setSelectedClass}
@@ -130,7 +115,7 @@ export default function Home() {
         onSelectCategory={setSelectedCategory}
       />
 
-      {/* 5. Main Books Grid & Filters */}
+      {/* 5. Main Books List / Grid */}
       <BookGrid
         books={BOOKS_DATA}
         selectedCategory={selectedCategory}
@@ -145,7 +130,7 @@ export default function Home() {
         selectedYear={selectedYear}
       />
 
-      {/* 6. Notices, Routines & Result Board */}
+      {/* 6. Notices, Recent Posts & Previous Years Archive */}
       <NoticeBoard
         onSelectYear={(year) => {
           setSelectedYear(year);
@@ -154,7 +139,7 @@ export default function Home() {
         }}
       />
 
-      {/* 7. Category Browser */}
+      {/* 7. Other Categories */}
       <CategoryBrowser
         onSelectCategoryFilter={(catName) => {
           setSearchQuery(catName);
@@ -163,13 +148,10 @@ export default function Home() {
         }}
       />
 
-      {/* 8. Frequently Asked Questions (FAQ) */}
-      <FAQSection />
-
-      {/* 9. Footer */}
+      {/* 8. Clean Editorial Footer */}
       <Footer />
 
-      {/* Book Detail / Download Modal */}
+      {/* Book Detail Modal */}
       <BookDetailModal
         book={activeModalBook}
         onClose={() => setActiveModalBook(null)}
