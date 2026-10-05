@@ -9,6 +9,7 @@ interface BookDetailModalProps {
   onClose: () => void;
   isBookmarked: boolean;
   onToggleBookmark: (id: string) => void;
+  onOpenReader: (book: Book) => void;
 }
 
 export default function BookDetailModal({
@@ -16,6 +17,7 @@ export default function BookDetailModal({
   onClose,
   isBookmarked,
   onToggleBookmark,
+  onOpenReader,
 }: BookDetailModalProps) {
   if (!book) return null;
 
@@ -79,22 +81,25 @@ export default function BookDetailModal({
         </div>
 
         <div className="pt-3 border-t border-gray-200 dark:border-gray-800 flex items-center gap-2">
+          <button
+            onClick={() => {
+              onClose();
+              onOpenReader(book);
+            }}
+            className="flex-1 py-2 px-4 bg-emerald-700 hover:bg-emerald-800 text-white rounded text-xs font-semibold text-center flex items-center justify-center gap-1.5 transition"
+          >
+            <span>অনলাইনে সরাসরি পড়ুন</span>
+          </button>
+
           <a
             href={book.downloadUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 py-2 px-4 bg-emerald-700 hover:bg-emerald-800 text-white rounded text-xs font-semibold text-center flex items-center justify-center gap-1.5 transition"
+            className="py-2 px-3 bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 border border-gray-300 dark:border-gray-700 rounded text-xs font-medium transition flex items-center gap-1"
           >
             <Download className="w-3.5 h-3.5" />
-            <span>সরাসরি ডাউনলোড করুন (PDF)</span>
+            <span>ডাউনলোড PDF</span>
           </a>
-
-          <button
-            onClick={onClose}
-            className="py-2 px-3 bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded text-xs transition"
-          >
-            বন্ধ করুন
-          </button>
         </div>
       </div>
     </div>

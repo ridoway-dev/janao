@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { Book, NCTB_CATEGORIES } from '@/data/nctbData';
-import { Download, FileText, Bookmark, Eye, ArrowDownToLine } from 'lucide-react';
+import { Download, FileText, Bookmark, BookOpen } from 'lucide-react';
 
 interface BookGridProps {
   books: Book[];
@@ -13,6 +13,7 @@ interface BookGridProps {
   searchQuery: string;
   onClearSearch: () => void;
   onOpenBookModal: (book: Book) => void;
+  onOpenReader: (book: Book) => void;
   bookmarkedIds: string[];
   onToggleBookmark: (id: string) => void;
   selectedYear: number;
@@ -27,6 +28,7 @@ export default function BookGrid({
   searchQuery,
   onClearSearch,
   onOpenBookModal,
+  onOpenReader,
   bookmarkedIds,
   onToggleBookmark,
   selectedYear,
@@ -145,8 +147,8 @@ export default function BookGrid({
             return (
               <div
                 key={book.id}
-                onClick={() => onOpenBookModal(book)}
-                className="bg-white dark:bg-[#0f172a] border border-gray-200 dark:border-gray-800 rounded-lg p-3.5 hover:border-emerald-600 transition flex flex-col justify-between cursor-pointer group"
+                onClick={() => onOpenReader(book)}
+                className="bg-white dark:bg-[#0f172a] border border-gray-200 dark:border-gray-800 rounded-lg p-3.5 hover:border-emerald-600 transition flex flex-col justify-between cursor-pointer group shadow-xs"
               >
                 <div>
                   {/* Clean book header / thumbnail */}
@@ -187,16 +189,28 @@ export default function BookGrid({
                   </p>
                 </div>
 
-                <div className="mt-3 pt-2.5 border-t border-gray-100 dark:border-gray-800/80 flex items-center justify-between text-xs">
-                  <span className="text-gray-400 font-mono text-[11px]">{book.fileSizeBytes}</span>
+                {/* Card action buttons: Read Online & Download */}
+                <div className="mt-3 pt-2.5 border-t border-gray-100 dark:border-gray-800/80 flex items-center gap-2 text-xs">
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onOpenReader(book);
+                    }}
+                    className="flex-1 py-1.5 px-2 bg-emerald-700 hover:bg-emerald-800 text-white rounded text-xs font-semibold transition flex items-center justify-center gap-1"
+                    title="অনলাইনে সরাসরি বইটি পড়ুন"
+                  >
+                    <BookOpen className="w-3.5 h-3.5" />
+                    <span>বইটি পড়ুন</span>
+                  </button>
 
                   <button
                     onClick={(e) => handleDownload(e, book)}
                     disabled={isDownloading}
-                    className="inline-flex items-center gap-1 px-3 py-1 bg-emerald-700 hover:bg-emerald-800 text-white rounded text-xs font-medium transition"
+                    className="py-1.5 px-2.5 bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-300 dark:border-gray-700 rounded text-xs font-medium transition flex items-center gap-1"
+                    title="সরাসরি পিডিএফ ডাউনলোড"
                   >
-                    <Download className="w-3 h-3" />
-                    <span>{isDownloading ? 'লোড হচ্ছে...' : 'ডাউনলোড'}</span>
+                    <Download className="w-3.5 h-3.5" />
+                    <span>{isDownloading ? '...' : 'PDF'}</span>
                   </button>
                 </div>
               </div>

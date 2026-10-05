@@ -7,6 +7,7 @@ import HeroSection from '@/components/HeroSection';
 import ClassSelector from '@/components/ClassSelector';
 import BookGrid from '@/components/BookGrid';
 import BookDetailModal from '@/components/BookDetailModal';
+import BookReaderModal from '@/components/BookReaderModal';
 import NoticeBoard from '@/components/NoticeBoard';
 import CategoryBrowser from '@/components/CategoryBrowser';
 import BookmarkDrawer from '@/components/BookmarkDrawer';
@@ -19,6 +20,7 @@ export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [selectedClass, setSelectedClass] = useState<string>('all');
   const [activeModalBook, setActiveModalBook] = useState<Book | null>(null);
+  const [activeReadingBook, setActiveReadingBook] = useState<Book | null>(null);
   const [bookmarkedIds, setBookmarkedIds] = useState<string[]>([]);
   const [isBookmarkDrawerOpen, setIsBookmarkDrawerOpen] = useState(false);
 
@@ -125,6 +127,7 @@ export default function Home() {
         searchQuery={searchQuery}
         onClearSearch={() => setSearchQuery('')}
         onOpenBookModal={(book) => setActiveModalBook(book)}
+        onOpenReader={(book) => setActiveReadingBook(book)}
         bookmarkedIds={bookmarkedIds}
         onToggleBookmark={toggleBookmark}
         selectedYear={selectedYear}
@@ -157,6 +160,15 @@ export default function Home() {
         onClose={() => setActiveModalBook(null)}
         isBookmarked={activeModalBook ? bookmarkedIds.includes(activeModalBook.id) : false}
         onToggleBookmark={toggleBookmark}
+        onOpenReader={(book) => setActiveReadingBook(book)}
+      />
+
+      {/* Interactive Online Book Reader Modal */}
+      <BookReaderModal
+        book={activeReadingBook}
+        onClose={() => setActiveReadingBook(null)}
+        isBookmarked={activeReadingBook ? bookmarkedIds.includes(activeReadingBook.id) : false}
+        onToggleBookmark={toggleBookmark}
       />
 
       {/* Bookmark Drawer */}
@@ -166,7 +178,7 @@ export default function Home() {
         bookmarkedBooks={bookmarkedBooks}
         onRemoveBookmark={toggleBookmark}
         onSelectBook={(book) => {
-          setActiveModalBook(book);
+          setActiveReadingBook(book);
         }}
         onClearAll={handleClearAllBookmarks}
       />
