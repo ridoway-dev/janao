@@ -74,7 +74,7 @@ export default function Home() {
   const bookmarkedBooks = BOOKS_DATA.filter((b) => bookmarkedIds.includes(b.id));
 
   return (
-    <div id="main" className="min-h-screen flex flex-col bg-white dark:bg-[#0b0f19] text-gray-900 dark:text-gray-100 font-sans">
+    <div id="main" className="min-h-screen flex flex-col bg-white dark:bg-[#0b0f19] text-gray-900 dark:text-gray-100 font-sans w-full max-w-full overflow-x-hidden min-w-0">
       
       {/* 1. Header Navigation */}
       <Header

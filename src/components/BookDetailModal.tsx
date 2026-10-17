@@ -22,9 +22,9 @@ export default function BookDetailModal({
   if (!book) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/60" onClick={onClose}>
       <div 
-        className="relative w-full max-w-lg bg-white dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-800 p-5 shadow-lg"
+        className="relative w-full max-w-lg max-h-[92vh] overflow-y-auto bg-white dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-800 p-4 sm:p-5 shadow-lg"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-start justify-between pb-3 border-b border-gray-200 dark:border-gray-800">
@@ -80,7 +80,7 @@ export default function BookDetailModal({
           </div>
         </div>
 
-        <div className="pt-3 border-t border-gray-200 dark:border-gray-800 flex items-center gap-2">
+        <div className="pt-3 border-t border-gray-200 dark:border-gray-800 flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
           <button
             onClick={() => {
               onClose();
@@ -95,7 +95,7 @@ export default function BookDetailModal({
             href={book.downloadUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="py-2 px-3 bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 border border-gray-300 dark:border-gray-700 rounded text-xs font-medium transition flex items-center gap-1"
+            className="py-2 px-3 bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 border border-gray-300 dark:border-gray-700 rounded text-xs font-medium transition flex items-center justify-center gap-1"
           >
             <Download className="w-3.5 h-3.5" />
             <span>ডাউনলোড PDF</span>

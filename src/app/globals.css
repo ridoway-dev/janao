@@ -24,6 +24,13 @@
   box-sizing: border-box;
 }
 
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
   background-color: var(--background);
   color: var(--foreground);
@@ -53,4 +60,24 @@ button:focus-visible, a:focus-visible, input:focus-visible {
 }
 .dark ::-webkit-scrollbar-thumb {
   background: #334155;
+}
+
+/* Hide scrollbar for clean horizontal touch scrolling */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Mobile App Enhancements */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .pb-safe {
+    padding-bottom: calc(0.35rem + env(safe-area-inset-bottom));
+  }
 }

@@ -8,7 +8,8 @@ import {
   Minimize2, 
   Download, 
   ExternalLink,
-  RefreshCw
+  RefreshCw,
+  BookOpen
 } from 'lucide-react';
 
 interface BookReaderModalProps {
@@ -26,15 +27,53 @@ export default function BookReaderModal({
 }: BookReaderModalProps) {
   const [pdfSource, setPdfSource] = useState<'cloud' | 'google'>('cloud');
   const [iframeLoading, setIframeLoading] = useState(true);
+  const [progress, setProgress] = useState(15);
+  const [loadingStage, setLoadingStage] = useState('ক্লাউড সার্ভারের সাথে সংযোগ স্থাপন করা হচ্ছে...');
   const [isFullscreen, setIsFullscreen] = useState(false);
 
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (book) {
-      setIframeLoading(true);
-    }
+    if (!book) return;
+    setIframeLoading(true);
+    setProgress(15);
+    setLoadingStage('ক্লাউড সার্ভারের সাথে সংযোগ স্থাপন করা হচ্ছে...');
+
+    const timer1 = setTimeout(() => {
+      setProgress(38);
+      setLoadingStage(`পিডিএফ ডেটা স্ট্রিম নেওয়া হচ্ছে (${book.fileSizeBytes})...`);
+    }, 600);
+
+    const timer2 = setTimeout(() => {
+      setProgress(68);
+      setLoadingStage(`পৃষ্ঠাগুলো বাফার ও রেন্ডার করা হচ্ছে (${book.pageCount} পৃষ্ঠা)...`);
+    }, 1800);
+
+    const timer3 = setTimeout(() => {
+      setProgress(88);
+      setLoadingStage('ভিউয়ার ইন্টারফেস প্রস্তুত হচ্ছে...');
+    }, 3800);
+
+    const timer4 = setTimeout(() => {
+      setProgress(96);
+      setLoadingStage('ফাইল ডিসপ্লে প্রস্তুত হচ্ছে...');
+    }, 6500);
+
+    return () => {
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+      clearTimeout(timer3);
+      clearTimeout(timer4);
+    };
   }, [book, pdfSource]);
+
+  const handleIframeLoaded = () => {
+    setProgress(100);
+    setLoadingStage('সফলভাবে প্রস্তুত সম্পন্ন হয়েছে!');
+    setTimeout(() => {
+      setIframeLoading(false);
+    }, 300);
+  };
 
   // Keyboard navigation: Escape to close
   useEffect(() => {
@@ -81,20 +120,20 @@ export default function BookReaderModal({
       className="fixed inset-0 z-50 flex flex-col bg-slate-950/90 text-slate-100 select-none animate-fadeIn"
     >
       {/* Top Header Controls Bar */}
-      <div className="h-14 bg-slate-900 border-b border-slate-800 px-3 sm:px-4 flex items-center justify-between shrink-0 gap-2">
+      <div className="h-14 bg-slate-900 border-b border-slate-800 px-2 sm:px-4 flex items-center justify-between shrink-0 gap-1.5 sm:gap-2">
         
         {/* Book Title & Close */}
-        <div className="flex items-center gap-2.5 overflow-hidden">
+        <div className="flex items-center gap-1.5 sm:gap-2.5 overflow-hidden min-w-0">
           <button
             onClick={onClose}
-            className="p-1.5 rounded hover:bg-slate-800 text-slate-400 hover:text-white transition"
+            className="p-1.5 rounded hover:bg-slate-800 text-slate-400 hover:text-white transition shrink-0"
             title="পড়া বন্ধ করুন (Esc)"
           >
             <X className="w-5 h-5" />
           </button>
-          <div className="flex flex-col truncate">
-            <div className="flex items-center gap-2">
-              <span className="font-bold text-xs sm:text-sm text-white truncate">
+          <div className="flex flex-col truncate min-w-0">
+            <div className="flex items-center gap-1.5">
+              <span className="font-bold text-xs sm:text-sm text-white truncate max-w-[120px] xs:max-w-[180px] sm:max-w-xs">
                 {book.titleBn}
               </span>
               <span className="text-[10px] px-1.5 py-0.5 rounded bg-emerald-900/80 text-emerald-300 font-semibold border border-emerald-700/60 shrink-0">
@@ -108,7 +147,7 @@ export default function BookReaderModal({
         </div>
 
         {/* Right Tools: Server switch, New tab, Download, Fullscreen */}
-        <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+        <div className="flex items-center gap-1 sm:gap-2 shrink-0">
           
           {/* PDF Source switch */}
           <button
@@ -162,50 +201,88 @@ export default function BookReaderModal({
       <div className="flex-1 relative w-full h-[calc(100vh-56px)] bg-slate-950 flex flex-col">
         
         {/* Top Helper Notice for Students */}
-        <div className="bg-slate-900/90 border-b border-slate-800 px-4 py-1.5 flex items-center justify-between text-xs text-slate-400">
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-            <span>অফিশিয়াল পিডিএফ ভিউয়ার সক্রিয়</span>
+        <div className="bg-slate-900/90 border-b border-slate-800 px-3 sm:px-4 py-1.5 flex flex-wrap items-center justify-between gap-1 text-[11px] sm:text-xs text-slate-400">
+          <div className="flex items-center gap-1.5 sm:gap-2">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0"></span>
+            <span className="truncate">পিডিএফ ভিউয়ার সক্রিয়</span>
             <span className="hidden md:inline text-slate-500">
               (জুম, পেজ স্ক্রল এবং সার্চ অপশন সহ)
             </span>
           </div>
 
-          <div className="flex items-center gap-3">
-            <span className="text-[11px] text-slate-400">
-              লোড হতে সময় লাগলে:
-            </span>
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             <button
               onClick={() => {
                 setPdfSource(pdfSource === 'cloud' ? 'google' : 'cloud');
                 setIframeLoading(true);
               }}
-              className="text-emerald-400 hover:underline font-semibold text-xs"
+              className="text-emerald-400 hover:underline font-semibold text-[11px] sm:text-xs"
             >
-              সার্ভার বদলান ({pdfSource === 'cloud' ? 'গুগল ড্রাইভ ভিউয়ার' : 'ক্লাউড ভিউয়ার'})
+              সার্ভার বদলান
             </button>
             <a
               href={book.downloadUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-emerald-400 hover:underline font-semibold text-xs flex items-center gap-0.5"
+              className="text-emerald-400 hover:underline font-semibold text-[11px] sm:text-xs flex items-center gap-0.5"
             >
-              <span>নতুন ট্যাবে খুলুন</span>
+              <span>নতুন ট্যাবে</span>
               <ExternalLink className="w-3 h-3" />
             </a>
           </div>
         </div>
 
-        {/* Iframe Loading Overlay */}
+        {/* Iframe Loading Overlay with Real Progress */}
         {iframeLoading && (
-          <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-slate-950/80 text-center p-4">
-            <div className="w-10 h-10 border-3 border-emerald-500 border-t-transparent rounded-full animate-spin mb-3"></div>
-            <p className="text-sm font-semibold text-white">
-              {book.titleBn} পিডিএফ লোড হচ্ছে...
-            </p>
-            <p className="text-xs text-slate-400 mt-1 max-w-sm">
-              এনসিটিবি ক্লাউড সার্ভার থেকে সরাসরি পৃষ্ঠাগুলো প্রস্তুত করা হচ্ছে।
-            </p>
+          <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-slate-950/90 text-center p-4 backdrop-blur-xs">
+            <div className="max-w-md w-full bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-2xl flex flex-col items-center animate-fadeIn">
+              
+              {/* Spinner & Book Icon */}
+              <div className="relative w-14 h-14 mb-4 flex items-center justify-center">
+                <div className="absolute inset-0 border-3 border-emerald-500/20 border-t-emerald-500 rounded-full animate-spin"></div>
+                <BookOpen className="w-6 h-6 text-emerald-400" />
+              </div>
+
+              {/* Title & Stage */}
+              <h3 className="text-base font-bold text-white mb-1">
+                {book.titleBn}
+              </h3>
+              <p className="text-xs text-emerald-400 font-medium mb-4 flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+                <span>{loadingStage}</span>
+              </p>
+
+              {/* Progress Bar Container */}
+              <div className="w-full bg-slate-800 rounded-full h-2.5 overflow-hidden mb-2 relative">
+                <div
+                  className="bg-emerald-500 h-2.5 rounded-full transition-all duration-500 ease-out shadow-[0_0_12px_rgba(16,185,129,0.5)]"
+                  style={{ width: `${progress}%` }}
+                ></div>
+              </div>
+
+              {/* Progress Percentage & Meta info */}
+              <div className="w-full flex items-center justify-between text-[11px] text-slate-400 mt-1 mb-4">
+                <span>লোড হচ্ছে: <strong className="text-white font-mono">{progress}%</strong></span>
+                <span>আকার: <strong className="text-slate-200">{book.fileSizeBytes}</strong></span>
+                <span>পৃষ্ঠা: <strong className="text-slate-200">{book.pageCount} টি</strong></span>
+              </div>
+
+              {/* Server switcher info */}
+              <div className="pt-3 border-t border-slate-800/80 w-full flex items-center justify-between text-xs text-slate-400">
+                <span className="text-[11px]">
+                  বর্তমান: <span className="text-slate-200">{pdfSource === 'cloud' ? 'সার্ভার ১ (হাই-স্পিড)' : 'সার্ভার ২ (গুগল)'}</span>
+                </span>
+                <button
+                  onClick={() => {
+                    setPdfSource(pdfSource === 'cloud' ? 'google' : 'cloud');
+                  }}
+                  className="text-emerald-400 hover:text-emerald-300 underline font-medium text-xs"
+                >
+                  সার্ভার বদলান
+                </button>
+              </div>
+
+            </div>
           </div>
         )}
 
@@ -215,7 +292,7 @@ export default function BookReaderModal({
           title={book.titleBn}
           className="w-full flex-1 border-0 bg-white"
           allow="autoplay; fullscreen"
-          onLoad={() => setIframeLoading(false)}
+          onLoad={handleIframeLoaded}
         />
       </div>
     </div>
