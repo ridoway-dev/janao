@@ -2,8 +2,10 @@ import React from 'react';
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import { NOTICES_DATA } from '@/data/nctbData';
+import { RESULT_CHECKERS_LIST } from '@/data/resultCheckersData';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import InteractiveResultPortal from '@/components/InteractiveResultPortal';
 import { 
   CheckCircle2, 
   ChevronRight, 
@@ -12,27 +14,27 @@ import {
   FileText, 
   Search, 
   Sparkles,
-  BookOpen
+  ArrowRight
 } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'সকল শিক্ষা বোর্ডের ফলাফল ও মার্কশিট | Board Results — janao.online',
-  description: 'এসএসসি, এইচএসসি, আলিম, দাখিল ও প্রাথমিক বৃত্তি পরীক্ষার রেজাল্ট দেখার অফিসিয়াল সার্ভার লিংক, মার্কশিট ডাউনলোড পদ্ধতি এবং GPA ক্যালকুলেটর।',
+  title: 'সকল পরীক্ষার ফলাফল চেকার — SSC, HSC, NU ও চাকরির রেজাল্ট | janao.online',
+  description: 'এসএসসি, দাখিল, এইচএসসি, কারিগরি (BTEB), জাতীয় বিশ্ববিদ্যালয় (NU), বিসিএস ও সরকারি চাকরির ফলাফল এবং মার্কশিট চেকার পোর্টাল।',
   keywords: [
-    'education board results',
-    'SSC result 2026',
-    'HSC result 2026',
-    'এইচএসসি রেজাল্ট দেখার নিয়ম',
-    'এসএসসি রেজাল্ট মার্কশিট',
-    'eboardresults',
-    'বোর্ড ফলাফল'
+    'SSC result checker',
+    'HSC result checker',
+    'NU result checker',
+    'বিসিএস রেজাল্ট',
+    'কারিগরি বোর্ড রেজাল্ট',
+    'primary scholarship result',
+    'education board results bd'
   ],
   alternates: {
     canonical: 'https://janao.online/results/',
   },
   openGraph: {
-    title: 'শিক্ষা বোর্ড পরীক্ষার ফলাফল ও মার্কশিট — janao.online',
-    description: 'এসএসসি, দাখিল ও এইচএসসি পরীক্ষার ফলাফল সরাসরি চেক ও মেধা তালিকা।',
+    title: 'অনলাইন রেজাল্ট চেকার পোর্টাল — janao.online',
+    description: 'এসএসসি, এইচএসসি, মাদ্রাসা, কারিগরি ও জাতীয় বিশ্ববিদ্যালয়ের অফিসিয়াল রেজাল্ট চেকার।',
     url: 'https://janao.online/results/',
     siteName: 'Janao.online',
     locale: 'bn_BD',
@@ -41,7 +43,7 @@ export const metadata: Metadata = {
 };
 
 export default function ResultsHubPage() {
-  const resultItems = NOTICES_DATA.filter((n) => n.category === 'result' || n.category === 'notice');
+  const resultNotices = NOTICES_DATA.filter((n) => n.category === 'result' || n.category === 'notice');
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50 dark:bg-[#0b0f19] text-gray-900 dark:text-gray-100 font-sans">
@@ -49,156 +51,104 @@ export default function ResultsHubPage() {
 
       {/* Breadcrumb Header */}
       <div className="bg-white dark:bg-[#0f172a] border-b border-gray-200 dark:border-gray-800 py-3">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 flex items-center gap-1.5 text-xs text-gray-500 dark:text-gray-400">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center gap-1.5 text-xs text-gray-500 dark:text-gray-400">
           <Link href="/" className="hover:text-emerald-700 dark:hover:text-emerald-400">হোম</Link>
           <ChevronRight className="w-3.5 h-3.5" />
-          <span className="text-gray-900 dark:text-white font-medium">ফলাফল ও মার্কশিট</span>
+          <span className="text-gray-900 dark:text-white font-medium">রেজাল্ট চেকার ও ফলাফল হাব</span>
         </div>
       </div>
 
-      <main className="flex-1 max-w-5xl mx-auto px-4 sm:px-6 py-6 sm:py-10 w-full space-y-8">
+      <main className="flex-1 max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-10 w-full space-y-10">
         
-        {/* Hero Header */}
-        <div className="bg-white dark:bg-[#0f172a] border border-gray-200 dark:border-gray-800 rounded-2xl p-6 sm:p-8 shadow-xs">
-          <div className="flex items-center gap-2 text-emerald-700 dark:text-emerald-400 font-bold text-xs uppercase tracking-wider mb-2">
-            <Sparkles className="w-4 h-4" />
-            <span>অফিসিয়াল বোর্ড রেজাল্ট পোর্টাল</span>
-          </div>
-          <h1 className="text-2xl sm:text-4xl font-extrabold text-gray-900 dark:text-white tracking-tight">
-            শিক্ষা বোর্ড পরীক্ষার ফলাফল ও মার্কশিট গেটওয়ে
-          </h1>
-          <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-2 leading-relaxed max-w-2xl">
-            বাংলাদেশ শিক্ষা বোর্ডের এসএসসি, দাখিল, এইচএসসি ও আলিম পরীক্ষার ফলাফল সরাসরি কেন্দ্রীয় সার্ভার থেকে দ্রুত ও নিরাপদে চেক করুন।
-          </p>
+        {/* Main Interactive Result Portal Form */}
+        <section id="interactive-checker">
+          <InteractiveResultPortal />
+        </section>
 
-          {/* Quick link to GPA Calculator */}
-          <div className="mt-5 pt-4 border-t border-gray-100 dark:border-gray-800 flex flex-wrap items-center gap-3">
+        {/* Dedicated Specialized Result Checkers Grid (Like students.bd) */}
+        <section className="space-y-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-gray-200 dark:border-gray-800 pb-3">
+            <div>
+              <h2 className="text-xl sm:text-2xl font-extrabold text-gray-900 dark:text-white flex items-center gap-2">
+                <span>সকল অফিসিয়াল রেজাল্ট চেকার ডিরেক্টরি</span>
+              </h2>
+              <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
+                বোর্ড, মাদ্রাসা, কারিগরি, বিশ্ববিদ্যালয় ও চাকরির রেজাল্টের জন্য নির্দিষ্ট সার্ভার লিংক
+              </p>
+            </div>
+
             <Link
-              href="/tools/#gpa-calculator"
-              className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition shadow-xs"
+              href="/tools/"
+              className="text-xs font-bold text-emerald-700 dark:text-emerald-400 hover:underline flex items-center gap-1 self-start sm:self-auto"
             >
-              <Calculator className="w-4 h-4" />
-              <span>রেজাল্টের পর জিপিএ হিসাব করতে চান? GPA ক্যালকুলেটর খুলুন →</span>
+              <Calculator className="w-3.5 h-3.5" />
+              <span>GPA ও CGPA ক্যালকুলেটর →</span>
             </Link>
           </div>
-        </div>
 
-        {/* Live Official Server Gateways */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          
-          {/* Server 1: eboardresults (Fastest for Individual / Institution) */}
-          <div className="p-5 rounded-2xl bg-white dark:bg-[#0f172a] border border-emerald-300 dark:border-emerald-800/80 shadow-xs flex flex-col justify-between">
-            <div>
-              <div className="flex items-center justify-between mb-2">
-                <span className="px-2 py-0.5 bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 text-[11px] font-bold rounded">
-                  সার্ভার ১ (সুপার ফাস্ট)
-                </span>
-                <span className="text-xs text-emerald-600 font-semibold flex items-center gap-1">
-                  <CheckCircle2 className="w-3.5 h-3.5" /> সক্রিয় সার্ভার
-                </span>
-              </div>
-              <h2 className="text-base font-bold text-gray-900 dark:text-white">
-                eBoardResults মার্কশিট গেটওয়ে
-              </h2>
-              <p className="text-xs text-gray-600 dark:text-gray-400 mt-1.5 leading-relaxed">
-                রোল ও রেজিস্ট্রেশন নম্বর ছাড়াই সরাসরি বা বিস্তারিত পূর্ণ বিষয়ভিত্তিক মার্কশিট প্রিন্ট করার দ্রুততম মাধ্যম।
-              </p>
-            </div>
-
-            <div className="mt-5 pt-3 border-t border-gray-100 dark:border-gray-800 flex items-center justify-between">
-              <span className="text-[11px] text-gray-500">ঢাকা বোর্ড ও অন্যান্য</span>
-              <a
-                href="https://eboardresults.com/v2/home"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-4 py-2 bg-emerald-700 hover:bg-emerald-800 text-white rounded-xl text-xs font-bold transition flex items-center gap-1.5"
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {RESULT_CHECKERS_LIST.map((checker) => (
+              <div
+                key={checker.id}
+                className="bg-white dark:bg-[#0f172a] border border-gray-200 dark:border-gray-800 rounded-2xl p-5 flex flex-col justify-between shadow-xs hover:border-emerald-500 transition-all group"
               >
-                <span>মার্কশিট দেখুন</span>
-                <ExternalLink className="w-3.5 h-3.5" />
-              </a>
-            </div>
-          </div>
+                <div>
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-2xl">{checker.icon}</span>
+                    <span className={`px-2 py-0.5 text-[10px] font-bold rounded-md ${checker.badgeColor}`}>
+                      {checker.badge}
+                    </span>
+                  </div>
 
-          {/* Server 2: Official Education Board Results */}
-          <div className="p-5 rounded-2xl bg-white dark:bg-[#0f172a] border border-gray-200 dark:border-gray-800 shadow-xs flex flex-col justify-between">
-            <div>
-              <div className="flex items-center justify-between mb-2">
-                <span className="px-2 py-0.5 bg-blue-100 dark:bg-blue-950/60 text-blue-800 dark:text-blue-300 text-[11px] font-bold rounded">
-                  সার্ভার ২ (সরকারি মূল সার্ভার)
-                </span>
-                <span className="text-xs text-blue-600 font-semibold flex items-center gap-1">
-                  <CheckCircle2 className="w-3.5 h-3.5" /> অফিশিয়াল
-                </span>
+                  <h3 className="font-bold text-base text-gray-900 dark:text-white group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors">
+                    {checker.title}
+                  </h3>
+                  <span className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 block mt-0.5">
+                    {checker.examName}
+                  </span>
+                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-2 leading-relaxed">
+                    {checker.desc}
+                  </p>
+                </div>
+
+                <div className="mt-5 pt-3 border-t border-gray-100 dark:border-gray-800 space-y-2">
+                  <div className="flex items-center justify-between text-xs">
+                    <a
+                      href={checker.server1Url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-emerald-700 dark:text-emerald-400 font-bold hover:underline"
+                    >
+                      <span>রেজাল্ট চেক করুন</span>
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
+
+                    {checker.server2Url && (
+                      <a
+                        href={checker.server2Url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[11px] text-gray-500 hover:text-gray-800 dark:hover:text-gray-200"
+                      >
+                        সার্ভার ২ →
+                      </a>
+                    )}
+                  </div>
+                </div>
               </div>
-              <h2 className="text-base font-bold text-gray-900 dark:text-white">
-                Education Board Results Gov BD
-              </h2>
-              <p className="text-xs text-gray-600 dark:text-gray-400 mt-1.5 leading-relaxed">
-                শিক্ষা মন্ত্রণালয়ের অফিসিয়াল কেন্দ্রীয় ডাটাবেজ সার্ভার। সকল সাধারণ, মাদ্রাসা ও কারিগরি বোর্ডের ফলাফল চেক করা যায়।
-              </p>
-            </div>
-
-            <div className="mt-5 pt-3 border-t border-gray-100 dark:border-gray-800 flex items-center justify-between">
-              <span className="text-[11px] text-gray-500">সরকারি গেটওয়ে</span>
-              <a
-                href="http://www.educationboardresults.gov.bd/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold transition flex items-center gap-1.5"
-              >
-                <span>রেজাল্ট চেক করুন</span>
-                <ExternalLink className="w-3.5 h-3.5" />
-              </a>
-            </div>
+            ))}
           </div>
+        </section>
 
-        </div>
-
-        {/* SMS এ রেজাল্ট পাওয়ার নিয়ম কার্ড */}
-        <div className="bg-white dark:bg-[#0f172a] border border-gray-200 dark:border-gray-800 rounded-2xl p-6 shadow-xs">
-          <h2 className="text-base font-bold text-gray-900 dark:text-white mb-2 flex items-center gap-2">
+        {/* Results Notices & Challenge Rules */}
+        <section className="bg-white dark:bg-[#0f172a] border border-gray-200 dark:border-gray-800 rounded-2xl p-6 shadow-xs">
+          <h2 className="text-base font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
             <FileText className="w-4 h-4 text-emerald-600" />
-            <span>মোবাইল SMS-এর মাধ্যমে দ্রুত রেজাল্ট জানার নিয়ম</span>
-          </h2>
-          <p className="text-xs text-gray-500 dark:text-gray-400 mb-4">
-            সার্ভারে চাপ থাকলে যেকোনো মোবাইল অপারেটর (Teletalk, Grameenphone, Robi, Banglalink, Airtel) থেকে মেসেজ পাঠিয়ে রেজাল্ট পাওয়া যায়:
-          </p>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-mono">
-            <div className="p-3.5 bg-gray-50 dark:bg-[#141d2e] rounded-xl border border-gray-200 dark:border-gray-800">
-              <div className="font-bold text-emerald-700 dark:text-emerald-400 font-sans mb-1">
-                SSC বা দাখিল রেজাল্ট:
-              </div>
-              <div className="text-gray-900 dark:text-white bg-white dark:bg-[#0f172a] p-2 rounded border border-gray-200 dark:border-gray-700">
-                SSC &lt;স্পেস&gt; বোর্ডের ১ম ৩ অক্ষর &lt;স্পেস&gt; রোল &lt;স্পেস&gt; সাল
-              </div>
-              <div className="text-[11px] text-gray-500 font-sans mt-2">
-                উদাহরণ: <code className="text-emerald-600">SSC DHA 123456 2026</code> লিখে পাঠান <strong>16222</strong> নম্বরে।
-              </div>
-            </div>
-
-            <div className="p-3.5 bg-gray-50 dark:bg-[#141d2e] rounded-xl border border-gray-200 dark:border-gray-800">
-              <div className="font-bold text-teal-700 dark:text-teal-400 font-sans mb-1">
-                HSC বা আলিম রেজাল্ট:
-              </div>
-              <div className="text-gray-900 dark:text-white bg-white dark:bg-[#0f172a] p-2 rounded border border-gray-200 dark:border-gray-700">
-                HSC &lt;স্পেস&gt; বোর্ডের ১ম ৩ অক্ষর &lt;স্পেস&gt; রোল &lt;স্পেস&gt; সাল
-              </div>
-              <div className="text-[11px] text-gray-500 font-sans mt-2">
-                উদাহরণ: <code className="text-teal-600">HSC RAJ 654321 2026</code> লিখে পাঠান <strong>16222</strong> নম্বরে।
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Results Article & Board Updates List */}
-        <div className="bg-white dark:bg-[#0f172a] border border-gray-200 dark:border-gray-800 rounded-2xl p-6 shadow-xs">
-          <h2 className="text-base font-bold text-gray-900 dark:text-white mb-4">
-            সাম্প্রতিক ফলাফল সংক্রান্ত নোটিশ ও খাতা চ্যালেঞ্জ
+            <span>সাম্প্রতিক ফলাফল প্রকাশ ও খাতা পুনর্নিরীক্ষণ নোটিশ</span>
           </h2>
 
           <div className="divide-y divide-gray-100 dark:divide-gray-800">
-            {resultItems.map((n) => (
+            {resultNotices.map((n) => (
               <div key={n.id} className="py-3.5 flex items-center justify-between gap-4 group">
                 <div>
                   <Link
@@ -213,14 +163,15 @@ export default function ResultsHubPage() {
 
                 <Link
                   href={`/results/${n.slug}/`}
-                  className="text-xs text-emerald-700 dark:text-emerald-400 font-semibold hover:underline shrink-0"
+                  className="text-xs text-emerald-700 dark:text-emerald-400 font-semibold hover:underline shrink-0 flex items-center gap-1"
                 >
-                  বিস্তারিত →
+                  <span>বিস্তারিত</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
             ))}
           </div>
-        </div>
+        </section>
 
       </main>
 
