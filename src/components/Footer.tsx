@@ -18,6 +18,25 @@ export default function Footer() {
           </p>
         </div>
 
+        {/* Quick Hub Navigation */}
+        <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1.5 text-xs font-semibold pb-2 border-b border-gray-200 dark:border-gray-800">
+          <Link href="/tools/" className="text-emerald-700 dark:text-emerald-400 hover:underline">
+            GPA ও NU CGPA ক্যালকুলেটর
+          </Link>
+          <span>·</span>
+          <Link href="/results/" className="text-emerald-700 dark:text-emerald-400 hover:underline">
+            বোর্ড ফলাফল ও মার্কশিট
+          </Link>
+          <span>·</span>
+          <Link href="/books/" className="text-emerald-700 dark:text-emerald-400 hover:underline">
+            পাঠ্যবই লাইব্রেরি
+          </Link>
+          <span>·</span>
+          <Link href="/admission/" className="text-emerald-700 dark:text-emerald-400 hover:underline">
+            বিশ্ববিদ্যালয় ভর্তি
+          </Link>
+        </div>
+
         {/* Links */}
         <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1.5 text-xs font-medium">
           <button

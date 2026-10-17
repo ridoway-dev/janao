@@ -136,8 +136,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${baseUrl}/tools/`,
       lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.6,
+      changeFrequency: 'daily',
+      priority: 0.9,
     },
   ];
 
