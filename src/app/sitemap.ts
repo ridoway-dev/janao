@@ -137,24 +137,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${baseUrl}/tools/`,
       lastModified: currentDate,
       changeFrequency: 'daily',
-      priority: 0.95,
-    },
-    {
-      url: `${baseUrl}/tools/#job-age-calculator`,
-      lastModified: currentDate,
-      changeFrequency: 'daily',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/tools/#gpa-calculator`,
-      lastModified: currentDate,
-      changeFrequency: 'daily',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/tools/#nu-calculator`,
-      lastModified: currentDate,
-      changeFrequency: 'daily',
       priority: 0.9,
     },
   ];
