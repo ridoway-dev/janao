@@ -18,6 +18,7 @@ import {
   Layers,
   ArrowRight
 } from 'lucide-react';
+import { getDirectDownloadUrl } from '@/utils/downloadPdf';
 
 interface ClassPageProps {
   params: Promise<{
@@ -220,9 +221,8 @@ export default async function ClassPillarPage({ params }: ClassPageProps) {
                   </Link>
 
                   <a
-                    href={b.downloadUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href={getDirectDownloadUrl(b.downloadUrl, `${b.slug || b.id}.pdf`)}
+                    download={`${b.slug || b.id}.pdf`}
                     className="flex-1 sm:flex-initial text-center px-3.5 py-1.5 rounded bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition shadow-xs"
                   >
                     <Download className="w-3.5 h-3.5" />

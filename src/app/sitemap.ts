@@ -1,6 +1,8 @@
 import { MetadataRoute } from 'next';
 import { BOOKS_DATA, NOTICES_DATA } from '@/data/nctbData';
 
+export const dynamic = 'force-static';
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://janao.online';
   const currentDate = new Date().toISOString();
@@ -138,6 +140,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: currentDate,
       changeFrequency: 'daily',
       priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/tools/job-age-calculator/`,
+      lastModified: currentDate,
+      changeFrequency: 'daily',
+      priority: 0.95,
     },
   ];
 

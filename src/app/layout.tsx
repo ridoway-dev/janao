@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Noto_Sans_Bengali, Inter } from "next/font/google";
 import VisitorTracker from "@/components/VisitorTracker";
+import ToastNotifier from "@/components/ToastNotifier";
 import "./globals.css";
 
 const notoBengali = Noto_Sans_Bengali({
@@ -69,11 +70,20 @@ export const metadata: Metadata = {
     siteName: "janao.online",
     locale: "bn_BD",
     type: "website",
+    images: [
+      {
+        url: "https://janao.online/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Janao.online — NCTB Books 2026 & 2027 PDF Download",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Janao.online — শিক্ষা, চাকরি, ভর্তি ও প্রয়োজনীয় তথ্য",
     description: "জাতীয় শিক্ষাক্রম (NCTB) পাঠ্যবই ২০২৬ ও ২০২৭, রুটিন, ফলাফল, ভর্তি ও চাকরি সার্কুলার।",
+    images: ["https://janao.online/og-image.png"],
   },
   icons: {
     icon: "/favicon.ico",
@@ -127,6 +137,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen flex flex-col antialiased selection:bg-emerald-500 selection:text-white w-full overflow-x-hidden pb-16 lg:pb-0">
         <VisitorTracker />
+        <ToastNotifier />
         {children}
       </body>
     </html>

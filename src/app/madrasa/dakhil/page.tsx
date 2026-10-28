@@ -5,6 +5,7 @@ import { BOOKS_DATA } from '@/data/nctbData';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { BookOpen, Download, ChevronRight } from 'lucide-react';
+import { getDirectDownloadUrl } from '@/utils/downloadPdf';
 
 export const metadata: Metadata = {
   title: 'মাদ্রাসা দাখিল পাঠ্যবই ২০২৬ PDF | Dakhil Class 6-10 Books - janao.online',
@@ -89,9 +90,8 @@ export default function DakhilHubPage() {
                   বিস্তারিত পড়ুন
                 </Link>
                 <a
-                  href={b.downloadUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href={getDirectDownloadUrl(b.downloadUrl, `${b.slug || b.id}.pdf`)}
+                  download={`${b.slug || b.id}.pdf`}
                   className="px-2.5 py-1 bg-emerald-700 hover:bg-emerald-800 text-white rounded text-[11px] font-medium"
                 >
                   ডাউনলোড

@@ -1,8 +1,10 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Book } from '@/data/nctbData';
-import { X, Download, FileText, Bookmark, ExternalLink } from 'lucide-react';
+import { X, Download, FileText, Bookmark, ExternalLink, Loader2 } from 'lucide-react';
+import { downloadPdfFile, getDirectDownloadUrl } from '@/utils/downloadPdf';
+import { notifyDownload } from '@/utils/notifier';
 
 interface BookDetailModalProps {
   book: Book | null;
@@ -19,7 +21,28 @@ export default function BookDetailModal({
   onToggleBookmark,
   onOpenReader,
 }: BookDetailModalProps) {
+  const [isDownloading, setIsDownloading] = useState(false);
+
   if (!book) return null;
+
+  const handleDownload = async (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (isDownloading) return;
+    setIsDownloading(true);
+    try {
+      const filename = `${book.slug || `book-${book.id}`}.pdf`;
+      await downloadPdfFile(book.downloadUrl, filename);
+    } catch (err) {
+      console.error('Download error:', err);
+    } finally {
+      setIsDownloading(false);
+    }
+  };
+
+  const directDownloadHref = getDirectDownloadUrl(
+    book.downloadUrl,
+    `${book.slug || `book-${book.id}`}.pdf`
+  );
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/60" onClick={onClose}>
@@ -92,10 +115,11 @@ export default function BookDetailModal({
           </button>
 
           <a
-            href={book.downloadUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="py-2 px-3 bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 border border-gray-300 dark:border-gray-700 rounded text-xs font-medium transition flex items-center justify-center gap-1"
+            href={directDownloadHref}
+            download={`${book.slug || `book-${book.id}`}.pdf`}
+            onClick={() => notifyDownload(book.titleBn)}
+            className="py-2 px-3 bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 border border-gray-300 dark:border-gray-700 rounded text-xs font-medium transition flex items-center justify-center gap-1 active:scale-95"
+            title="সরাসরি ব্রাউজারে পিডিএফ ডাউনলোড করুন"
           >
             <Download className="w-3.5 h-3.5" />
             <span>ডাউনলোড PDF</span>

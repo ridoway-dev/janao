@@ -13,6 +13,7 @@ import CategoryBrowser from '@/components/CategoryBrowser';
 import BookmarkDrawer from '@/components/BookmarkDrawer';
 import Footer from '@/components/Footer';
 import { BOOKS_DATA, Book } from '@/data/nctbData';
+import { notify } from '@/utils/notifier';
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -40,14 +41,20 @@ export default function Home() {
 
   const toggleBookmark = (id: string) => {
     setBookmarkedIds((prev) => {
-      let updated: string[];
-      if (prev.includes(id)) {
-        updated = prev.filter((item) => item !== id);
-      } else {
-        updated = [...prev, id];
-      }
+      const isRemoving = prev.includes(id);
+      const updated = isRemoving ? prev.filter((item) => item !== id) : [...prev, id];
       try {
         localStorage.setItem('janao_bookmarked_ids', JSON.stringify(updated));
+        const book = BOOKS_DATA.find((b) => b.id === id);
+        const name = book?.titleBn || 'বইটি';
+        notify({
+          type: isRemoving ? 'info' : 'success',
+          title: isRemoving ? 'বুকমার্ক সরানো হয়েছে' : 'বুকমার্কে যোগ হয়েছে!',
+          description: isRemoving
+            ? `"${name}" বুকমার্ক তালিকা থেকে রিমুভ করা হয়েছে।`
+            : `"${name}" আপনার পছন্দের তালিকায় সংরক্ষিত হয়েছে।`,
+          duration: 3000,
+        });
       } catch (e) {
         console.error(e);
       }

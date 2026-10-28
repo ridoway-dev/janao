@@ -29,13 +29,13 @@ export default function HeroSection({
 
   const trendingTopics = [
     { label: '🔥 NCTB Books 2027', href: '/books/2027/', highlight: true },
+    { label: '⚡ চাকরির বয়স ক্যালকুলেটর', href: '/tools/job-age-calculator/', highlight: true },
     { label: '২০২৬-এর বই', href: '/books/', highlight: false },
     { label: 'SSC Routine 2027', href: '/notices/ssc-routine-2027/', highlight: false },
     { label: 'HSC Routine 2027', href: '/notices/hsc-routine-2027/', highlight: false },
     { label: 'Primary Scholarship Result', href: '/results/primary-scholarship-result-2025/', highlight: false },
     { label: 'University Admission 2027', href: '/admission/', highlight: false },
     { label: 'Government Job Circular', href: '/jobs/', highlight: false },
-    { label: 'BCS প্রস্তুতি', href: '/jobs/', highlight: false },
   ];
 
   return (

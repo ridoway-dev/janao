@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { Book, NCTB_CATEGORIES, searchBooks } from '@/data/nctbData';
 import { Download, FileText, Bookmark, BookOpen, ExternalLink } from 'lucide-react';
+import { downloadPdfFile, getDirectDownloadUrl } from '@/utils/downloadPdf';
+import { notifyDownload } from '@/utils/notifier';
 
 interface BookGridProps {
   books: Book[];
@@ -43,27 +45,18 @@ export default function BookGrid({
     classLevel: selectedClass,
   });
 
-  const handleDownload = (e: React.MouseEvent, book: Book) => {
+  const handleDownload = async (e: React.MouseEvent, book: Book) => {
     e.stopPropagation();
     setDownloadingId(book.id);
 
-    // Notify Telegram of PDF Download
-    if (typeof window !== 'undefined') {
-      window.dispatchEvent(
-        new CustomEvent('track_visitor_action', {
-          detail: { type: 'download', bookTitle: `${book.classNameBn} - ${book.titleBn}` },
-        })
-      );
-    }
-
-    setTimeout(() => {
+    try {
+      const filename = `${book.slug || `book-${book.id}`}.pdf`;
+      await downloadPdfFile(book.downloadUrl, filename);
+    } catch (err) {
+      console.error('Download failed:', err);
+    } finally {
       setDownloadingId(null);
-      const link = document.createElement('a');
-      link.href = book.downloadUrl;
-      link.target = '_blank';
-      link.rel = 'noopener noreferrer';
-      link.click();
-    }, 500);
+    }
   };
 
   return (
@@ -213,15 +206,24 @@ export default function BookGrid({
                     <span className="truncate">বইটি পড়ুন</span>
                   </button>
 
-                  <button
-                    onClick={(e) => handleDownload(e, book)}
-                    disabled={isDownloading}
+                  <a
+                    href={getDirectDownloadUrl(book.downloadUrl, `${book.slug || `book-${book.id}`}.pdf`)}
+                    download={`${book.slug || `book-${book.id}`}.pdf`}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      if (!book.downloadUrl || !book.downloadUrl.startsWith('http')) {
+                        e.preventDefault();
+                        alert('এই বইটির পিডিএফ ফাইল এখনও প্রকাশিত হয়নি বা লিংকটি প্রস্তুত নয়।');
+                        return;
+                      }
+                      notifyDownload(book.titleBn);
+                    }}
                     className="shrink-0 py-1.5 px-2 bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-300 dark:border-gray-700 rounded text-xs font-medium transition active:scale-95 flex items-center justify-center gap-1"
-                    title="সরাসরি পিডিএফ ডাউনলোড"
+                    title="সরাসরি ব্রাউজারে পিডিএফ ডাউনলোড করুন"
                   >
                     <Download className="w-3.5 h-3.5 shrink-0" />
-                    <span>{isDownloading ? '...' : 'PDF'}</span>
-                  </button>
+                    <span>PDF</span>
+                  </a>
 
                   <Link
                     href={`/books/${book.classLevel}/${book.slug}/`}

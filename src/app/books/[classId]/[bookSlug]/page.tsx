@@ -10,6 +10,7 @@ import {
 } from '@/data/nctbData';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import BookPageActions from '@/components/BookPageActions';
 import { 
   BookOpen, 
   Download, 
@@ -249,27 +250,7 @@ export default async function BookDetailPage({ params }: BookPageProps) {
               </div>
 
               {/* Action Buttons */}
-              <div className="pt-2 flex flex-col sm:flex-row gap-3">
-                <a
-                  href={book.downloadUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 py-3 px-5 bg-emerald-700 hover:bg-emerald-800 text-white rounded font-bold text-sm text-center flex items-center justify-center gap-2 shadow-sm transition"
-                >
-                  <Download className="w-4 h-4" />
-                  <span>সরাসরি PDF ডাউনলোড করুন ({book.fileSizeBytes})</span>
-                </a>
-
-                <a
-                  href={book.downloadUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="py-3 px-4 bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-300 dark:border-gray-700 rounded font-semibold text-xs flex items-center justify-center gap-1.5 transition"
-                >
-                  <ExternalLink className="w-3.5 h-3.5" />
-                  <span>ক্লাউড সোর্স</span>
-                </a>
-              </div>
+              <BookPageActions book={book} />
 
               {/* Independent Platform Disclaimer */}
               <div className="pt-3 text-[11px] text-gray-500 dark:text-gray-400 border-t border-gray-200 dark:border-gray-800">
