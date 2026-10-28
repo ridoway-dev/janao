@@ -52,6 +52,9 @@ export const metadata: Metadata = {
   authors: [{ name: "janao.online Team", url: "https://janao.online" }],
   creator: "janao.online Team",
   publisher: "Janao.online",
+  alternates: {
+    canonical: "https://janao.online/",
+  },
   robots: {
     index: true,
     follow: true,

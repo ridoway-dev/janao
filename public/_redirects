@@ -1,0 +1,4 @@
+# Redirect www to non-www (SEO canonical enforcement)
+https://www.janao.online/* https://janao.online/:splat 301
+http://www.janao.online/* https://janao.online/:splat 301
+http://janao.online/* https://janao.online/:splat 301
