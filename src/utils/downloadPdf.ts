@@ -1,11 +1,15 @@
 import { notifyDownload } from '@/utils/notifier';
 
 /**
- * Utility to download PDF directly using JavaScript Blob or fallback to proxy attachment
+ * Get direct download URL with attachment header from Cloudflare Pages Function
  */
 export function getDirectDownloadUrl(url: string, filename?: string): string {
   if (!url || !url.startsWith('http')) return '#';
-  return url;
+  let cleanName = filename?.trim() || 'nctb-book.pdf';
+  if (!cleanName.toLowerCase().endsWith('.pdf')) {
+    cleanName += '.pdf';
+  }
+  return `/api/pdf?url=${encodeURIComponent(url)}&download=true&filename=${encodeURIComponent(cleanName)}`;
 }
 
 export function downloadPdfFile(url: string, filename?: string): void {
@@ -33,12 +37,11 @@ export function downloadPdfFile(url: string, filename?: string): void {
   // Notify visitor tracker and show on-screen toast notification
   notifyDownload(cleanFilename);
 
-  // Trigger direct browser download from Cloudflare R2
+  // Trigger instant browser download
+  const downloadUrl = getDirectDownloadUrl(url, cleanFilename);
   const link = document.createElement('a');
-  link.href = url;
+  link.href = downloadUrl;
   link.setAttribute('download', cleanFilename);
-  link.target = '_blank';
-  link.rel = 'noopener noreferrer';
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
