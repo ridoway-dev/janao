@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Noto_Sans_Bengali, Inter } from "next/font/google";
 import VisitorTracker from "@/components/VisitorTracker";
 import ToastNotifier from "@/components/ToastNotifier";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 import "./globals.css";
 
 const notoBengali = Noto_Sans_Bengali({
@@ -146,6 +147,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen flex flex-col antialiased selection:bg-emerald-500 selection:text-white w-full overflow-x-hidden pb-16 lg:pb-0">
+        <GoogleAnalytics />
         <VisitorTracker />
         <ToastNotifier />
         {children}

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
+import { pageview, trackEvent } from '@/utils/gtag';
 
 export default function VisitorTracker() {
   const pathname = usePathname();
@@ -11,6 +12,9 @@ export default function VisitorTracker() {
     // Avoid double firing in dev strict mode
     if (lastTrackedPath.current === pathname) return;
     lastTrackedPath.current = pathname;
+
+    // Track SPA pageview in Google Analytics
+    pageview(pathname);
 
     try {
       const sessionKey = 'janao_visit_tracked';
@@ -45,15 +49,27 @@ export default function VisitorTracker() {
       const customEvent = e as CustomEvent<{ type: string; bookTitle?: string; page?: string }>;
       if (!customEvent.detail) return;
 
+      const actionType = customEvent.detail.type || 'file_download';
+      const bookTitle = customEvent.detail.bookTitle || '';
+      const page = customEvent.detail.page || window.location.pathname;
+
+      // Track to Google Analytics 4
+      trackEvent(actionType === 'download' ? 'file_download' : actionType, {
+        file_name: bookTitle,
+        item_name: bookTitle,
+        page_location: window.location.href,
+        page_path: page,
+      });
+
       try {
         fetch('/api/visitor', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            page: customEvent.detail.page || window.location.pathname,
+            page,
             title: document.title || '',
-            type: customEvent.detail.type || 'download',
-            bookTitle: customEvent.detail.bookTitle || '',
+            type: actionType,
+            bookTitle,
           }),
         }).catch(() => {});
       } catch {
