@@ -28,8 +28,9 @@ export default function HeroSection({
   ];
 
   const trendingTopics = [
+    { label: '🔴 HSC Result 2026 মার্কশিট সহ', href: '/results/hsc/', highlight: true },
     { label: '🔥 NCTB Books 2027', href: '/books/2027/', highlight: true },
-    { label: '⚡ চাকরির বয়স ক্যালকুলেটর', href: '/tools/job-age-calculator/', highlight: true },
+    { label: '⚡ চাকরির বয়স ক্যালকুলেটর', href: '/tools/job-age-calculator/', highlight: false },
     { label: '২০২৬-এর বই', href: '/books/', highlight: false },
     { label: 'SSC Routine 2027', href: '/notices/ssc-routine-2027/', highlight: false },
     { label: 'HSC Routine 2027', href: '/notices/hsc-routine-2027/', highlight: false },

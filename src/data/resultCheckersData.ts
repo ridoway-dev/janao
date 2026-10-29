@@ -14,6 +14,7 @@ export interface ResultCheckerCard {
   server2Name?: string;
   smsSyntax: string;
   smsExample: string;
+  dedicatedUrl?: string;
 }
 
 export const RESULT_CHECKERS_LIST: ResultCheckerCard[] = [
@@ -37,19 +38,20 @@ export const RESULT_CHECKERS_LIST: ResultCheckerCard[] = [
   {
     id: 'hsc',
     slug: 'hsc',
-    title: 'HSC Result Checker',
-    examName: 'এইচএসসি ও আলিম ফলাফল',
+    title: 'HSC Result Checker 2026',
+    examName: 'এইচএসসি ও আলিম ফলাফল ও মার্কশিট',
     category: 'board',
-    badge: 'Detailed Grades',
-    badgeColor: 'bg-blue-100 text-blue-800 dark:bg-blue-950/60 dark:text-blue-300',
-    desc: 'এইচএসসি, আলিম, ভোকেশনাল ও বিএম পরীক্ষার পূর্ণ গ্রেডশিট ও ফলাফল চেক করুন।',
+    badge: '🔴 Live Server 2026',
+    badgeColor: 'bg-red-100 text-red-800 dark:bg-red-950/60 dark:text-red-300',
+    desc: 'এইচএসসি, আলিম ও ভোকেশনাল পরীক্ষার ফলাফল, পূর্ণ মার্কশিট ও এসএমএস পদ্ধতি।',
     icon: '📋',
     server1Url: 'https://eboardresults.com/v2/home',
     server1Name: 'Server 1 (eBoardResults - দ্রুততম)',
     server2Url: 'http://www.educationboardresults.gov.bd/',
     server2Name: 'Server 2 (EducationBoard Gov BD)',
     smsSyntax: 'HSC <স্পেস> বোর্ডের ১ম ৩ অক্ষর <স্পেস> রোল <স্পেস> সাল',
-    smsExample: 'HSC RAJ 654321 2026 লিখে পাঠান 16222 নম্বরে',
+    smsExample: 'HSC DHA 123456 2026 লিখে পাঠান 16222 নম্বরে',
+    dedicatedUrl: '/results/hsc/',
   },
   {
     id: 'dakhil',

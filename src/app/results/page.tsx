@@ -60,6 +60,30 @@ export default function ResultsHubPage() {
 
       <main className="flex-1 max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-10 w-full space-y-10">
         
+        {/* Urgent Live HSC 2026 Alert Banner */}
+        <div className="bg-gradient-to-r from-emerald-600 to-teal-700 text-white rounded-2xl p-4 sm:p-5 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <span className="flex h-3 w-3 relative">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-3 w-3 bg-white"></span>
+            </span>
+            <div>
+              <h2 className="font-extrabold text-sm sm:text-base text-white">
+                🔴 এইচএসসি ও আলিম ফলাফল ২০২৬ — ৩টি দ্রুততম সার্ভার ও এসএমএস পদ্ধতি
+              </h2>
+              <p className="text-xs text-emerald-100 mt-0.5">
+                সার্ভার ১ (eBoardResults) ও সার্ভার ২ থেকে বিষয়ভিত্তিক পূর্ণাঙ্গ মার্কশিট ডাউনলোড করুন
+              </p>
+            </div>
+          </div>
+          <Link
+            href="/results/hsc/"
+            className="shrink-0 px-4 py-2 bg-white text-emerald-900 hover:bg-emerald-50 font-bold text-xs rounded-xl shadow-xs transition-transform hover:scale-105 text-center"
+          >
+            HSC রেজাল্ট দেখুন →
+          </Link>
+        </div>
+
         {/* Main Interactive Result Portal Form */}
         <section id="interactive-checker">
           <InteractiveResultPortal />
@@ -113,15 +137,25 @@ export default function ResultsHubPage() {
 
                 <div className="mt-5 pt-3 border-t border-gray-100 dark:border-gray-800 space-y-2">
                   <div className="flex items-center justify-between text-xs">
-                    <a
-                      href={checker.server1Url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-emerald-700 dark:text-emerald-400 font-bold hover:underline"
-                    >
-                      <span>রেজাল্ট চেক করুন</span>
-                      <ExternalLink className="w-3 h-3" />
-                    </a>
+                    {checker.dedicatedUrl ? (
+                      <Link
+                        href={checker.dedicatedUrl}
+                        className="inline-flex items-center gap-1 text-emerald-700 dark:text-emerald-400 font-bold hover:underline"
+                      >
+                        <span>রেজাল্ট পোর্টাল ও মার্কশিট</span>
+                        <ArrowRight className="w-3 h-3" />
+                      </Link>
+                    ) : (
+                      <a
+                        href={checker.server1Url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-emerald-700 dark:text-emerald-400 font-bold hover:underline"
+                      >
+                        <span>রেজাল্ট চেক করুন</span>
+                        <ExternalLink className="w-3 h-3" />
+                      </a>
+                    )}
 
                     {checker.server2Url && (
                       <a

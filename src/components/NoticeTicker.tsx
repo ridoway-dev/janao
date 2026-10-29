@@ -29,6 +29,12 @@ export default function NoticeTicker({ onSelectNotice }: NoticeTickerProps) {
 
         <div className="flex items-center gap-2 sm:gap-3 shrink-0 text-[11px] sm:text-xs">
           <Link
+            href="/results/hsc/"
+            className="text-amber-300 hover:text-white font-extrabold underline flex items-center gap-1"
+          >
+            <span>🔴 HSC রেজাল্ট ২০২৬</span>
+          </Link>
+          <Link
             href="/syllabus/"
             className="text-emerald-200 hover:text-white underline font-semibold hidden md:inline"
           >
@@ -36,10 +42,9 @@ export default function NoticeTicker({ onSelectNotice }: NoticeTickerProps) {
           </Link>
           <Link
             href="/notices/"
-            className="text-emerald-200 hover:text-white underline"
+            className="text-emerald-200 hover:text-white underline hidden sm:inline"
           >
-            <span className="hidden sm:inline">সব নোটিশ</span>
-            <span className="sm:hidden">নোটিশ →</span>
+            সব নোটিশ
           </Link>
         </div>
       </div>

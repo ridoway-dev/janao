@@ -40,6 +40,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: `${baseUrl}/results/hsc/`,
+      lastModified: currentDate,
+      changeFrequency: 'hourly',
+      priority: 1.0,
+    },
+    {
       url: `${baseUrl}/admission/`,
       lastModified: currentDate,
       changeFrequency: 'weekly',

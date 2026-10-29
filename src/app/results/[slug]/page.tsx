@@ -5,6 +5,7 @@ import type { Metadata } from 'next';
 import { NOTICES_DATA, getNoticeBySlug } from '@/data/nctbData';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import HscResultChecker from '@/components/HscResultChecker';
 import { CheckCircle2, Calendar, ExternalLink, ChevronRight, Download } from 'lucide-react';
 
 interface ResultPageProps {
@@ -93,6 +94,29 @@ export default async function ResultArticlePage({ params }: ResultPageProps) {
                 <span>বোর্ড রেজাল্ট সার্ভার</span>
                 <ExternalLink className="w-3.5 h-3.5" />
               </a>
+            </div>
+          )}
+
+          {slug === 'hsc-result-2026' && (
+            <div className="space-y-6 pt-2">
+              <div className="p-4 rounded-2xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-300 dark:border-emerald-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div>
+                  <h3 className="font-black text-sm text-emerald-900 dark:text-emerald-200">
+                    🔴 পূর্ণাঙ্গ ডেডিকেটেড পোর্টাল ও এসএমএস কোড জেনারেটর
+                  </h3>
+                  <p className="text-xs text-emerald-800 dark:text-emerald-300 mt-0.5">
+                    মার্কশিট ডাউনলোড, দ্রুততম ৩টি বিকল্প সার্ভার এবং বোর্ড চ্যালেঞ্জের বিস্তারিত দেখতে ডেডিকেটেড পেজে যান।
+                  </p>
+                </div>
+                <Link
+                  href="/results/hsc/"
+                  className="shrink-0 px-4 py-2 bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs rounded-xl shadow-xs transition-colors text-center"
+                >
+                  পূর্ণাঙ্গ HSC পোর্টাল খুলুন →
+                </Link>
+              </div>
+
+              <HscResultChecker />
             </div>
           )}
 
