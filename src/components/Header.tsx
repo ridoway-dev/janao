@@ -19,7 +19,8 @@ import {
   FileText, 
   ChevronRight,
   Calculator,
-  Compass
+  Compass,
+  Send
 } from 'lucide-react';
 import BookmarkDrawer from './BookmarkDrawer';
 import { BOOKS_DATA, Book } from '@/data/nctbData';
@@ -195,6 +196,17 @@ export default function Header({
 
             {/* Desktop & Mobile Actions */}
             <div className="flex items-center gap-1 sm:gap-2 shrink-0">
+              <a
+                href="https://t.me/janao_online"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hidden sm:inline-flex items-center gap-1 px-2.5 py-1.5 text-xs font-semibold text-white bg-[#229ED9] hover:bg-[#1d8fc4] rounded-lg transition active:scale-95 shadow-xs"
+                title="টেলিগ্রাম কমিউনিটি"
+              >
+                <Send className="w-3.5 h-3.5" />
+                <span>টেলিগ্রাম</span>
+              </a>
+
               <button
                 onClick={handleSearchClick}
                 className="p-1.5 sm:px-2.5 sm:py-1.5 text-xs text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg border border-gray-300 dark:border-gray-700 flex items-center gap-1.5 transition active:scale-95"
@@ -296,6 +308,25 @@ export default function Header({
 
             {/* App Nav Hub List */}
             <div className="flex-1 overflow-y-auto p-3 space-y-1.5 no-scrollbar">
+              {/* Telegram Channel CTA Banner */}
+              <a
+                href="https://t.me/janao_online"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 p-3 rounded-xl bg-gradient-to-r from-[#229ED9] to-[#0088cc] text-white shadow-sm mb-2 transition active:scale-98"
+              >
+                <div className="w-9 h-9 rounded-lg bg-white/20 flex items-center justify-center shrink-0">
+                  <Send className="w-5 h-5" />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-xs font-bold">টেলিগ্রাম চ্যানেল</span>
+                    <span className="text-[9px] bg-white text-[#0088cc] font-extrabold px-1 rounded">যুক্ত হোন</span>
+                  </div>
+                  <p className="text-[10px] text-cyan-100 truncate">রেজাল্ট, রুটিন ও নোটিশ সবার আগে পান</p>
+                </div>
+              </a>
+
               <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider px-2 block mb-1">
                 প্রধান মেনু ও বিভাগসমূহ
               </span>

@@ -28,6 +28,14 @@ export default function NoticeTicker({ onSelectNotice }: NoticeTickerProps) {
         </div>
 
         <div className="flex items-center gap-2 sm:gap-3 shrink-0 text-[11px] sm:text-xs">
+          <a
+            href="https://t.me/janao_online"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-cyan-200 hover:text-white font-bold underline flex items-center gap-1"
+          >
+            <span>✈️ টেলিগ্রাম</span>
+          </a>
           <Link
             href="/results/hsc/"
             className="text-amber-300 hover:text-white font-extrabold underline flex items-center gap-1"

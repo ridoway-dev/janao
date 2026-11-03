@@ -3,6 +3,7 @@ import { Noto_Sans_Bengali, Inter } from "next/font/google";
 import VisitorTracker from "@/components/VisitorTracker";
 import ToastNotifier from "@/components/ToastNotifier";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+import TelegramWidget from "@/components/TelegramWidget";
 import "./globals.css";
 
 const notoBengali = Noto_Sans_Bengali({
@@ -150,6 +151,7 @@ export default function RootLayout({
         <GoogleAnalytics />
         <VisitorTracker />
         <ToastNotifier />
+        <TelegramWidget />
         {children}
       </body>
     </html>

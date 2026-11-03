@@ -35,6 +35,15 @@ export default function Footer() {
           <Link href="/admission/" className="text-emerald-700 dark:text-emerald-400 hover:underline">
             বিশ্ববিদ্যালয় ভর্তি
           </Link>
+          <span>·</span>
+          <a
+            href="https://t.me/janao_online"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[#229ED9] dark:text-[#38bdf8] hover:underline font-bold inline-flex items-center gap-1"
+          >
+            ✈️ টেলিগ্রাম কমিউনিটি
+          </a>
         </div>
 
         {/* Links */}
@@ -66,6 +75,15 @@ export default function Footer() {
           >
             যোগাযোগ
           </button>
+          <span>·</span>
+          <a
+            href="https://t.me/janao_online"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-[#229ED9] dark:hover:text-[#38bdf8] hover:underline text-[#229ED9] dark:text-[#38bdf8] font-medium"
+          >
+            টেলিগ্রাম চ্যানেল
+          </a>
         </div>
 
         <p className="text-gray-500 dark:text-gray-400 pt-2">
@@ -85,19 +103,31 @@ export default function Footer() {
               {activeModal === 'about' && 'আমাদের সম্পর্কে'}
               {activeModal === 'privacy' && 'গোপনীয়তা নীতি'}
               {activeModal === 'disclaimer' && 'Disclaimer (দায়মুক্তি)'}
-              {activeModal === 'contact' && 'যোগাযোগ'}
+              {activeModal === 'contact' && 'যোগাযোগ ও কমিউনিটি'}
             </h3>
 
-            <p className="text-xs text-gray-600 dark:text-gray-300 leading-relaxed my-3">
-              {activeModal === 'about' &&
-                'janao.online হলো বাংলাদেশের শিক্ষার্থীদের জন্য একটি ওপেন এডুকেশনাল পোর্টাল, যেখান থেকে ১ম থেকে ১২শ শ্রেণির পাঠ্যবই, রুটিন ও নোটিশ সহজে খুঁজে পাওয়া যায়।'}
-              {activeModal === 'privacy' &&
-                'আমরা কোনো ব্যবহারকারীর ব্যক্তিগত তথ্য সংগ্রহ বা সংরক্ষণ করি না। আপনি নিরাপদে বই পড়তে ও ডাউনলোড করতে পারবেন।'}
-              {activeModal === 'disclaimer' &&
-                'সকল বই ও সিলেবাসের মূল কপিরাইট বাংলাদেশ সরকারের জাতীয় শিক্ষাক্রম ও পাঠ্যপুস্তক বোর্ড (NCTB) এর নিজস্ব।'}
-              {activeModal === 'contact' &&
-                'যেকোনো প্রশ্ন বা পরামর্শের জন্য যোগাযোগ করুন: info@janao.online'}
-            </p>
+            <div className="text-xs text-gray-600 dark:text-gray-300 leading-relaxed my-3 space-y-2">
+              {activeModal === 'about' && (
+                <p>janao.online হলো বাংলাদেশের শিক্ষার্থীদের জন্য একটি ওপেন এডুকেশনাল পোর্টাল, যেখান থেকে ১ম থেকে ১২শ শ্রেণির পাঠ্যবই, রুটিন ও নোটিশ সহজে খুঁজে পাওয়া যায়।</p>
+              )}
+              {activeModal === 'privacy' && (
+                <p>আমরা কোনো ব্যবহারকারীর ব্যক্তিগত তথ্য সংগ্রহ বা সংরক্ষণ করি না। আপনি নিরাপদে বই পড়তে ও ডাউনলোড করতে পারবেন।</p>
+              )}
+              {activeModal === 'disclaimer' && (
+                <p>সকল বই ও সিলেবাসের মূল কপিরাইট বাংলাদেশ সরকারের জাতীয় শিক্ষাক্রম ও পাঠ্যপুস্তক বোর্ড (NCTB) এর নিজস্ব।</p>
+              )}
+              {activeModal === 'contact' && (
+                <>
+                  <p>যেকোনো প্রশ্ন, তথ্য সংশোধন বা পরামর্শের জন্য আমাদের সাথে যোগাযোগ করতে পারেন:</p>
+                  <p className="font-semibold text-gray-800 dark:text-gray-200">
+                    📧 ইমেইল: info@janao.online
+                  </p>
+                  <p className="font-semibold text-gray-800 dark:text-gray-200">
+                    ✈️ অফিসিয়াল টেলিগ্রাম: <a href="https://t.me/janao_online" target="_blank" rel="noopener noreferrer" className="text-[#229ED9] underline">t.me/janao_online</a>
+                  </p>
+                </>
+              )}
+            </div>
 
             <button
               onClick={() => setActiveModal(null)}

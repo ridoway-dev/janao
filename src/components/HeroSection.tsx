@@ -28,6 +28,7 @@ export default function HeroSection({
   ];
 
   const trendingTopics = [
+    { label: '✈️ টেলিগ্রাম কমিউনিটি (@janao_online)', href: 'https://t.me/janao_online', highlight: true, isExternal: true },
     { label: '🔴 HSC Result 2026 মার্কশিট সহ', href: '/results/hsc/', highlight: true },
     { label: '🔥 NCTB Books 2027', href: '/books/2027/', highlight: true },
     { label: '⚡ চাকরির বয়স ক্যালকুলেটর', href: '/tools/job-age-calculator/', highlight: false },
@@ -142,8 +143,12 @@ export default function HeroSection({
               <a
                 key={topic.label}
                 href={topic.href}
+                target={topic.href.startsWith('http') ? '_blank' : undefined}
+                rel={topic.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                 className={`px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full font-medium border transition ${
-                  topic.highlight
+                  topic.href.startsWith('http')
+                    ? 'bg-sky-50 dark:bg-sky-950/40 text-[#0088cc] dark:text-sky-300 border-sky-300 dark:border-sky-800 font-semibold hover:bg-sky-100'
+                    : topic.highlight
                     ? 'bg-amber-50 dark:bg-amber-950/40 text-amber-800 dark:text-amber-300 border-amber-300 dark:border-amber-700 font-semibold'
                     : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border-gray-200 dark:border-gray-700 hover:border-emerald-600 hover:text-emerald-700 dark:hover:text-emerald-400'
                 }`}
