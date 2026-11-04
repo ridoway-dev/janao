@@ -211,7 +211,7 @@ export default function Header({
                 onClick={handleSearchClick}
                 className="p-1.5 sm:px-2.5 sm:py-1.5 text-xs text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg border border-gray-300 dark:border-gray-700 flex items-center gap-1.5 transition active:scale-95"
                 title="অনুসন্ধান করুন"
-                aria-label="অনুসন্ধান"
+                aria-label="খুঁজুন"
               >
                 <Search className="w-3.5 h-3.5" />
                 <span className="hidden sm:inline">খুঁজুন</span>

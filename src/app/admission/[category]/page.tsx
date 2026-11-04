@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import AdSlot from '@/components/ads/AdSlot';
 import { GraduationCap, ChevronRight, ArrowRight, ExternalLink, Calendar, CheckCircle2 } from 'lucide-react';
 
 interface AdmissionCategoryPageProps {
@@ -173,6 +174,9 @@ export default async function AdmissionCategoryPage({ params }: AdmissionCategor
             })}
           </div>
         </section>
+
+        {/* Sponsored slot: after all admission information, before the footer */}
+        <AdSlot format="banner" />
       </main>
 
       <Footer />

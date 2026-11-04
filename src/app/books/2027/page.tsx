@@ -29,6 +29,10 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: 'https://janao.online/books/2027/',
+    languages: {
+      'bn-BD': 'https://janao.online/books/2027/',
+      'x-default': 'https://janao.online/books/2027/',
+    },
   },
 };
 

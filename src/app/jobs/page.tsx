@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import AdSlot from '@/components/ads/AdSlot';
 import { Briefcase, ChevronRight, CheckCircle2, ArrowRight, ExternalLink, Calendar, Building2, ShieldAlert } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -10,6 +11,10 @@ export const metadata: Metadata = {
   keywords: ['সরকারি চাকরি সার্কুলার', 'বিসিএস প্রস্তুতি', 'BCS circular 2026', 'Govt job circular BD', 'শিক্ষক নিয়োগ', 'ব্যাংক জব'],
   alternates: {
     canonical: 'https://janao.online/jobs/',
+    languages: {
+      'bn-BD': 'https://janao.online/jobs/',
+      'x-default': 'https://janao.online/jobs/',
+    },
   },
 };
 
@@ -178,6 +183,9 @@ export default function JobsPage() {
             </div>
           </div>
         </section>
+
+        {/* Sponsored slot: after all job guidance, before the footer */}
+        <AdSlot format="banner" />
 
       </main>
 

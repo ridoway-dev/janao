@@ -9,6 +9,7 @@ import {
 } from '@/data/nctbData';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import AdSlot from '@/components/ads/AdSlot';
 import { 
   BookOpen, 
   Download, 
@@ -18,7 +19,7 @@ import {
   Layers,
   ArrowRight
 } from 'lucide-react';
-import { getDirectDownloadUrl } from '@/utils/downloadPdf';
+import DownloadLink from '@/components/download/DownloadLink';
 
 interface ClassPageProps {
   params: Promise<{
@@ -220,14 +221,16 @@ export default async function ClassPillarPage({ params }: ClassPageProps) {
                     বইয়ের পেজ
                   </Link>
 
-                  <a
-                    href={getDirectDownloadUrl(b.downloadUrl, `${b.slug || b.id}.pdf`)}
-                    download={`${b.slug || b.id}.pdf`}
+                  <DownloadLink
+                    downloadUrl={b.downloadUrl}
+                    filename={`${b.slug || b.id}.pdf`}
+                    bookTitle={b.titleBn}
+                    fileSize={b.fileSizeBytes}
                     className="flex-1 sm:flex-initial text-center px-3.5 py-1.5 rounded bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition shadow-xs"
                   >
                     <Download className="w-3.5 h-3.5" />
                     <span>PDF ডাউনলোড</span>
-                  </a>
+                  </DownloadLink>
                 </div>
               </div>
             ))}
@@ -281,6 +284,9 @@ export default async function ClassPillarPage({ params }: ClassPageProps) {
             ))}
           </div>
         </div>
+
+        {/* Sponsored slot: after all class content, before the footer */}
+        <AdSlot format="native" />
 
       </main>
 

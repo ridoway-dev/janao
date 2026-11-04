@@ -4,8 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { Book, NCTB_CATEGORIES, searchBooks } from '@/data/nctbData';
 import { Download, FileText, Bookmark, BookOpen, ExternalLink } from 'lucide-react';
-import { downloadPdfFile, getDirectDownloadUrl } from '@/utils/downloadPdf';
-import { notifyDownload } from '@/utils/notifier';
+import DownloadLink from '@/components/download/DownloadLink';
 
 interface BookGridProps {
   books: Book[];
@@ -22,6 +21,12 @@ interface BookGridProps {
   selectedYear: number;
 }
 
+// The homepage used to render every book at once (~450 cards / ~2.5 MB HTML).
+// That made hydration and interaction slow on mobile. Render a small first
+// batch and let visitors load more on demand.
+const INITIAL_VISIBLE_BOOKS = 24;
+const LOAD_MORE_STEP = 24;
+
 export default function BookGrid({
   books,
   selectedCategory,
@@ -36,7 +41,7 @@ export default function BookGrid({
   onToggleBookmark,
   selectedYear,
 }: BookGridProps) {
-  const [downloadingId, setDownloadingId] = useState<string | null>(null);
+  const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE_BOOKS);
 
   // Filter books using smart search parser
   const filtered = searchBooks(books, searchQuery, {
@@ -45,23 +50,21 @@ export default function BookGrid({
     classLevel: selectedClass,
   });
 
-  const handleDownload = async (e: React.MouseEvent, book: Book) => {
-    e.stopPropagation();
-    setDownloadingId(book.id);
-
-    try {
-      const filename = `${book.slug || `book-${book.id}`}.pdf`;
-      await downloadPdfFile(book.downloadUrl, filename);
-    } catch (err) {
-      console.error('Download failed:', err);
-    } finally {
-      setDownloadingId(null);
-    }
-  };
+  const visibleBooks = filtered.slice(0, visibleCount);
+  const remainingBooks = filtered.length - visibleBooks.length;
 
   return (
     <section id="books-section" className="w-full max-w-6xl mx-auto px-3.5 sm:px-6 py-4 sm:py-6 min-w-0">
-      
+
+      <div className="mb-3 sm:mb-4">
+        <h2 className="text-lg sm:text-2xl font-extrabold text-gray-900 dark:text-white tracking-tight">
+          NCTB পাঠ্যবই ২০২৬ ও ২০২৭ — শ্রেণিভিত্তিক PDF ডাউনলোড
+        </h2>
+        <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-1 leading-relaxed">
+          ১ম থেকে ১২শ শ্রেণি, ইবতেদায়ি ও দাখিল স্তরের নতুন শিক্ষাক্রমের অনুমোদিত পাঠ্যবই পড়ুন বা PDF ডাউনলোড করুন।
+        </p>
+      </div>
+
       {/* Category Tabs with no-scrollbar touch scroll */}
       <div className="flex items-center gap-1 overflow-x-auto pb-2 border-b border-gray-200 dark:border-gray-800 text-xs sm:text-sm no-scrollbar w-full">
         {NCTB_CATEGORIES.map((cat) => {
@@ -133,10 +136,10 @@ export default function BookGrid({
           </button>
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3.5 sm:gap-4 w-full min-w-0">
-          {filtered.map((book) => {
+        <>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3.5 sm:gap-4 w-full min-w-0">
+            {visibleBooks.map((book) => {
             const isBookmarked = bookmarkedIds.includes(book.id);
-            const isDownloading = downloadingId === book.id;
 
             return (
               <div
@@ -206,24 +209,18 @@ export default function BookGrid({
                     <span className="truncate">বইটি পড়ুন</span>
                   </button>
 
-                  <a
-                    href={getDirectDownloadUrl(book.downloadUrl, `${book.slug || `book-${book.id}`}.pdf`)}
-                    download={`${book.slug || `book-${book.id}`}.pdf`}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      if (!book.downloadUrl || !book.downloadUrl.startsWith('http')) {
-                        e.preventDefault();
-                        alert('এই বইটির পিডিএফ ফাইল এখনও প্রকাশিত হয়নি বা লিংকটি প্রস্তুত নয়।');
-                        return;
-                      }
-                      notifyDownload(book.titleBn);
-                    }}
+                  <DownloadLink
+                    downloadUrl={book.downloadUrl}
+                    filename={`${book.slug || `book-${book.id}`}.pdf`}
+                    bookTitle={book.titleBn}
+                    fileSize={book.fileSizeBytes}
+                    onClick={(e) => e.stopPropagation()}
                     className="shrink-0 py-1.5 px-2 bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-300 dark:border-gray-700 rounded text-xs font-medium transition active:scale-95 flex items-center justify-center gap-1"
                     title="সরাসরি ব্রাউজারে পিডিএফ ডাউনলোড করুন"
                   >
                     <Download className="w-3.5 h-3.5 shrink-0" />
                     <span>PDF</span>
-                  </a>
+                  </DownloadLink>
 
                   <Link
                     href={`/books/${book.classLevel}/${book.slug}/`}
@@ -237,7 +234,22 @@ export default function BookGrid({
               </div>
             );
           })}
-        </div>
+          </div>
+
+          {remainingBooks > 0 && (
+            <div className="mt-5 sm:mt-6 flex flex-col items-center gap-1.5">
+              <button
+                onClick={() => setVisibleCount((count) => count + LOAD_MORE_STEP)}
+                className="px-5 py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white text-sm font-semibold rounded-lg transition active:scale-95 shadow-xs"
+              >
+                আরও {Math.min(remainingBooks, LOAD_MORE_STEP)} টি বই দেখুন
+              </button>
+              <span className="text-[11px] text-gray-500 dark:text-gray-400">
+                দেখানো হচ্ছে {visibleBooks.length} / {filtered.length} টি বই
+              </span>
+            </div>
+          )}
+        </>
       )}
 
     </section>

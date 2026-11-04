@@ -11,6 +11,10 @@ export const metadata: Metadata = {
   description: 'জাতীয় শিক্ষাক্রম ও পাঠ্যপুস্তক বোর্ড (NCTB) অনুমোদিত প্রাথমিক (১ম-৫ম), মাধ্যমিক (৬ষ্ঠ-১০ম), মাদ্রাসা ইবতেদায়ি, দাখিল ও কলেজ পর্যায়ের সকল বিষয়ের বোর্ড বই ডাউনলোড ও পড়ার সূচি।',
   alternates: {
     canonical: 'https://janao.online/books/',
+    languages: {
+      'bn-BD': 'https://janao.online/books/',
+      'x-default': 'https://janao.online/books/',
+    },
   },
 };
 

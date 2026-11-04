@@ -11,6 +11,7 @@ import {
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import BookPageActions from '@/components/BookPageActions';
+import AdSlot from '@/components/ads/AdSlot';
 import { 
   BookOpen, 
   Download, 
@@ -261,6 +262,9 @@ export default async function BookDetailPage({ params }: BookPageProps) {
 
           </div>
         </div>
+
+        {/* Sponsored slot: below the book details, above related links */}
+        <AdSlot format="banner" />
 
         {/* Pillar Internal Linking: Other books of this class */}
         {relatedBooks.length > 0 && (

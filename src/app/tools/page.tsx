@@ -31,6 +31,10 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: 'https://janao.online/tools/',
+    languages: {
+      'bn-BD': 'https://janao.online/tools/',
+      'x-default': 'https://janao.online/tools/',
+    },
   },
   openGraph: {
     title: 'অনলাইন GPA, NU CGPA ও চাকরির বয়স ক্যালকুলেটর — Janao.online',

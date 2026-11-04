@@ -2,22 +2,43 @@ import { MetadataRoute } from 'next';
 
 export const dynamic = 'force-static';
 
+// Paths that should never be crawled: API routes, the thin internal search
+// page, and arbitrary query-string URLs (which create duplicate content).
+const DISALLOWED_PATHS = ['/api/', '/search', '/*?*'];
+
+// Explicitly welcome AI/LLM crawlers so the site can be quoted by AI search
+// engines. They inherit the same sensible crawl rules as other bots.
+const AI_CRAWLERS = [
+  'GPTBot',
+  'OAI-SearchBot',
+  'ChatGPT-User',
+  'ClaudeBot',
+  'Claude-Web',
+  'anthropic-ai',
+  'PerplexityBot',
+  'Google-Extended',
+  'Applebot-Extended',
+  'CCBot',
+  'cohere-ai',
+];
+
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
       {
         userAgent: '*',
         allow: '/',
-        disallow: [
-          '/api/',
-          '/search',
-          '/*?*', // Prevent thin/duplicate query strings from being indexed
-        ],
+        disallow: DISALLOWED_PATHS,
       },
       {
         userAgent: 'Googlebot',
         allow: '/',
-        disallow: ['/api/', '/search', '/*?*'],
+        disallow: DISALLOWED_PATHS,
+      },
+      {
+        userAgent: AI_CRAWLERS,
+        allow: '/',
+        disallow: DISALLOWED_PATHS,
       },
     ],
     sitemap: 'https://janao.online/sitemap.xml',

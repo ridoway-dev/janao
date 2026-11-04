@@ -10,6 +10,10 @@ export const metadata: Metadata = {
   keywords: ['মাদ্রাসা বই ২০২৬', 'ইবতেদায়ি বই', 'দাখিল বই ২০২৬', 'দাখিল গণিত', 'কুরআন মাজিদ বই', 'Madrasa Books PDF'],
   alternates: {
     canonical: 'https://janao.online/madrasa/',
+    languages: {
+      'bn-BD': 'https://janao.online/madrasa/',
+      'x-default': 'https://janao.online/madrasa/',
+    },
   },
 };
 

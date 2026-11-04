@@ -29,6 +29,10 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: 'https://janao.online/syllabus/',
+    languages: {
+      'bn-BD': 'https://janao.online/syllabus/',
+      'x-default': 'https://janao.online/syllabus/',
+    },
   },
 };
 

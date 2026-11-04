@@ -11,6 +11,10 @@ export const metadata: Metadata = {
   description: 'শিক্ষা মন্ত্রণালয়, এনসিটিবি ও শিক্ষা বোর্ডসমূহের সকল জরুরি বিজ্ঞপ্তি, পরীক্ষার রুটিন ও নির্দেশিকা।',
   alternates: {
     canonical: 'https://janao.online/notices/',
+    languages: {
+      'bn-BD': 'https://janao.online/notices/',
+      'x-default': 'https://janao.online/notices/',
+    },
   },
 };
 

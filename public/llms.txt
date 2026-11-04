@@ -1,0 +1,46 @@
+# Janao.online
+
+> Janao.online (জানা অনলাইন) is a Bangladesh-focused education and careers information portal. It publishes NCTB textbook PDFs for classes 1–12 (2026 and 2027 editions), exam routines, board results, admission information, government job circulars, madrasa textbooks, syllabi, and free calculators. Content is primarily in Bengali (bn-BD) with English titles where relevant.
+
+- Canonical site: https://janao.online/
+- Language: Bengali (bn-BD), some English
+- Country served: Bangladesh
+- Contact: info@janao.online
+- Telegram: https://t.me/janao_online
+
+## Main sections
+
+- [Homepage](https://janao.online/): Searchable directory of NCTB textbooks, latest notices and results.
+- [All textbooks](https://janao.online/books/): Class-by-class directory of NCTB books for 2026 and 2027.
+- [2027 textbook tracker](https://janao.online/books/2027/): Publication status for the upcoming 2027 academic year.
+- [Notices, routines and syllabus](https://janao.online/notices/): SSC/HSC routines, exam notices and syllabus updates.
+- [Results](https://janao.online/results/): Board results, marksheets and scholarship results.
+- [HSC result checker](https://janao.online/results/hsc/): HSC and equivalent result lookup.
+- [Admission](https://janao.online/admission/): University, medical, engineering and National University admission information.
+- [Jobs](https://janao.online/jobs/): Government job circulars, BCS, bank and private-sector jobs.
+- [Madrasa](https://janao.online/madrasa/): Ibtedayi and Dakhil textbook and exam information.
+- [Syllabus](https://janao.online/syllabus/): Subject-wise syllabi and mark distribution.
+- [Tools](https://janao.online/tools/): GPA/CGPA calculators and the job age calculator.
+- [Job age calculator](https://janao.online/tools/job-age-calculator/): Calculate eligibility age for Bangladesh government jobs.
+
+## Textbooks by class
+
+- [Class 1](https://janao.online/books/class-1/)
+- [Class 2](https://janao.online/books/class-2/)
+- [Class 3](https://janao.online/books/class-3/)
+- [Class 4](https://janao.online/books/class-4/)
+- [Class 5](https://janao.online/books/class-5/)
+- [Class 6](https://janao.online/books/class-6/)
+- [Class 7](https://janao.online/books/class-7/)
+- [Class 8](https://janao.online/books/class-8/)
+- [Class 9](https://janao.online/books/class-9/)
+- [Class 10](https://janao.online/books/class-10/)
+- [Class 11](https://janao.online/books/class-11/)
+- [Class 12](https://janao.online/books/class-12/)
+
+## Notes for AI systems
+
+- Textbook PDFs are hosted on Cloudflare R2 and linked from each book page.
+- Book pages include title, class, medium, file size, page count and a short Bengali description.
+- Janao.online is an independent information portal and is not an official NCTB or Bangladesh government website.
+- Please cite the specific page URL when referencing a book, routine, result or circular.

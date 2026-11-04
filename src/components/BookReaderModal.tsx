@@ -18,8 +18,7 @@ import {
   Loader2,
   FileText
 } from 'lucide-react';
-import { downloadPdfFile, getDirectDownloadUrl } from '@/utils/downloadPdf';
-import { notifyDownload } from '@/utils/notifier';
+import DownloadLink from '@/components/download/DownloadLink';
 
 interface BookReaderModalProps {
   book: Book | null;
@@ -40,25 +39,6 @@ export default function BookReaderModal({
   isBookmarked = false,
   onToggleBookmark,
 }: BookReaderModalProps) {
-  const [isDownloading, setIsDownloading] = useState(false);
-
-  const handleDownload = async (e: React.MouseEvent) => {
-    e.preventDefault();
-    if (!book || isDownloading) return;
-    setIsDownloading(true);
-    try {
-      const filename = `${book.slug || `book-${book.id}`}.pdf`;
-      await downloadPdfFile(book.downloadUrl, filename);
-    } catch (err) {
-      console.error('Download error:', err);
-    } finally {
-      setIsDownloading(false);
-    }
-  };
-
-  const directDownloadHref = book
-    ? getDirectDownloadUrl(book.downloadUrl, `${book.slug || `book-${book.id}`}.pdf`)
-    : '#';
   // Device Detection: PC vs Mobile
   const [isMobile, setIsMobile] = useState<boolean>(false);
 
@@ -400,16 +380,17 @@ export default function BookReaderModal({
             >
               <RotateCw className="w-3.5 h-3.5" />
             </button>
-            <a
-              href={directDownloadHref}
-              download={book ? `${book.slug || `book-${book.id}`}.pdf` : undefined}
-              onClick={() => book && notifyDownload(book.titleBn)}
+            <DownloadLink
+              downloadUrl={book.downloadUrl}
+              filename={`${book.slug || `book-${book.id}`}.pdf`}
+              bookTitle={book.titleBn}
+              fileSize={book.fileSizeBytes}
               className="p-1.5 px-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold flex items-center gap-1 transition active:scale-95"
               title="সরাসরি ব্রাউজারে পিডিএফ ডাউনলোড করুন"
             >
               <Download className="w-3.5 h-3.5" />
               <span>ডাউনলোড</span>
-            </a>
+            </DownloadLink>
             <button
               onClick={toggleFullscreen}
               className="p-1.5 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-white transition"
@@ -595,16 +576,17 @@ export default function BookReaderModal({
           </a>
 
           {/* Direct Download Button */}
-          <a
-            href={directDownloadHref}
-            download={book ? `${book.slug || `book-${book.id}`}.pdf` : undefined}
-            onClick={() => book && notifyDownload(book.titleBn)}
+          <DownloadLink
+            downloadUrl={book.downloadUrl}
+            filename={`${book.slug || `book-${book.id}`}.pdf`}
+            bookTitle={book.titleBn}
+            fileSize={book.fileSizeBytes}
             className="p-1.5 sm:px-2.5 sm:py-1 rounded bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-semibold flex items-center gap-1 transition active:scale-95"
             title="বইটি সরাসরি ব্রাউজারে ডাউনলোড করুন"
           >
             <Download className="w-3.5 h-3.5" />
             <span className="hidden sm:inline">ডাউনলোড</span>
-          </a>
+          </DownloadLink>
 
           {/* Fullscreen */}
           <button

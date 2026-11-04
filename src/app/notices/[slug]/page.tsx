@@ -8,6 +8,7 @@ import {
 } from '@/data/nctbData';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import AdSlot from '@/components/ads/AdSlot';
 import { 
   Calendar, 
   Clock, 
@@ -316,6 +317,9 @@ export default async function NoticeDetailPage({ params }: NoticePageProps) {
           )}
 
         </article>
+
+        {/* Sponsored slot: after the full notice, before the footer */}
+        <AdSlot format="banner" />
 
       </main>
 

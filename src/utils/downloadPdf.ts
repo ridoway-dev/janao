@@ -12,7 +12,7 @@ export function getDirectDownloadUrl(url: string, filename?: string): string {
   return `/api/pdf?url=${encodeURIComponent(url)}&download=true&filename=${encodeURIComponent(cleanName)}`;
 }
 
-export function downloadPdfFile(url: string, filename?: string): void {
+export function downloadPdfFile(url: string, filename?: string, title?: string): void {
   if (!url || !url.startsWith('http')) {
     alert('এই বইটির পিডিএফ ফাইল এখনও প্রকাশিত হয়নি বা লিংকটি প্রস্তুত নয়।');
     return;
@@ -35,7 +35,7 @@ export function downloadPdfFile(url: string, filename?: string): void {
   }
 
   // Notify visitor tracker and show on-screen toast notification
-  notifyDownload(cleanFilename);
+  notifyDownload(title || cleanFilename);
 
   // Trigger instant browser download
   const downloadUrl = getDirectDownloadUrl(url, cleanFilename);

@@ -3,11 +3,19 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import AdSlot from '@/components/ads/AdSlot';
 import { Compass, Clock, ChevronRight } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'ভর্তি তথ্য ও বিশ্ববিদ্যালয়ের সার্কুলার ২০২৬-২০২৭ | Admission - janao.online',
   description: 'বিশ্ববিদ্যালয়, মেডিকেল, ইঞ্জিনিয়ারিং, জাতীয় বিশ্ববিদ্যালয় ও কলেজ ভর্তি পরীক্ষার তথ্য ও যোগ্যতা।',
+  alternates: {
+    canonical: 'https://janao.online/admission/',
+    languages: {
+      'bn-BD': 'https://janao.online/admission/',
+      'x-default': 'https://janao.online/admission/',
+    },
+  },
 };
 
 export default function AdmissionHubPage() {
@@ -54,6 +62,10 @@ export default function AdmissionHubPage() {
             </div>
           ))}
         </div>
+
+        {/* Sponsored slot: after the admission categories, before the footer */}
+        <AdSlot format="banner" />
+
       </main>
 
       <Footer />

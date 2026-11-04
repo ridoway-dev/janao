@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { Search } from 'lucide-react';
 
 interface HeroSectionProps {
@@ -46,7 +47,7 @@ export default function HeroSection({
         
         {/* Title & Tagline - Primary Focus: NCTB Books 2027 */}
         <h1 className="text-xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white tracking-tight leading-snug">
-          NCTB Books 2027 — Class 1–12 PDF
+          NCTB পাঠ্যবই ২০২৬ ও ২০২৭ — ১ম থেকে ১২শ শ্রেণির PDF
         </h1>
         <p className="text-sm sm:text-lg text-emerald-800 dark:text-emerald-400 font-semibold mt-1">
           Janao.online — শিক্ষা, চাকরি, ভর্তি ও প্রয়োজনীয় তথ্য
@@ -74,13 +75,13 @@ export default function HeroSection({
             ))}
           </div>
 
-          <a
+          <Link
             href="/books/2027/"
             className="px-2.5 sm:px-3.5 py-1.5 text-xs sm:text-sm font-semibold rounded-xl sm:rounded bg-amber-500 hover:bg-amber-600 active:scale-95 text-white transition flex items-center gap-1 shadow-xs"
           >
             <span>২০২৭ শিক্ষাবর্ষ</span>
             <span className="text-[9px] sm:text-[10px] bg-white text-amber-700 font-bold px-1 rounded">নতুন</span>
-          </a>
+          </Link>
         </div>
 
         {/* Search Bar - Crisp, clean, iOS friendly with >=16px text-base */}

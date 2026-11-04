@@ -6,6 +6,7 @@ import { NOTICES_DATA, getNoticeBySlug } from '@/data/nctbData';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import HscResultChecker from '@/components/HscResultChecker';
+import AdSlot from '@/components/ads/AdSlot';
 import { CheckCircle2, Calendar, ExternalLink, ChevronRight, Download } from 'lucide-react';
 
 interface ResultPageProps {
@@ -124,6 +125,9 @@ export default async function ResultArticlePage({ params }: ResultPageProps) {
             {item.content}
           </div>
         </article>
+
+        {/* Sponsored slot: after the result information, before the footer */}
+        <AdSlot format="banner" />
 
       </main>
 

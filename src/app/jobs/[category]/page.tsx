@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import AdSlot from '@/components/ads/AdSlot';
 import { Briefcase, ChevronRight, ExternalLink, ShieldAlert, ArrowRight } from 'lucide-react';
 
 interface JobsCategoryPageProps {
@@ -161,6 +162,9 @@ export default async function JobsCategoryPage({ params }: JobsCategoryPageProps
             })}
           </div>
         </section>
+
+        {/* Sponsored slot: after all job information, before the footer */}
+        <AdSlot format="banner" />
       </main>
 
       <Footer />

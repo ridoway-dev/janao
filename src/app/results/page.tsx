@@ -31,6 +31,10 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: 'https://janao.online/results/',
+    languages: {
+      'bn-BD': 'https://janao.online/results/',
+      'x-default': 'https://janao.online/results/',
+    },
   },
   openGraph: {
     title: 'অনলাইন রেজাল্ট চেকার পোর্টাল — janao.online',
