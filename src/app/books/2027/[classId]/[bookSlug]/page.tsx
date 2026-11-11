@@ -32,17 +32,19 @@ export async function generateMetadata({ params }: Book2027PageProps): Promise<M
   }
 
   return {
-    title: `${book.classNameBn} ${book.titleBn} ২০২৭ PDF — NCTB Book 2027 Tracker | Janao.online`,
-    description: `জাতীয় শিক্ষাক্রম ও পাঠ্যপুস্তক বোর্ড (NCTB) ২০২৭ শিক্ষাবর্ষের ${book.classNameBn}-এর ${book.titleBn} পাঠ্যবই প্রকাশনা ও মুদ্রণ ট্র্যাকার। চূড়ান্ত প্রকাশের সাথে সাথে আপডেট।`,
+    title: `${book.classNameBn} ${book.titleBn} ২০২৭ PDF Download — NCTB Book 2027 | Janao.online`,
+    description: `জাতীয় শিক্ষাক্রম ও পাঠ্যপুস্তক বোর্ড (NCTB) ২০২৭ শিক্ষাবর্ষের ${book.classNameBn}-এর ${book.titleBn} পাঠ্যবই PDF ডাউনলোড তথ্য। চূড়ান্ত প্রকাশের সাথে সাথে আপডেট।`,
     keywords: [
       `${book.classNameBn} ${book.titleBn} 2027`,
       `${book.titleEn} 2027 PDF`,
+      `${book.titleEn} 2027 PDF download`,
+      `${book.titleBn} ২০২৭ ডাউনলোড`,
       `Class ${book.classLevel.replace('class-', '')} ${book.titleEn} 2027`,
       `NCTB Book 2027 ${book.titleBn}`,
     ],
     openGraph: {
-      title: `${book.classNameBn} ${book.titleBn} ২০২৭ PDF — NCTB Book 2027 Tracker | Janao.online`,
-      description: `জাতীয় শিক্ষাক্রম ও পাঠ্যপুস্তক বোর্ড (NCTB) ২০২৭ শিক্ষাবর্ষের ${book.classNameBn}-এর ${book.titleBn} পাঠ্যবই প্রকাশনা ও মুদ্রণ ট্র্যাকার। চূড়ান্ত প্রকাশের সাথে সাথে আপডেট।`,
+      title: `${book.classNameBn} ${book.titleBn} ২০২৭ PDF Download — NCTB Book 2027 | Janao.online`,
+      description: `জাতীয় শিক্ষাক্রম ও পাঠ্যপুস্তক বোর্ড (NCTB) ২০২৭ শিক্ষাবর্ষের ${book.classNameBn}-এর ${book.titleBn} পাঠ্যবই PDF ডাউনলোড তথ্য। চূড়ান্ত প্রকাশের সাথে সাথে আপডেট।`,
       url: `https://janao.online/books/2027/${classId}/${bookSlug}/`,
       siteName: 'janao.online',
       locale: 'bn_BD',
@@ -58,8 +60,8 @@ export async function generateMetadata({ params }: Book2027PageProps): Promise<M
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${book.classNameBn} ${book.titleBn} ২০২৭ PDF — NCTB Book 2027 Tracker | Janao.online`,
-      description: `জাতীয় শিক্ষাক্রম ও পাঠ্যপুস্তক বোর্ড (NCTB) ২০২৭ শিক্ষাবর্ষের ${book.classNameBn}-এর ${book.titleBn} পাঠ্যবই প্রকাশনা ও মুদ্রণ ট্র্যাকার।`,
+      title: `${book.classNameBn} ${book.titleBn} ২০২৭ PDF Download — NCTB Book 2027 | Janao.online`,
+      description: `জাতীয় শিক্ষাক্রম ও পাঠ্যপুস্তক বোর্ড (NCTB) ২০২৭ শিক্ষাবর্ষের ${book.classNameBn}-এর ${book.titleBn} পাঠ্যবই PDF ডাউনলোড তথ্য।`,
       images: ['https://janao.online/og-image.png'],
     },
     alternates: {
@@ -157,10 +159,10 @@ export default async function Book2027Page({ params }: Book2027PageProps) {
           </div>
 
           <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white tracking-tight">
-            {book.classNameBn} {book.titleBn} ২০২৭ PDF
+            {book.classNameBn} {book.titleBn} ২০২৭ PDF Download
           </h1>
           <p className="text-sm font-medium text-amber-900 dark:text-amber-300 mt-1">
-            Class {book.classLevel.replace('class-', '')} {book.titleEn} 2027 Publication Tracker
+            Class {book.classLevel.replace('class-', '')} {book.titleEn} 2027 PDF Download
           </p>
 
           <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 mt-3 leading-relaxed">

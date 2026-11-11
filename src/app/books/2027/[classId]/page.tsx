@@ -24,9 +24,12 @@ export async function generateMetadata({ params }: Class2027PageProps): Promise<
   const classNameBn = classNum === '11' ? 'একাদশ' : classNum === '12' ? 'দ্বাদশ' : `${classNum}ম`;
 
   return {
-    title: `${classNameBn} শ্রেণির সকল বই ২০২৭ PDF — NCTB Books 2027 Tracker | Janao.online`,
-    description: `জাতীয় শিক্ষাক্রম ও পাঠ্যপুস্তক বোর্ড (NCTB) ২০২৭ শিক্ষাবর্ষের ${classNameBn} শ্রেণির নতুন বই মুদ্রণ ও প্রকাশনা ট্র্যাকার। বিষয়ভিত্তিক তালিকা ও তথ্য।`,
+    title: `${classNameBn} শ্রেণির বই ২০২৭ PDF Download — NCTB Book 2027 Download | Janao.online`,
+    description: `জাতীয় শিক্ষাক্রম ও পাঠ্যপুস্তক বোর্ড (NCTB) ২০২৭ শিক্ষাবর্ষের ${classNameBn} শ্রেণির বই PDF ডাউনলোড। অফিশিয়াল ২০২৭ পিডিএফ প্রকাশের সাথে সাথে ডাউনলোড লিংক দেওয়া হবে; আপাতত ২০২৬ সংস্করণ ডাউনলোড করুন।`,
     keywords: [
+      `${classNameBn} শ্রেণির বই ২০২৭ ডাউনলোড`,
+      `Class ${classNum} NCTB book 2027 PDF download`,
+      `NCTB 2027 book download class ${classNum}`,
       `${classNameBn} শ্রেণির বই ২০২৭`,
       `Class ${classNum} Books 2027`,
       `NCTB Books 2027 class ${classNum}`,
@@ -61,7 +64,7 @@ export default async function Class2027Page({ params }: Class2027PageProps) {
       {
         '@type': 'ListItem',
         position: 2,
-        name: '২০২৭ পাঠ্যবই ট্র্যাকার',
+        name: '২০২৭ পাঠ্যবই ডাউনলোড',
         item: 'https://janao.online/books/2027/',
       },
       {
@@ -100,12 +103,10 @@ export default async function Class2027Page({ params }: Class2027PageProps) {
           </div>
 
           <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white tracking-tight">
-            {classNameBn} শ্রেণির পাঠ্যবই ২০২৭ (NCTB Books 2027 Tracker)
+            {classNameBn} শ্রেণির পাঠ্যবই ২০২৭ PDF Download
           </h1>
 
-          <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 mt-2 max-w-3xl leading-relaxed">
-            জাতীয় শিক্ষাক্রম ও পাঠ্যপুস্তক বোর্ড (NCTB) কর্তৃক {classNameBn} শ্রেণির ২০২৭ শিক্ষাবর্ষের নতুন ও পরিমার্জিত পাঠ্যবইয়ের বিষয়ভিত্তিক তালিকা। বোর্ড থেকে চূড়ান্ত পিডিএফ ফাইল উন্মুক্ত হওয়া মাত্রই এখানে সরাসরি ডাউনলোড লিংক আপডেট করা হবে।
-          </p>
+          <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 mt-2 max-w-3xl leading-relaxed">জাতীয় শিক্ষাক্রম ও পাঠ্যপুস্তক বোর্ড (NCTB) কর্তৃক {classNameBn} শ্রেণির ২০২৭ শিক্ষাবর্ষের নতুন ও পরিমার্জিত পাঠ্যবইয়ের বিষয়ভিত্তিক তালিকা ও ডাউনলোড তথ্য। বোর্ড থেকে চূড়ান্ত পিডিএফ ফাইল উন্মুক্ত হওয়া মাত্রই এখানে সরাসরি ডাউনলোড লিংক দেওয়া হবে — আপাতত নিচের তালিকা থেকে ২০২৬ সংস্করণের বই ডাউনলোড করুন।</p>
 
           <div className="mt-4 pt-4 border-t border-amber-200/80 dark:border-amber-900/40 flex flex-wrap items-center gap-3 text-xs">
             <span className="px-2.5 py-1 bg-amber-100 dark:bg-amber-900/60 text-amber-800 dark:text-amber-300 font-semibold rounded">
@@ -167,12 +168,20 @@ export default async function Class2027Page({ params }: Class2027PageProps) {
                       </span>
                     </td>
                     <td className="p-3 sm:p-3.5 text-right">
-                      <Link
-                        href={`/books/2027/${classId}/${book.slug}/`}
-                        className="text-xs text-emerald-700 dark:text-emerald-400 font-semibold hover:underline"
-                      >
-                        ট্র্যাকার →
-                      </Link>
+                      <div className="flex flex-col items-end gap-1">
+                        <Link
+                          href={`/books/2027/${classId}/${book.slug}/`}
+                          className="text-xs text-emerald-700 dark:text-emerald-400 font-semibold hover:underline"
+                        >
+                          ২০২৭ ট্র্যাকার →
+                        </Link>
+                        <Link
+                          href={`/books/${classId}/${book.slug}/`}
+                          className="text-xs text-gray-600 dark:text-gray-400 font-semibold hover:underline"
+                        >
+                          ২০২৬ PDF ↓
+                        </Link>
+                      </div>
                     </td>
                   </tr>
                 ))}
@@ -184,7 +193,7 @@ export default async function Class2027Page({ params }: Class2027PageProps) {
         {/* Cross-Class Navigation (Point 11: SEO Topic Graph) */}
         <section className="pt-6 border-t border-gray-200 dark:border-gray-800">
           <h3 className="text-sm font-bold text-gray-900 dark:text-white mb-3">
-            অন্যান্য শ্রেণির ২০২৭ ট্র্যাকার পেজ:
+            অন্যান্য শ্রেণির ২০২৭ বই ডাউনলোড:
           </h3>
           <div className="flex flex-wrap gap-2 text-xs">
             {Array.from({ length: 12 }, (_, i) => {
