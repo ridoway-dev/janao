@@ -32,6 +32,28 @@ export async function generateMetadata({ params }: ResultPageProps): Promise<Met
   return {
     title: `${item.title} - janao.online`,
     description: item.summary,
+    openGraph: {
+      title: `${item.title} - janao.online`,
+      description: item.summary,
+      url: `https://janao.online/results/${slug}/`,
+      siteName: 'janao.online',
+      locale: 'bn_BD',
+      type: 'article',
+      images: [
+        {
+          url: 'https://janao.online/og-image.png',
+          width: 1200,
+          height: 630,
+          alt: item.title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${item.title} - janao.online`,
+      description: item.summary,
+      images: ['https://janao.online/og-image.png'],
+    },
     alternates: {
       canonical: `https://janao.online/results/${slug}/`,
     },

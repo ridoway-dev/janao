@@ -57,10 +57,10 @@ export async function generateMetadata({ params }: BookPageProps): Promise<Metad
     description,
     keywords: [
       `${book.classNameBn} ${book.titleBn}`,
-      `${book.titleEn} Class ${book.classLevel} PDF`,
+      `${book.titleEn} Class ${book.classLevel.replace('class-', '')} PDF`,
       `NCTB ${book.year} Book Download`,
       `${book.titleBn} PDF`,
-      `Class ${book.classLevel} Book 2026`,
+      `Class ${book.classLevel.replace('class-', '')} Book ${book.year}`,
     ],
     openGraph: {
       title,
@@ -69,6 +69,20 @@ export async function generateMetadata({ params }: BookPageProps): Promise<Metad
       siteName: 'janao.online',
       locale: 'bn_BD',
       type: 'article',
+      images: [
+        {
+          url: 'https://janao.online/og-image.png',
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: ['https://janao.online/og-image.png'],
     },
     alternates: {
       canonical: `https://janao.online/books/${classId}/${bookSlug}/`,

@@ -176,14 +176,9 @@ export default function RootLayout({
                   alternateName: 'জানা অনলাইন',
                   inLanguage: 'bn-BD',
                   publisher: { '@id': 'https://janao.online/#organization' },
-                  potentialAction: {
-                    '@type': 'SearchAction',
-                    target: {
-                      '@type': 'EntryPoint',
-                      urlTemplate: 'https://janao.online/?q={search_term_string}',
-                    },
-                    'query-input': 'required name=search_term_string',
-                  },
+                  // No SearchAction here: the site's search is client-side
+                  // filtering on the homepage (/#main-book-search), not a
+                  // search URL, so declaring one would be false structured data.
                 },
               ],
             }),

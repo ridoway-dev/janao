@@ -2,10 +2,11 @@ import React from 'react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-import { 
-  NOTICES_DATA, 
-  getNoticeBySlug 
+import {
+  NOTICES_DATA,
+  getNoticeBySlug
 } from '@/data/nctbData';
+import { bnDateToIso } from '@/utils/bnDate';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import AdSlot from '@/components/ads/AdSlot';
@@ -61,6 +62,20 @@ export async function generateMetadata({ params }: NoticePageProps): Promise<Met
       siteName: 'janao.online',
       locale: 'bn_BD',
       type: 'article',
+      images: [
+        {
+          url: 'https://janao.online/og-image.png',
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: ['https://janao.online/og-image.png'],
     },
     alternates: {
       canonical: `https://janao.online/notices/${slug}/`,
@@ -79,18 +94,36 @@ export default async function NoticeDetailPage({ params }: NoticePageProps) {
   const relatedNotices = NOTICES_DATA.filter((n) => n.slug !== notice.slug);
 
   // Schema.org Article & FAQ Schemas
+  // Dates come from the notice itself — previously every notice was
+  // hardcoded to 2026-10-01 / 2026-10-05, which was wrong for newer notices.
   const articleSchema = {
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: notice.title,
-    datePublished: '2026-10-01',
-    dateModified: '2026-10-05',
+    datePublished: bnDateToIso(notice.date),
+    dateModified: bnDateToIso(notice.lastUpdated) ?? bnDateToIso(notice.date),
     description: notice.summary,
     publisher: {
       '@type': 'Organization',
       name: 'janao.online',
     },
   };
+
+  const faqSchema =
+    notice.faq && notice.faq.length > 0
+      ? {
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: notice.faq.map((item) => ({
+            '@type': 'Question',
+            name: item.q,
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: item.a,
+            },
+          })),
+        }
+      : null;
 
   const breadcrumbSchema = {
     '@context': 'https://schema.org',
@@ -129,6 +162,12 @@ export default async function NoticeDetailPage({ params }: NoticePageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
 
       <main className="flex-1 max-w-4xl mx-auto px-4 sm:px-6 py-6 sm:py-10 w-full">
         
