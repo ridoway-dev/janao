@@ -36,6 +36,10 @@ export default function Footer() {
             বিশ্ববিদ্যালয় ভর্তি
           </Link>
           <span>·</span>
+          <Link href="/madrasa/" className="text-emerald-700 dark:text-emerald-400 hover:underline">
+            মাদ্রাসা বই
+          </Link>
+          <span>·</span>
           <a
             href="https://t.me/janao_online"
             target="_blank"

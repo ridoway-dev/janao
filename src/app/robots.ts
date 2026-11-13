@@ -2,9 +2,11 @@ import { MetadataRoute } from 'next';
 
 export const dynamic = 'force-static';
 
-// Paths that should never be crawled: API routes, the thin internal search
-// page, and arbitrary query-string URLs (which create duplicate content).
-const DISALLOWED_PATHS = ['/api/', '/search', '/*?*'];
+// Paths that should never be crawled: API routes and arbitrary query-string
+// URLs (which create duplicate content). /search is NOT disallowed here:
+// it carries a page-level noindex, which is the single mechanism for it
+// (audit L1 — disallow + noindex together are contradictory signals).
+const DISALLOWED_PATHS = ['/api/', '/*?*'];
 
 // Explicitly welcome AI/LLM crawlers so the site can be quoted by AI search
 // engines. They inherit the same sensible crawl rules as other bots.

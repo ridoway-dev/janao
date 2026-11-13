@@ -8,7 +8,6 @@ import { Briefcase, ChevronRight, CheckCircle2, ArrowRight, ExternalLink, Calend
 export const metadata: Metadata = {
   title: 'চাকরি ও ক্যারিয়ার তথ্য পোর্টাল — বিসিএস, সরকারি ও শিক্ষক নিয়োগ | Janao.online',
   description: 'বাংলাদেশ সরকারি চাকরি, বিসিএস প্রস্তুতি, ব্যাংক নিয়োগ, প্রাথমিক শিক্ষক নিয়োগ সার্কুলার ও অনলাইন আবেদন নির্দেশিকা।',
-  keywords: ['সরকারি চাকরি সার্কুলার', 'বিসিএস প্রস্তুতি', 'BCS circular 2026', 'Govt job circular BD', 'শিক্ষক নিয়োগ', 'ব্যাংক জব'],
   alternates: {
     canonical: 'https://janao.online/jobs/',
     languages: {
@@ -19,6 +18,27 @@ export const metadata: Metadata = {
 };
 
 export default function JobsPage() {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'হোম', item: 'https://janao.online/' },
+          { '@type': 'ListItem', position: 2, name: 'চাকরি ও ক্যারিয়ার', item: 'https://janao.online/jobs/' },
+        ],
+      },
+      {
+        '@type': 'CollectionPage',
+        name: 'সরকারি ও বেসরকারি চাকরি সার্কুলার ও নিয়োগ গাইড',
+        description:
+          'বাংলাদেশ সরকারি চাকরি, বিসিএস প্রস্তুতি, ব্যাংক নিয়োগ, প্রাথমিক শিক্ষক নিয়োগ সার্কুলার ও অনলাইন আবেদন নির্দেশিকা।',
+        url: 'https://janao.online/jobs/',
+        inLanguage: 'bn-BD',
+      },
+    ],
+  };
+
   const jobCategories = [
     {
       id: 'bcs',
@@ -91,6 +111,10 @@ export default function JobsPage() {
   return (
     <div className="min-h-screen flex flex-col bg-gray-50 dark:bg-[#0b0f19] text-gray-900 dark:text-gray-100 font-sans">
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
 
       {/* Breadcrumb Header */}
       <div className="bg-white dark:bg-[#0f172a] border-b border-gray-200 dark:border-gray-800 py-3">

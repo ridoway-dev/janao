@@ -20,16 +20,6 @@ import {
 export const metadata: Metadata = {
   title: 'NCTB Books 2027 PDF Download | ২০২৭ শিক্ষাবর্ষের পাঠ্যবই - Janao.online',
   description: 'NCTB 2027 book download — জাতীয় শিক্ষাক্রম ও পাঠ্যপুস্তক বোর্ড (NCTB) ২০২৭ শিক্ষাবর্ষের ১ম থেকে ১২শ শ্রেণির পাঠ্যবই PDF ডাউনলোড। অফিশিয়াল ২০২৭ পিডিএফ প্রকাশের সাথে সাথে এখানে ডাউনলোড লিংক দেওয়া হবে; আপাতত ২০২৬ সংস্করণ ডাউনলোড করুন।',
-  keywords: [
-    'NCTB 2027 book download',
-    'NCTB books 2027 PDF download',
-    'nctb book download 2027',
-    'NCTB Books 2027',
-    '২০২৭ সালের বই ডাউনলোড',
-    'Class 1-12 Books 2027 PDF',
-    '২০২৭ নতুন শিক্ষাক্রম পাঠ্যবই',
-    'NCTB 2027 syllabus',
-  ],
   openGraph: {
     title: 'NCTB Books 2027 PDF Download | ২০২৭ শিক্ষাবর্ষের পাঠ্যবই - Janao.online',
     description: 'NCTB 2027 book download — ১ম থেকে ১২শ শ্রেণির ২০২৭ শিক্ষাবর্ষের পাঠ্যবই PDF ডাউনলোড। অফিশিয়াল পিডিএফ প্রকাশের সাথে সাথে লিংক আপডেট করা হবে।',
@@ -80,7 +70,7 @@ const FAQS = [
   },
   {
     q: 'কোন কোন শ্রেণির ২০২৭ বই এখানে পাওয়া যাবে?',
-    a: '১ম থেকে ১২শ শ্রেণি পর্যন্ত সব শ্রেণির ২০২৭ শিক্ষাবর্ষের বই এই পেজে তালিকাভুক্ত করা হয়েছে। শ্রেণি অনুযায়ী বইয়ের তালিকা ও ডাউনলোড তথ্য দেখতে উপরের তালিকা থেকে আপনার শ্রেণি নির্বাচন করুন।',
+    a: '১ম থেকে ১২শ শ্রেণি পর্যন্ত সব শ্রেণি এবং মাদ্রাসা ইবতেদায়ি ও দাখিল শ্রেণির ২০২৭ শিক্ষাবর্ষের বই এই পেজে তালিকাভুক্ত করা হয়েছে। শ্রেণি অনুযায়ী বইয়ের তালিকা ও ডাউনলোড তথ্য দেখতে উপরের তালিকা থেকে আপনার শ্রেণি নির্বাচন করুন।',
   },
 ];
 
@@ -187,35 +177,28 @@ export default function Books2027HubPage() {
                 </h3>
                 <div className="space-y-2 text-xs">
                   {group.classes.map((cls) => {
-                    const isSchoolClass = /^class-\d+$/.test(cls.id);
                     const bookCount = books2027.filter((b) => b.classLevel === cls.id).length;
                     return (
                       <div
                         key={cls.id}
                         className="p-2 rounded bg-gray-50 dark:bg-gray-800/60 flex items-center justify-between gap-2 border border-gray-100 dark:border-gray-800"
                       >
-                        {isSchoolClass ? (
-                          <Link
-                            href={`/books/2027/${cls.id}/`}
-                            className="font-semibold text-emerald-700 dark:text-emerald-400 hover:underline"
-                          >
-                            {cls.label} ২০২৭
-                            {bookCount > 0 && (
-                              <span className="text-gray-500 dark:text-gray-400 font-normal"> · {bookCount}টি বই</span>
-                            )}
-                          </Link>
-                        ) : (
-                          <span className="font-semibold text-gray-800 dark:text-gray-200">{cls.label}</span>
-                        )}
-                        <span className="flex items-center gap-2 shrink-0">
-                          {isSchoolClass && (
-                            <Link
-                              href={`/books/${cls.id}/`}
-                              className="text-[11px] font-semibold text-emerald-700 dark:text-emerald-400 hover:underline"
-                            >
-                              ২০২৬ PDF ↓
-                            </Link>
+                        <Link
+                          href={`/books/2027/${cls.id}/`}
+                          className="font-semibold text-emerald-700 dark:text-emerald-400 hover:underline"
+                        >
+                          {cls.label} ২০২৭
+                          {bookCount > 0 && (
+                            <span className="text-gray-500 dark:text-gray-400 font-normal"> · {bookCount}টি বই</span>
                           )}
+                        </Link>
+                        <span className="flex items-center gap-2 shrink-0">
+                          <Link
+                            href={`/books/${cls.id}/`}
+                            className="text-[11px] font-semibold text-emerald-700 dark:text-emerald-400 hover:underline"
+                          >
+                            ২০২৬ PDF ↓
+                          </Link>
                           <span className="text-[10px] px-2 py-0.5 rounded bg-amber-100 dark:bg-amber-950/80 text-amber-800 dark:text-amber-300 font-medium">
                             ২০২৭ আসন্ন
                           </span>

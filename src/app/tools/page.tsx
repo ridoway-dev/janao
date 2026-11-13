@@ -19,16 +19,6 @@ import {
 export const metadata: Metadata = {
   title: 'GPA, CGPA ও সরকারি চাকরির বয়স ক্যালকুলেটর — Janao.online',
   description: 'এসএসসি, দাখিল, এইচএসসি জিপিএ (GPA), জাতীয় বিশ্ববিদ্যালয় (NU) CGPA এবং সরকারি চাকরির বয়স (Job Age) হিসাব করার সেরা অনলাইন ক্যালকুলেটর প্ল্যাটফর্ম।',
-  keywords: [
-    'সরকারি চাকরির বয়স ক্যালকুলেটর',
-    'job age calculator bd',
-    'GPA calculator BD',
-    'NU CGPA calculator',
-    'SSC GPA calculator',
-    'HSC GPA calculator',
-    'বিসিএস বয়স হিসাব',
-    'অনার্স সিজিপিএ ক্যালকুলেটর'
-  ],
   alternates: {
     canonical: 'https://janao.online/tools/',
     languages: {
@@ -43,6 +33,7 @@ export const metadata: Metadata = {
     siteName: 'Janao.online',
     locale: 'bn_BD',
     type: 'website',
+    images: [{ url: '/og-image.png' }],
   },
 };
 
@@ -62,11 +53,24 @@ export default function ToolsPage() {
     url: 'https://janao.online/tools/',
   };
 
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'হোম', item: 'https://janao.online/' },
+      { '@type': 'ListItem', position: 2, name: 'ক্যালকুলেটর ও টুলস', item: 'https://janao.online/tools/' },
+    ],
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-gray-50 dark:bg-[#0b0f19] text-gray-900 dark:text-gray-100 font-sans">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <Header />
 

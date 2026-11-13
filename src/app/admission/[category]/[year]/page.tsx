@@ -35,9 +35,12 @@ export async function generateMetadata({ params }: AdmissionYearPageProps): Prom
   return {
     title: `${catName} ভর্তি পরীক্ষা ${year} — প্রস্তুতি ও সম্ভাব্য সময়সূচি | Janao.online`,
     description: `${catName} ${year} শিক্ষাবর্ষের ভর্তি পরীক্ষা প্রস্তুতি, জিপিএ যোগ্যতা, সম্ভাব্য তারিখ এবং সার্কুলার ট্র্যাকার।`,
-    keywords: [`${catName} ভর্তি ${year}`, `Admission ${year} Bangladesh`, `University admission ${year}`],
     alternates: {
       canonical: `https://janao.online/admission/${category}/${year}/`,
+      languages: {
+        'bn-BD': `https://janao.online/admission/${category}/${year}/`,
+        'x-default': `https://janao.online/admission/${category}/${year}/`,
+      },
     },
   };
 }
@@ -50,9 +53,24 @@ export default async function AdmissionYearPage({ params }: AdmissionYearPagePro
     notFound();
   }
 
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'হোম', item: 'https://janao.online/' },
+      { '@type': 'ListItem', position: 2, name: 'ভর্তি', item: 'https://janao.online/admission/' },
+      { '@type': 'ListItem', position: 3, name: catName, item: `https://janao.online/admission/${category}/` },
+      { '@type': 'ListItem', position: 4, name: `${year} শিক্ষাবর্ষ`, item: `https://janao.online/admission/${category}/${year}/` },
+    ],
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-gray-50 dark:bg-[#0b0f19] text-gray-900 dark:text-gray-100 font-sans">
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
 
       {/* Breadcrumb */}
       <div className="bg-white dark:bg-[#0f172a] border-b border-gray-200 dark:border-gray-800 py-3">

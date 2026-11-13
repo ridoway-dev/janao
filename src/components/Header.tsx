@@ -135,7 +135,7 @@ export default function Header({
     { label: 'ফলাফল', href: '/results/' },
     { label: 'ভর্তি', href: '/admission/' },
     { label: 'চাকরি', href: '/jobs/' },
-    { label: 'মাদ্রাসা', href: '/madrasa/ebtedayi/' },
+    { label: 'মাদ্রাসা', href: '/madrasa/' },
     { label: 'সিলেবাস', href: '/syllabus/' },
   ];
 
@@ -146,7 +146,7 @@ export default function Header({
     { title: 'বোর্ড ফলাফল ও মেধা তালিকা', desc: 'এসএসসি, এইচএসসি ও বৃত্তি রেজাল্ট', href: '/results/', icon: FileText, color: 'text-purple-600 bg-purple-50 dark:bg-purple-950/60' },
     { title: 'বিশ্ববিদ্যালয় ও ভর্তি', desc: 'পাবলিক, জাতীয় বিশ্ববিদ্যালয় ও মেডিকেল', href: '/admission/', icon: GraduationCap, color: 'text-teal-600 bg-teal-50 dark:bg-teal-950/60' },
     { title: 'চাকরি ও ক্যারিয়ার', desc: 'সরকারি চাকরি সার্কুলার ও বিসিএস', href: '/jobs/', icon: Briefcase, color: 'text-indigo-600 bg-indigo-50 dark:bg-indigo-950/60' },
-    { title: 'মাদ্রাসা পাঠ্যবই', desc: 'ইবতেদায়ী ও দাখিল স্তরের বই', href: '/madrasa/ebtedayi/', icon: Compass, color: 'text-emerald-700 bg-emerald-50 dark:bg-emerald-950/60' },
+    { title: 'মাদ্রাসা পাঠ্যবই', desc: 'ইবতেদায়ী ও দাখিল স্তরের বই', href: '/madrasa/', icon: Compass, color: 'text-emerald-700 bg-emerald-50 dark:bg-emerald-950/60' },
     { title: 'শিক্ষা ও চাকরি টুলস', desc: 'GPA হিসাব ও বয়স ক্যালকুলেটর', href: '/tools/', icon: Calculator, color: 'text-rose-600 bg-rose-50 dark:bg-rose-950/60' },
   ];
 

@@ -6,6 +6,8 @@ import {
   BOOKS_DATA, 
   getBookByClassAndSlug, 
   getBooksByClass,
+  getBookDisplayTitleBn,
+  truncateMetaDescription,
   CLASS_SHORTCUTS 
 } from '@/data/nctbData';
 import Header from '@/components/Header';
@@ -49,25 +51,23 @@ export async function generateMetadata({ params }: BookPageProps): Promise<Metad
     return { title: 'বই পাওয়া যায়নি | janao.online' };
   }
 
-  // Short title: when titleEn duplicates titleBn (Bangla-medium books
-  // and English books whose titleBn is already English), repeating the
-  // name twice only pushes the title past Google's truncation limit.
+  // H3: books sharing (classLevel, year, titleBn) get a real distinguisher
+  // from the record itself — medium ("ইংরেজি সংস্করণ") or page count —
+  // via getBookDisplayTitleBn. M1: the "| Janao.online" brand suffix is
+  // dropped (the canonical + OG siteName already carry the brand).
+  // M2: the meta description is truncated to ~155 chars.
+  const displayTitleBn = getBookDisplayTitleBn(book);
   const title =
     book.titleEn === book.titleBn
-      ? `${book.classNameBn} ${book.titleBn} ${book.year} PDF ডাউনলোড | Janao.online`
-      : `${book.classNameBn} ${book.titleBn} ${book.year} PDF ডাউনলোড | ${book.titleEn} | Janao.online`;
-  const description = `জাতীয় শিক্ষাক্রম ও পাঠ্যপুস্তক বোর্ড (NCTB) প্রকাশিত ${book.classNameBn}-এর ${book.titleBn} (${book.year} শিক্ষাবর্ষ) মূল পাঠ্যবই সম্পূর্ণ বিনামূল্যে ডাউনলোড ও অনলাইনে সরাসরি পড়ুন।`;
+      ? `${book.classNameBn} ${displayTitleBn} ${book.year} PDF ডাউনলোড`
+      : `${book.classNameBn} ${displayTitleBn} ${book.year} PDF ডাউনলোড | ${book.titleEn}`;
+  const description = truncateMetaDescription(
+    `জাতীয় শিক্ষাক্রম ও পাঠ্যপুস্তক বোর্ড (NCTB) প্রকাশিত ${book.classNameBn}-এর ${displayTitleBn} (${book.year} শিক্ষাবর্ষ) মূল পাঠ্যবই সম্পূর্ণ বিনামূল্যে ডাউনলোড ও অনলাইনে সরাসরি পড়ুন।`
+  );
 
   return {
     title,
     description,
-    keywords: [
-      `${book.classNameBn} ${book.titleBn}`,
-      `${book.titleEn} Class ${book.classLevel.replace('class-', '')} PDF`,
-      `NCTB ${book.year} Book Download`,
-      `${book.titleBn} PDF`,
-      `Class ${book.classLevel.replace('class-', '')} Book ${book.year}`,
-    ],
     openGraph: {
       title,
       description,
@@ -92,6 +92,10 @@ export async function generateMetadata({ params }: BookPageProps): Promise<Metad
     },
     alternates: {
       canonical: `https://janao.online/books/${classId}/${bookSlug}/`,
+      languages: {
+        'bn-BD': `https://janao.online/books/${classId}/${bookSlug}/`,
+        'x-default': `https://janao.online/books/${classId}/${bookSlug}/`,
+      },
     },
   };
 }
@@ -104,6 +108,8 @@ export default async function BookDetailPage({ params }: BookPageProps) {
     notFound();
   }
 
+  const displayTitleBn = getBookDisplayTitleBn(book);
+
   // Related books from the same class
   const relatedBooks = getBooksByClass(classId, book.year).filter((b) => b.slug !== book.slug);
 
@@ -111,7 +117,7 @@ export default async function BookDetailPage({ params }: BookPageProps) {
   const bookSchema = {
     '@context': 'https://schema.org',
     '@type': 'Book',
-    name: `${book.classNameBn} ${book.titleBn}`,
+    name: `${book.classNameBn} ${displayTitleBn}`,
     alternateName: book.titleEn,
     inLanguage: book.medium === 'bangla' ? 'bn' : 'en',
     bookFormat: 'https://schema.org/EBook',
@@ -123,7 +129,7 @@ export default async function BookDetailPage({ params }: BookPageProps) {
     // No datePublished: the only date in the data is last_verified
     // ("০৫ অক্টোবর ২০২৬", Bengali text, not a publication date), so the
     // old `${book.year}-01-01` was a fabricated 1 January date.
-    description: book.descriptionBn,
+    description: truncateMetaDescription(book.descriptionBn),
     url: `https://janao.online/books/${classId}/${bookSlug}/`,
   };
 
@@ -152,7 +158,7 @@ export default async function BookDetailPage({ params }: BookPageProps) {
       {
         '@type': 'ListItem',
         position: 4,
-        name: book.titleBn,
+        name: displayTitleBn,
         item: `https://janao.online/books/${classId}/${bookSlug}/`,
       },
     ],
@@ -189,7 +195,7 @@ export default async function BookDetailPage({ params }: BookPageProps) {
           </Link>
           <ChevronRight className="w-3.5 h-3.5 shrink-0" />
           <span className="font-semibold text-gray-900 dark:text-white truncate">
-            {book.titleBn}
+            {displayTitleBn}
           </span>
         </nav>
 
@@ -229,7 +235,7 @@ export default async function BookDetailPage({ params }: BookPageProps) {
                   {book.classNameBn} · {book.year} শিক্ষাবর্ষ
                 </span>
                 <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mt-2 leading-tight">
-                  {book.classNameBn} {book.titleBn} {book.year} PDF ডাউনলোড
+                  {book.classNameBn} {displayTitleBn} {book.year} PDF ডাউনলোড
                 </h1>
                 <p className="text-sm text-gray-500 font-mono mt-0.5">
                   Class {book.classLevel.replace('class-', '')} {book.titleEn} Book {book.year} PDF
@@ -237,7 +243,7 @@ export default async function BookDetailPage({ params }: BookPageProps) {
               </div>
 
               <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-                {book.descriptionBn}
+                {book.descriptionBn.replace(book.titleBn, displayTitleBn)}
               </p>
 
               {/* Specs Table */}
@@ -313,7 +319,7 @@ export default async function BookDetailPage({ params }: BookPageProps) {
                   <div>
                     <span className="text-[10px] text-gray-400 block">{rel.mediumBn}</span>
                     <h3 className="font-bold text-xs text-gray-900 dark:text-white group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition truncate mt-0.5">
-                      {rel.titleBn}
+                      {getBookDisplayTitleBn(rel)}
                     </h3>
                   </div>
                   <div className="mt-2 pt-2 border-t border-gray-100 dark:border-gray-800 flex justify-between items-center text-[10px] text-gray-500">

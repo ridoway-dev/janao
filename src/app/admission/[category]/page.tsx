@@ -12,7 +12,7 @@ interface AdmissionCategoryPageProps {
   }>;
 }
 
-const CATEGORY_MAP: Record<string, { titleBn: string; titleEn: string; desc: string; officialUrl: string; officialName: string; units: string[] }> = {
+const CATEGORY_MAP: Record<string, { titleBn: string; titleEn: string; desc: string; officialUrl: string; officialName: string; units: string[]; guideTitle?: string; guide?: string[] }> = {
   university: {
     titleBn: 'বিশ্ববিদ্যালয় ভর্তি তথ্য ২০২৬–২০২৭',
     titleEn: 'Public University Admission',
@@ -28,6 +28,11 @@ const CATEGORY_MAP: Record<string, { titleBn: string; titleEn: string; desc: str
     officialUrl: 'http://app1.nu.edu.bd/',
     officialName: 'app1.nu.edu.bd',
     units: ['বিজ্ঞান শাখা', 'মানবিক শাখা', 'ব্যবসায় শিক্ষা শাখা', 'প্রফেশনাল কোর্স'],
+    guideTitle: 'জাতীয় বিশ্ববিদ্যালয় ভর্তি: যা জানা দরকার',
+    guide: [
+      'জাতীয় বিশ্ববিদ্যালয়ের অধিভুক্ত সরকারি ও বেসরকারি কলেজে অনার্স ১ম বর্ষ, ডিগ্রি (পাস) ও প্রফেশনাল কোর্সে ভর্তির আবেদন অনলাইনে করতে হয় জাতীয় বিশ্ববিদ্যালয়ের ভর্তি পোর্টালের মাধ্যমে। ভর্তি হয় মূলত এসএসসি ও এইচএসসির ফলাফলের ভিত্তিতে মেধা তালিকার মাধ্যমে—এখানে কোনো লিখিত ভর্তি পরীক্ষা হয় না।',
+      '২০২৬–২৭ শিক্ষাবর্ষের অনার্স ভর্তির বিজ্ঞপ্তি এখনো প্রকাশিত হয়নি; বিজ্ঞপ্তি প্রকাশিত হলেই আবেদনের তারিখ, যোগ্যতা ও ফি এই পাতায় যুক্ত করা হবে। আবেদনের সময় কলেজ পছন্দক্রম সাজানো, প্রয়োজনীয় কাগজপত্র প্রস্তুত রাখা ও মেধা তালিকা প্রকাশের তারিখ খেয়াল রাখা জরুরি। অনার্স ছাড়াও ডিগ্রি (পাস) কোর্স ও প্রফেশনাল কোর্সে ভর্তির তথ্যও এই বিভাগে পাবেন। মেধা তালিকায় স্থান পেলে নির্ধারিত সময়ের মধ্যে ভর্তি নিশ্চিত করতে হয়। ভর্তি সংক্রান্ত যেকোনো সিদ্ধান্ত নেওয়ার আগে জাতীয় বিশ্ববিদ্যালয়ের অফিশিয়াল পোর্টালে প্রকাশিত বিজ্ঞপ্তিটি মিলিয়ে নিন।',
+    ],
   },
   medical: {
     titleBn: 'মেডিকেল ও ডেন্টাল ভর্তি পরীক্ষা ২০২৬–২০২৭',
@@ -36,6 +41,11 @@ const CATEGORY_MAP: Record<string, { titleBn: string; titleEn: string; desc: str
     officialUrl: 'http://dgme.teletalk.com.bd/',
     officialName: 'dgme.teletalk.com.bd',
     units: ['এমবিবিএস (MBBS)', 'বিডিএস (BDS ডেন্টাল)', 'আর্মি মেডিকেল কলেজ'],
+    guideTitle: 'মেডিকেল ভর্তি ২০২৬–২৭: যা জানা দরকার',
+    guide: [
+      '২০২৬–২৭ শিক্ষাবর্ষের এমবিবিএস ও বিডিএস ভর্তি পরীক্ষা অনুষ্ঠিত হবে ১৮ ডিসেম্বর ২০২৬। সরকারি ও বেসরকারি মেডিকেল কলেজে ভর্তির এই পরীক্ষা স্বাস্থ্য শিক্ষা অধিদপ্তরের (ডিজিএমই) তত্ত্বাবধানে হয়, আর আবেদন করতে হয় ডিজিএমইর টেলিটক পোর্টালের মাধ্যমে। এই পাতায় ভর্তি পরীক্ষার যোগ্যতা, নম্বর বণ্টন, কাট-মার্কসের ধারণা ও প্রবেশপত্র ডাউনলোডের নিয়ম তুলে ধরা হয়েছে। আর্মি মেডিকেল কলেজের ভর্তি তথ্যও এখানে পাবেন।',
+      'মেডিকেল ভর্তি পরীক্ষায় ভালো করতে হলে জীববিজ্ঞান, রসায়ন ও পদার্থবিজ্ঞানের পাশাপাশি ইংরেজি ও সাধারণ জ্ঞানে দখল থাকা জরুরি—এই বিষয়গুলোর পাঠ্যবই আমাদের বইয়ের পাতায় পাবেন। প্রবেশপত্র ডাউনলোডের তারিখ প্রকাশিত হলে তা এই পাতায় যুক্ত করা হবে। পরীক্ষার হলে প্রবেশপত্র ছাড়া ঢোকা যায় না, তাই পরীক্ষার আগেই সেটি ডাউনলোড করে রাখুন। পরীক্ষার তারিখ বা নিয়মে কোনো পরিবর্তন এলে অফিশিয়াল বিজ্ঞপ্তি অনুযায়ী এই পাতা হালনাগাদ করা হবে; আবেদনের আগে ডিজিএমই পোর্টালে প্রকাশিত মূল বিজ্ঞপ্তিটি অবশ্যই দেখে নিন।',
+    ],
   },
   engineering: {
     titleBn: 'প্রকৌশল বিশ্ববিদ্যালয় গুচ্ছ ভর্তি ২০২৬–২০২৭',
@@ -44,6 +54,11 @@ const CATEGORY_MAP: Record<string, { titleBn: string; titleEn: string; desc: str
     officialUrl: 'https://admission.buet.ac.bd/',
     officialName: 'BUET Admission Portal',
     units: ['ইঞ্জিনিয়ারিং ও ইউআরপি বিভাগ', 'স্থাপত্য (Architecture) বিভাগ'],
+    guideTitle: 'প্রকৌশল ভর্তি ২০২৬–২৭: যা জানা দরকার',
+    guide: [
+      '২০২৬–২৭ শিক্ষাবর্ষে বাংলাদেশ প্রকৌশল বিশ্ববিদ্যালয়ের (বুয়েট) ভর্তি পরীক্ষা হবে ১৬ জানুয়ারি ২০২৭, আর আবেদন শুরু হবে ২১ নভেম্বর থেকে। বুয়েটের পাশাপাশি চুয়েট, কুয়েট ও রুয়েটের সমন্বিত প্রকৌশল গুচ্ছ ভর্তি পরীক্ষার তথ্যও এই বিভাগে পাবেন। এই পাতায় ইঞ্জিনিয়ারিং ও ইউআরপি বিভাগ এবং স্থাপত্য বিভাগের ভর্তি যোগ্যতা, বিষয়ভিত্তিক মানবণ্টন ও সার্কুলারের নির্দেশিকা তুলে ধরা হয়েছে।',
+      'প্রকৌশল ভর্তি পরীক্ষায় গণিত, পদার্থবিজ্ঞান ও রসায়নে গভীর দখল প্রয়োজন—এইচএসসির পাঠ্যবই ভালোভাবে আয়ত্তে রাখুন। ভর্তি পরীক্ষার প্রস্তুতিতে পাঠ্যবইয়ের পাশাপাশি বিগত বছরের প্রশ্নের ধরন দেখে নেওয়া কাজে আসে। গুচ্ছ ভর্তি পরীক্ষার চূড়ান্ত তারিখ ও আবেদনের নিয়ম অফিশিয়াল বিজ্ঞপ্তি প্রকাশের পর এই পাতায় হালনাগাদ করা হবে; আবেদনের আগে বুয়েটের ভর্তি পোর্টালে প্রকাশিত মূল বিজ্ঞপ্তিটি অবশ্যই দেখে নিন।',
+    ],
   },
 };
 
@@ -67,9 +82,12 @@ export async function generateMetadata({ params }: AdmissionCategoryPageProps): 
   return {
     title: `${data.titleBn} — আবেদন ও সার্কুলার গাইড | Janao.online`,
     description: data.desc,
-    keywords: [data.titleBn, data.titleEn, 'ভর্তি পরীক্ষা ২০২৬', 'ভর্তি সার্কুলার ২০২৭', 'Admission circular BD'],
     alternates: {
       canonical: `https://janao.online/admission/${category}/`,
+      languages: {
+        'bn-BD': `https://janao.online/admission/${category}/`,
+        'x-default': `https://janao.online/admission/${category}/`,
+      },
     },
   };
 }
@@ -82,9 +100,23 @@ export default async function AdmissionCategoryPage({ params }: AdmissionCategor
     notFound();
   }
 
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'হোম', item: 'https://janao.online/' },
+      { '@type': 'ListItem', position: 2, name: 'ভর্তি হাব', item: 'https://janao.online/admission/' },
+      { '@type': 'ListItem', position: 3, name: data.titleBn, item: `https://janao.online/admission/${category}/` },
+    ],
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-gray-50 dark:bg-[#0b0f19] text-gray-900 dark:text-gray-100 font-sans">
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
 
       {/* Breadcrumb Header */}
       <div className="bg-white dark:bg-[#0f172a] border-b border-gray-200 dark:border-gray-800 py-3">
@@ -153,6 +185,20 @@ export default async function AdmissionCategoryPage({ params }: AdmissionCategor
             ))}
           </div>
         </section>
+
+        {/* Guide */}
+        {data.guide && (
+          <section className="mb-10 bg-white dark:bg-[#0f172a] border border-gray-200 dark:border-gray-800 rounded-xl p-6">
+            <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+              {data.guideTitle}
+            </h2>
+            {data.guide.map((para, idx) => (
+              <p key={idx} className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-3 last:mb-0">
+                {para}
+              </p>
+            ))}
+          </section>
+        )}
 
         {/* Other Admission Categories */}
         <section className="pt-6 border-t border-gray-200 dark:border-gray-800">

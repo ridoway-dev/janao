@@ -20,15 +20,6 @@ import {
 export const metadata: Metadata = {
   title: 'সকল পরীক্ষার ফলাফল চেকার — SSC, HSC, NU ও চাকরির রেজাল্ট | janao.online',
   description: 'এসএসসি, দাখিল, এইচএসসি, কারিগরি (BTEB), জাতীয় বিশ্ববিদ্যালয় (NU), বিসিএস ও সরকারি চাকরির ফলাফল এবং মার্কশিট চেকার পোর্টাল।',
-  keywords: [
-    'SSC result checker',
-    'HSC result checker',
-    'NU result checker',
-    'বিসিএস রেজাল্ট',
-    'কারিগরি বোর্ড রেজাল্ট',
-    'primary scholarship result',
-    'education board results bd'
-  ],
   alternates: {
     canonical: 'https://janao.online/results/',
     languages: {
@@ -43,7 +34,27 @@ export const metadata: Metadata = {
     siteName: 'Janao.online',
     locale: 'bn_BD',
     type: 'website',
+    images: [
+      {
+        url: 'https://janao.online/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'অনলাইন রেজাল্ট চেকার পোর্টাল — janao.online',
+      },
+    ],
   },
+};
+
+const collectionSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  '@id': 'https://janao.online/results/#webpage',
+  url: 'https://janao.online/results/',
+  name: 'সকল পরীক্ষার ফলাফল চেকার — SSC, HSC, NU ও চাকরির রেজাল্ট',
+  description:
+    'এসএসসি, দাখিল, এইচএসসি, কারিগরি (BTEB), জাতীয় বিশ্ববিদ্যালয় (NU), বিসিএস ও সরকারি চাকরির ফলাফল এবং মার্কশিট চেকার পোর্টাল।',
+  inLanguage: 'bn-BD',
+  isPartOf: { '@id': 'https://janao.online/#website' },
 };
 
 export default function ResultsHubPage() {
@@ -52,6 +63,11 @@ export default function ResultsHubPage() {
   return (
     <div className="min-h-screen flex flex-col bg-gray-50 dark:bg-[#0b0f19] text-gray-900 dark:text-gray-100 font-sans">
       <Header />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }}
+      />
 
       {/* Breadcrumb Header */}
       <div className="bg-white dark:bg-[#0f172a] border-b border-gray-200 dark:border-gray-800 py-3">
@@ -63,7 +79,11 @@ export default function ResultsHubPage() {
       </div>
 
       <main className="flex-1 max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-10 w-full space-y-10">
-        
+
+        <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900 dark:text-white tracking-tight">
+          সকল পরীক্ষার ফলাফল চেকার — SSC, HSC, NU ও চাকরির রেজাল্ট
+        </h1>
+
         {/* Urgent Live HSC 2026 Alert Banner */}
         <div className="bg-gradient-to-r from-emerald-600 to-teal-700 text-white rounded-2xl p-4 sm:p-5 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="flex items-center gap-3">

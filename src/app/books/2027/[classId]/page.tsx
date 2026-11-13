@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { BookOpen, ChevronRight, Clock, AlertCircle, FileText, ArrowLeft, ExternalLink, Calendar } from 'lucide-react';
-import { getBooksByClass } from '@/data/nctbData';
+import { getBooksByClass, CLASS_SHORTCUTS, truncateMetaDescription } from '@/data/nctbData';
 
 interface Class2027PageProps {
   params: Promise<{
@@ -12,43 +12,56 @@ interface Class2027PageProps {
   }>;
 }
 
+// Display name for any of the 21 classes (school + madrasa). School classes
+// keep the existing "১ম"/"একাদশ" wording; madrasa classes use their
+// CLASS_SHORTCUTS label (e.g. "দাখিল ৬ষ্ঠ", "ইবতেদায়ি ৩য়").
+function getClassNameBn(classId: string): string {
+  if (/^class-\d+$/.test(classId)) {
+    const classNum = classId.replace('class-', '');
+    return classNum === '11' ? 'একাদশ' : classNum === '12' ? 'দ্বাদশ' : `${classNum}ম`;
+  }
+  const cls = CLASS_SHORTCUTS.flatMap((g) => g.classes).find((c) => c.id === classId);
+  return cls?.label ?? classId;
+}
+
+function isKnownClass(classId: string): boolean {
+  return CLASS_SHORTCUTS.some((g) => g.classes.some((c) => c.id === classId));
+}
+
 export async function generateStaticParams() {
-  return Array.from({ length: 12 }, (_, i) => ({
-    classId: `class-${i + 1}`,
-  }));
+  const classIds = new Set<string>();
+  CLASS_SHORTCUTS.forEach((group) => {
+    group.classes.forEach((c) => classIds.add(c.id));
+  });
+  return Array.from(classIds).map((id) => ({ classId: id }));
 }
 
 export async function generateMetadata({ params }: Class2027PageProps): Promise<Metadata> {
   const { classId } = await params;
-  const classNum = classId.replace('class-', '');
-  const classNameBn = classNum === '11' ? 'একাদশ' : classNum === '12' ? 'দ্বাদশ' : `${classNum}ম`;
+  const classNameBn = getClassNameBn(classId);
+  const isSchoolClass = /^class-\d+$/.test(classId);
+  const classNum = isSchoolClass ? classId.replace('class-', '') : '';
 
   return {
     title: `${classNameBn} শ্রেণির বই ২০২৭ PDF Download — NCTB Book 2027 Download | Janao.online`,
-    description: `জাতীয় শিক্ষাক্রম ও পাঠ্যপুস্তক বোর্ড (NCTB) ২০২৭ শিক্ষাবর্ষের ${classNameBn} শ্রেণির বই PDF ডাউনলোড। অফিশিয়াল ২০২৭ পিডিএফ প্রকাশের সাথে সাথে ডাউনলোড লিংক দেওয়া হবে; আপাতত ২০২৬ সংস্করণ ডাউনলোড করুন।`,
-    keywords: [
-      `${classNameBn} শ্রেণির বই ২০২৭ ডাউনলোড`,
-      `Class ${classNum} NCTB book 2027 PDF download`,
-      `NCTB 2027 book download class ${classNum}`,
-      `${classNameBn} শ্রেণির বই ২০২৭`,
-      `Class ${classNum} Books 2027`,
-      `NCTB Books 2027 class ${classNum}`,
-      `২০২৭ শিক্ষাবর্ষ পাঠ্যবই`,
-    ],
+    description: truncateMetaDescription(`জাতীয় শিক্ষাক্রম ও পাঠ্যপুস্তক বোর্ড (NCTB) ২০২৭ শিক্ষাবর্ষের ${classNameBn} শ্রেণির বই PDF ডাউনলোড। অফিশিয়াল ২০২৭ পিডিএফ প্রকাশের সাথে সাথে ডাউনলোড লিংক দেওয়া হবে; আপাতত ২০২৬ সংস্করণ ডাউনলোড করুন।`),
     alternates: {
       canonical: `https://janao.online/books/2027/${classId}/`,
+      languages: {
+        'bn-BD': `https://janao.online/books/2027/${classId}/`,
+        'x-default': `https://janao.online/books/2027/${classId}/`,
+      },
     },
   };
 }
 
 export default async function Class2027Page({ params }: Class2027PageProps) {
   const { classId } = await params;
-  const classNum = parseInt(classId.replace('class-', ''), 10);
-  if (isNaN(classNum) || classNum < 1 || classNum > 12) {
+  if (!isKnownClass(classId)) {
     notFound();
   }
 
-  const classNameBn = classNum === 11 ? 'একাদশ' : classNum === 12 ? 'দ্বাদশ' : `${classNum}ম`;
+  const classNameBn = getClassNameBn(classId);
   const books2026 = getBooksByClass(classId, 2026);
 
   const breadcrumbSchema = {
@@ -213,21 +226,19 @@ export default async function Class2027Page({ params }: Class2027PageProps) {
             অন্যান্য শ্রেণির ২০২৭ বই ডাউনলোড:
           </h3>
           <div className="flex flex-wrap gap-2 text-xs">
-            {Array.from({ length: 12 }, (_, i) => {
-              const num = i + 1;
-              const name = num === 11 ? 'একাদশ' : num === 12 ? 'দ্বাদশ' : `${num}ম`;
-              const isCurrent = num === classNum;
+            {CLASS_SHORTCUTS.flatMap((g) => g.classes).map((cls) => {
+              const isCurrent = cls.id === classId;
               return (
                 <Link
-                  key={num}
-                  href={`/books/2027/class-${num}/`}
+                  key={cls.id}
+                  href={`/books/2027/${cls.id}/`}
                   className={`px-3 py-1.5 rounded border transition ${
                     isCurrent
                       ? 'bg-amber-500 text-white font-bold border-amber-500'
                       : 'bg-gray-50 dark:bg-gray-800 text-gray-700 dark:text-gray-300 border-gray-200 dark:border-gray-700 hover:border-emerald-600'
                   }`}
                 >
-                  {name} শ্রেণি ২০২৭
+                  {getClassNameBn(cls.id)} শ্রেণি ২০২৭
                 </Link>
               );
             })}

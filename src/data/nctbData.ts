@@ -9959,6 +9959,78 @@ export const BOOKS_DATA: Book[] = [
     "statusText": "প্রকাশনা প্রক্রিয়াধীন (Coming Soon)"
   },
   {
+    "id": "b27-4",
+    "titleBn": "আমার বাংলা বই",
+    "titleEn": "আমার বাংলা বই",
+    "classLevel": "class-1",
+    "classNameBn": "১ম শ্রেণি",
+    "category": "primary",
+    "categoryBn": "প্রাথমিক",
+    "medium": "english",
+    "mediumBn": "ইংরেজি ভার্সন",
+    "year": 2027,
+    "fileSizeBytes": "আসন্ন",
+    "pageCount": 160,
+    "downloadUrl": "",
+    "driveUrl": "",
+    "descriptionBn": "জাতীয় শিক্ষাক্রম ও পাঠ্যপুস্তক বোর্ড (NCTB) কর্তৃক প্রণীত ১ম শ্রেণি-এর আমার বাংলা বই পাঠ্যবই ২০২৭ শিক্ষাবর্ষ। অফিশিয়াল প্রকাশনার সাথে সাথেই ডাউনলোড ও পড়ার লিংক এখানে হালনাগাদ করা হবে।",
+    "slug": "amar-bangla-boi-english-version-2027",
+    "source_name": "জাতীয় শিক্ষাক্রম ও পাঠ্যপুস্তক বোর্ড (NCTB)",
+    "source_url": "https://drive.egovcloud.gov.bd/index.php/s/j2OipTMp0QihpIR/download",
+    "last_verified": "০৫ অক্টোবর ২০২৬",
+    "publisher": "NCTB (জাতীয় শিক্ষাক্রম ও পাঠ্যপুস্তক বোর্ড)",
+    "isPublished": false,
+    "statusText": "প্রকাশনা প্রক্রিয়াধীন (Coming Soon)"
+  },
+  {
+    "id": "b27-5",
+    "titleBn": "Elementary Mathematics",
+    "titleEn": "Elementary Mathematics",
+    "classLevel": "class-1",
+    "classNameBn": "১ম শ্রেণি",
+    "category": "primary",
+    "categoryBn": "প্রাথমিক",
+    "medium": "english",
+    "mediumBn": "ইংরেজি ভার্সন",
+    "year": 2027,
+    "fileSizeBytes": "আসন্ন",
+    "pageCount": 187,
+    "downloadUrl": "",
+    "driveUrl": "",
+    "descriptionBn": "জাতীয় শিক্ষাক্রম ও পাঠ্যপুস্তক বোর্ড (NCTB) কর্তৃক প্রণীত ১ম শ্রেণি-এর Elementary Mathematics পাঠ্যবই ২০২৭ শিক্ষাবর্ষ। অফিশিয়াল প্রকাশনার সাথে সাথেই ডাউনলোড ও পড়ার লিংক এখানে হালনাগাদ করা হবে।",
+    "slug": "elementary-mathematics-english-version-2027",
+    "source_name": "জাতীয় শিক্ষাক্রম ও পাঠ্যপুস্তক বোর্ড (NCTB)",
+    "source_url": "https://drive.egovcloud.gov.bd/index.php/s/lp11ImNTfh7T9Xh/download",
+    "last_verified": "০৫ অক্টোবর ২০২৬",
+    "publisher": "NCTB (জাতীয় শিক্ষাক্রম ও পাঠ্যপুস্তক বোর্ড)",
+    "isPublished": false,
+    "statusText": "প্রকাশনা প্রক্রিয়াধীন (Coming Soon)"
+  },
+  {
+    "id": "b27-6",
+    "titleBn": "English for Today",
+    "titleEn": "English for Today",
+    "classLevel": "class-1",
+    "classNameBn": "১ম শ্রেণি",
+    "category": "primary",
+    "categoryBn": "প্রাথমিক",
+    "medium": "english",
+    "mediumBn": "ইংরেজি ভার্সন",
+    "year": 2027,
+    "fileSizeBytes": "আসন্ন",
+    "pageCount": 119,
+    "downloadUrl": "",
+    "driveUrl": "",
+    "descriptionBn": "জাতীয় শিক্ষাক্রম ও পাঠ্যপুস্তক বোর্ড (NCTB) কর্তৃক প্রণীত ১ম শ্রেণি-এর English for Today পাঠ্যবই ২০২৭ শিক্ষাবর্ষ। অফিশিয়াল প্রকাশনার সাথে সাথেই ডাউনলোড ও পড়ার লিংক এখানে হালনাগাদ করা হবে।",
+    "slug": "english-for-today-2-2027",
+    "source_name": "জাতীয় শিক্ষাক্রম ও পাঠ্যপুস্তক বোর্ড (NCTB)",
+    "source_url": "https://drive.egovcloud.gov.bd/index.php/s/CW6nYiJRMJE8trb/download",
+    "last_verified": "০৫ অক্টোবর ২০২৬",
+    "publisher": "NCTB (জাতীয় শিক্ষাক্রম ও পাঠ্যপুস্তক বোর্ড)",
+    "isPublished": false,
+    "statusText": "প্রকাশনা প্রক্রিয়াধীন (Coming Soon)"
+  },
+  {
     "id": "b27-7",
     "titleBn": "আমার বাংলা বই",
     "titleEn": "আমার বাংলা বই",
@@ -10023,6 +10095,78 @@ export const BOOKS_DATA: Book[] = [
     "driveUrl": "",
     "descriptionBn": "জাতীয় শিক্ষাক্রম ও পাঠ্যপুস্তক বোর্ড (NCTB) কর্তৃক প্রণীত ২য় শ্রেণি-এর English for Today পাঠ্যবই ২০২৭ শিক্ষাবর্ষ। অফিশিয়াল প্রকাশনার সাথে সাথেই ডাউনলোড ও পড়ার লিংক এখানে হালনাগাদ করা হবে।",
     "slug": "english-for-today-2027",
+    "source_name": "জাতীয় শিক্ষাক্রম ও পাঠ্যপুস্তক বোর্ড (NCTB)",
+    "source_url": "https://drive.egovcloud.gov.bd/index.php/s/Qg7pzPPvzl1AnPS/download",
+    "last_verified": "০৫ অক্টোবর ২০২৬",
+    "publisher": "NCTB (জাতীয় শিক্ষাক্রম ও পাঠ্যপুস্তক বোর্ড)",
+    "isPublished": false,
+    "statusText": "প্রকাশনা প্রক্রিয়াধীন (Coming Soon)"
+  },
+  {
+    "id": "b27-10",
+    "titleBn": "আমার বাংলা বই",
+    "titleEn": "আমার বাংলা বই",
+    "classLevel": "class-2",
+    "classNameBn": "২য় শ্রেণি",
+    "category": "primary",
+    "categoryBn": "প্রাথমিক",
+    "medium": "english",
+    "mediumBn": "ইংরেজি ভার্সন",
+    "year": 2027,
+    "fileSizeBytes": "আসন্ন",
+    "pageCount": 160,
+    "downloadUrl": "",
+    "driveUrl": "",
+    "descriptionBn": "জাতীয় শিক্ষাক্রম ও পাঠ্যপুস্তক বোর্ড (NCTB) কর্তৃক প্রণীত ২য় শ্রেণি-এর আমার বাংলা বই পাঠ্যবই ২০২৭ শিক্ষাবর্ষ। অফিশিয়াল প্রকাশনার সাথে সাথেই ডাউনলোড ও পড়ার লিংক এখানে হালনাগাদ করা হবে।",
+    "slug": "amar-bangla-boi-english-version-2027",
+    "source_name": "জাতীয় শিক্ষাক্রম ও পাঠ্যপুস্তক বোর্ড (NCTB)",
+    "source_url": "https://drive.egovcloud.gov.bd/index.php/s/hQkbdKeleEWmqQ5/download",
+    "last_verified": "০৫ অক্টোবর ২০২৬",
+    "publisher": "NCTB (জাতীয় শিক্ষাক্রম ও পাঠ্যপুস্তক বোর্ড)",
+    "isPublished": false,
+    "statusText": "প্রকাশনা প্রক্রিয়াধীন (Coming Soon)"
+  },
+  {
+    "id": "b27-11",
+    "titleBn": "Elementary Mathematics",
+    "titleEn": "Elementary Mathematics",
+    "classLevel": "class-2",
+    "classNameBn": "২য় শ্রেণি",
+    "category": "primary",
+    "categoryBn": "প্রাথমিক",
+    "medium": "english",
+    "mediumBn": "ইংরেজি ভার্সন",
+    "year": 2027,
+    "fileSizeBytes": "আসন্ন",
+    "pageCount": 88,
+    "downloadUrl": "",
+    "driveUrl": "",
+    "descriptionBn": "জাতীয় শিক্ষাক্রম ও পাঠ্যপুস্তক বোর্ড (NCTB) কর্তৃক প্রণীত ২য় শ্রেণি-এর Elementary Mathematics পাঠ্যবই ২০২৭ শিক্ষাবর্ষ। অফিশিয়াল প্রকাশনার সাথে সাথেই ডাউনলোড ও পড়ার লিংক এখানে হালনাগাদ করা হবে।",
+    "slug": "elementary-mathematics-english-version-2027",
+    "source_name": "জাতীয় শিক্ষাক্রম ও পাঠ্যপুস্তক বোর্ড (NCTB)",
+    "source_url": "https://drive.egovcloud.gov.bd/index.php/s/Kw56TUvE7YsvdcL/download",
+    "last_verified": "০৫ অক্টোবর ২০২৬",
+    "publisher": "NCTB (জাতীয় শিক্ষাক্রম ও পাঠ্যপুস্তক বোর্ড)",
+    "isPublished": false,
+    "statusText": "প্রকাশনা প্রক্রিয়াধীন (Coming Soon)"
+  },
+  {
+    "id": "b27-12",
+    "titleBn": "English for Today",
+    "titleEn": "English for Today",
+    "classLevel": "class-2",
+    "classNameBn": "২য় শ্রেণি",
+    "category": "primary",
+    "categoryBn": "প্রাথমিক",
+    "medium": "english",
+    "mediumBn": "ইংরেজি ভার্সন",
+    "year": 2027,
+    "fileSizeBytes": "আসন্ন",
+    "pageCount": 166,
+    "downloadUrl": "",
+    "driveUrl": "",
+    "descriptionBn": "জাতীয় শিক্ষাক্রম ও পাঠ্যপুস্তক বোর্ড (NCTB) কর্তৃক প্রণীত ২য় শ্রেণি-এর English for Today পাঠ্যবই ২০২৭ শিক্ষাবর্ষ। অফিশিয়াল প্রকাশনার সাথে সাথেই ডাউনলোড ও পড়ার লিংক এখানে হালনাগাদ করা হবে।",
+    "slug": "english-for-today-2-2027",
     "source_name": "জাতীয় শিক্ষাক্রম ও পাঠ্যপুস্তক বোর্ড (NCTB)",
     "source_url": "https://drive.egovcloud.gov.bd/index.php/s/Qg7pzPPvzl1AnPS/download",
     "last_verified": "০৫ অক্টোবর ২০২৬",
@@ -20405,7 +20549,7 @@ export const NOTICES_DATA: NoticeItem[] = [
   {
     "id": "medical-admission-2026-27",
     "slug": "medical-admission-2026-27",
-    "title": "Medical Admission 2026-27 | মেডিকেল ভর্তি পরীক্ষা ১৮ ডিসেম্বর, আবেদন, ফি ও যোগ্যতা",
+    "title": "Medical Admission 2026-27 | মেডিকেল ভর্তি পরীক্ষা ১৮ ডিসেম্বর",
     "category": "notice",
     "categoryBn": "ভর্তি",
     "date": "১২ নভেম্বর ২০২৬",
@@ -20446,7 +20590,7 @@ export const NOTICES_DATA: NoticeItem[] = [
   {
     "id": "buet-admission-2026-27",
     "slug": "buet-admission-2026-27",
-    "title": "BUET Admission 2026-27 | বুয়েট ভর্তি পরীক্ষা ১৬ জানুয়ারি, আবেদন শুরু ২১ নভেম্বর",
+    "title": "BUET Admission 2026-27 | বুয়েট ভর্তি পরীক্ষা ১৬ জানুয়ারি",
     "category": "notice",
     "categoryBn": "ভর্তি",
     "date": "১২ নভেম্বর ২০২৬",
@@ -20487,7 +20631,7 @@ export const NOTICES_DATA: NoticeItem[] = [
   {
     "id": "ru-admission-2026-27",
     "slug": "ru-admission-2026-27",
-    "title": "RU Admission 2026-27 | রাজশাহী বিশ্ববিদ্যালয় ভর্তি — আবেদন ১৫–৩০ নভেম্বর, পরীক্ষা ফেব্রুয়ারিতে",
+    "title": "RU Admission 2026-27 | রাবি ভর্তি — আবেদন ১৫–৩০ নভেম্বর",
     "category": "notice",
     "categoryBn": "ভর্তি",
     "date": "১২ নভেম্বর ২০২৬",
@@ -20532,7 +20676,7 @@ export const NOTICES_DATA: NoticeItem[] = [
   {
     "id": "ju-admission-2026-27",
     "slug": "ju-admission-2026-27",
-    "title": "JU Admission 2026-27 | জাহাঙ্গীরনগর বিশ্ববিদ্যালয় ভর্তি পরীক্ষা ১০–২১ জানুয়ারি",
+    "title": "JU Admission 2026-27 | জাবি ভর্তি পরীক্ষা ১০–২১ জানুয়ারি",
     "category": "notice",
     "categoryBn": "ভর্তি",
     "date": "১২ নভেম্বর ২০২৬",
@@ -20573,7 +20717,7 @@ export const NOTICES_DATA: NoticeItem[] = [
   {
     "id": "cu-admission-2026-27",
     "slug": "cu-admission-2026-27",
-    "title": "CU Admission 2026-27 | চট্টগ্রাম বিশ্ববিদ্যালয় ভর্তি — আবেদন ১০ ডিসেম্বর থেকে, পরীক্ষা ২৯ জানুয়ারি",
+    "title": "CU Admission 2026-27 | চবি ভর্তি — আবেদন ১০ ডিসেম্বর থেকে",
     "category": "notice",
     "categoryBn": "ভর্তি",
     "date": "১২ নভেম্বর ২০২৬",
@@ -20614,7 +20758,7 @@ export const NOTICES_DATA: NoticeItem[] = [
   {
     "id": "nu-honours-admission-2026-27",
     "slug": "nu-honours-admission-2026-27",
-    "title": "NU Honours Admission 2026-27 | জাতীয় বিশ্ববিদ্যালয় অনার্স ১ম বর্ষ ভর্তি ২০২৬-২৭ — বিজ্ঞপ্তি, যোগ্যতা ও আবেদন",
+    "title": "NU Honours Admission 2026-27 | জাতীয় বিশ্ববিদ্যালয় অনার্স ভর্তি",
     "category": "notice",
     "categoryBn": "ভর্তি",
     "date": "১২ নভেম্বর ২০২৬",
@@ -20655,7 +20799,7 @@ export const NOTICES_DATA: NoticeItem[] = [
   {
     "id": "gst-admission-2026-27",
     "slug": "gst-admission-2026-27",
-    "title": "GST Admission 2026-27 | গুচ্ছ ভর্তি পরীক্ষা ২০২৬-২৭ — ২০ বিশ্ববিদ্যালয়, পরীক্ষা ১৯, ২০ ও ২৭ মার্চ ২০২৭",
+    "title": "GST Admission 2026-27 | গুচ্ছ ভর্তি পরীক্ষা ১৯, ২০ ও ২৭ মার্চ",
     "category": "notice",
     "categoryBn": "ভর্তি",
     "date": "১২ নভেম্বর ২০২৬",
@@ -20696,7 +20840,7 @@ export const NOTICES_DATA: NoticeItem[] = [
   {
     "id": "cadet-college-admission-2027",
     "slug": "cadet-college-admission-2027",
-    "title": "Cadet College Admission 2027 | ক্যাডেট কলেজ ভর্তি ২০২৭ (৭ম শ্রেণি) — আবেদন ১ নভেম্বর–৫ ডিসেম্বর, পরীক্ষা ২৬ ডিসেম্বর",
+    "title": "Cadet College Admission 2027 | ক্যাডেট কলেজ ভর্তি ২০২৭",
     "category": "notice",
     "categoryBn": "ভর্তি",
     "date": "১২ নভেম্বর ২০২৬",
@@ -20737,7 +20881,7 @@ export const NOTICES_DATA: NoticeItem[] = [
   {
     "id": "diploma-admission-2026-27",
     "slug": "diploma-admission-2026-27",
-    "title": "Diploma Admission 2026-27 | পলিটেকনিক ডিপ্লোমা ইন ইঞ্জিনিয়ারিং ভর্তি ২০২৬-২৭ — BTEB মেধা তালিকা ও ৪র্থ ধাপ",
+    "title": "Diploma Admission 2026-27 | পলিটেকনিক ডিপ্লোমা ভর্তি",
     "category": "notice",
     "categoryBn": "ভর্তি",
     "date": "১২ নভেম্বর ২০২৬",
@@ -20778,7 +20922,7 @@ export const NOTICES_DATA: NoticeItem[] = [
   {
     "id": "hsc-2026-board-challenge",
     "slug": "hsc-2026-board-challenge",
-    "title": "HSC Board Challenge Result 2026 | এইচএসসি খাতা চ্যালেঞ্জ (পুনঃনিরীক্ষণ) ফল ২৩ নভেম্বর ২০২৬ — যেভাবে দেখবেন",
+    "title": "HSC Board Challenge Result 2026 | খাতা চ্যালেঞ্জের ফল ২৩ নভেম্বর",
     "category": "notice",
     "categoryBn": "পরীক্ষা",
     "date": "১২ নভেম্বর ২০২৬",
@@ -20819,7 +20963,7 @@ export const NOTICES_DATA: NoticeItem[] = [
   {
     "id": "ssc-2027-form-fillup",
     "slug": "ssc-2027-form-fillup",
-    "title": "SSC 2027 Form Fill Up | এসএসসি ২০২৭ ফরম পূরণের সময়সূচি, ফি ও নিয়মাবলি",
+    "title": "SSC 2027 Form Fill Up | এসএসসি ২০২৭ ফরম পূরণের ফি ও সময়সূচি",
     "category": "notice",
     "categoryBn": "পরীক্ষা",
     "date": "১২ নভেম্বর ২০২৬",
@@ -20901,7 +21045,7 @@ export const NOTICES_DATA: NoticeItem[] = [
   {
     "id": "ssc-2027-admit-card",
     "slug": "ssc-2027-admit-card",
-    "title": "SSC 2027 Admit Card | এসএসসি ২০২৭ প্রবেশপত্র — কবে পাবে, কী যাচাই করবে ও হারিয়ে গেলে করণীয়",
+    "title": "SSC 2027 Admit Card | এসএসসি ২০২৭ প্রবেশপত্র কবে পাবে",
     "category": "notice",
     "categoryBn": "পরীক্ষা",
     "date": "১২ নভেম্বর ২০২৬",
@@ -20979,7 +21123,7 @@ export const NOTICES_DATA: NoticeItem[] = [
   {
     "id": "nctb-books-class-1-5-2027",
     "slug": "nctb-books-class-1-5-2027",
-    "title": "NCTB Books Class 1-5 2027 PDF Download | প্রাথমিক ১ম–৫ম শ্রেণির বই ২০২৭",
+    "title": "NCTB Books Class 1-5 2027 | প্রাথমিক ১ম–৫ম শ্রেণির বই",
     "category": "notice",
     "categoryBn": "কারিকুলাম",
     "date": "১২ নভেম্বর ২০২৬",
@@ -21020,7 +21164,7 @@ export const NOTICES_DATA: NoticeItem[] = [
   {
     "id": "nctb-new-books-2027",
     "slug": "nctb-new-books-2027",
-    "title": "NCTB 2027 নতুন বই | চতুর্থ ও ষষ্ঠ শ্রেণির ৪টি নতুন পাঠ্যবই — তালিকা, বিষয়বস্তু ও ছাপার আপডেট",
+    "title": "NCTB 2027 নতুন বই | ৪র্থ ও ৬ষ্ঠ শ্রেণির ৪টি নতুন পাঠ্যবই",
     "category": "notice",
     "categoryBn": "কারিকুলাম",
     "date": "১২ নভেম্বর ২০২৬",
@@ -21061,7 +21205,7 @@ export const NOTICES_DATA: NoticeItem[] = [
   {
     "id": "du-admission-2026-27",
     "slug": "du-admission-2026-27",
-    "title": "DU Admission 2026-27 | ঢাকা বিশ্ববিদ্যালয় ভর্তি আবেদন ১১–২৫ নভেম্বর, পরীক্ষা ৫ ডিসেম্বর থেকে",
+    "title": "DU Admission 2026-27 | ঢাবি ভর্তি আবেদন ১১–২৫ নভেম্বর",
     "category": "notice",
     "categoryBn": "ভর্তি",
     "date": "১১ নভেম্বর ২০২৬",
@@ -21102,7 +21246,7 @@ export const NOTICES_DATA: NoticeItem[] = [
   {
     "id": "hsc-2026-supplementary-exam",
     "slug": "hsc-2026-supplementary-exam",
-    "title": "HSC 2026 Supplementary Exam | ১ বা ২ বিষয়ে অকৃতকার্যদের পরিপূরক পরীক্ষা ১ ডিসেম্বর থেকে",
+    "title": "HSC 2026 Supplementary Exam | পরিপূরক পরীক্ষা ১ ডিসেম্বর থেকে",
     "category": "routine",
     "categoryBn": "রুটিন",
     "date": "০৪ নভেম্বর ২০২৬",
@@ -21199,7 +21343,7 @@ export const NOTICES_DATA: NoticeItem[] = [
   {
     "id": "ssc-2027-syllabus-pdf-download",
     "slug": "ssc-2027-syllabus-pdf-download",
-    "title": "SSC 2027 Syllabus PDF Download — এসএসসি ২০২৭ বিষয়ভিত্তিক পূর্ণাঙ্গ সিলেবাস ও মূল্যায়ন নির্দেশিকা",
+    "title": "SSC 2027 Syllabus PDF | এসএসসি ২০২৭ সিলেবাস ও নম্বর বিভাজন",
     "category": "syllabus",
     "categoryBn": "সিলেবাস",
     "date": "০৫ অক্টোবর ২০২৬",
@@ -21225,7 +21369,7 @@ export const NOTICES_DATA: NoticeItem[] = [
   {
     "id": "ssc-2026-short-syllabus",
     "slug": "ssc-2026-short-syllabus",
-    "title": "SSC 2026 Short Syllabus PDF — এসএসসি ২০২৬ সংক্ষিপ্ত সিলেবাস ও সংশোধিত নম্বর বণ্টন",
+    "title": "SSC 2026 Short Syllabus PDF | এসএসসি ২০২৬ সংক্ষিপ্ত সিলেবাস",
     "category": "syllabus",
     "categoryBn": "সিলেবাস",
     "date": "০৫ অক্টোবর ২০২৬",
@@ -21251,7 +21395,7 @@ export const NOTICES_DATA: NoticeItem[] = [
   {
     "id": "nctb-book-changes-2027",
     "slug": "nctb-book-changes-2027",
-    "title": "২০২৭ সাল থেকে পাঠ্যবই পরিবর্তন — মাধ্যমিকে ৯৯টি ও প্রাথমিকে ৩৬টি বই পরিমার্জন নির্দেশিকা",
+    "title": "২০২৭ সাল থেকে পাঠ্যবই পরিবর্তন — ৯৯টি মাধ্যমিক ও ৩৬টি প্রাথমিক বই",
     "category": "notice",
     "categoryBn": "কারিকুলাম",
     "date": "০৪ অক্টোবর ২০২৬",
@@ -21273,22 +21417,30 @@ export const NOTICES_DATA: NoticeItem[] = [
   {
     "id": "hsc-2027-syllabus-pdf-download",
     "slug": "hsc-2027-syllabus-pdf-download",
-    "title": "HSC 2027 Syllabus & Exam Scheme — এইচএসসি ও আলিম ২০২৭ বিষয়ভিত্তিক পাঠপরিকল্পনা",
+    "title": "HSC 2027 Syllabus | এইচএসসি ও আলিম ২০২৭ পাঠ্যসূচি",
     "category": "syllabus",
     "categoryBn": "সিলেবাস",
     "date": "০৩ অক্টোবর ২০২৬",
-    "lastUpdated": "০৩ অক্টোবর ২০২৬",
+    "lastUpdated": "১৪ নভেম্বর ২০২৬",
     "isNew": true,
     "linkText": "এইচএসসি সিলেবাস গাইডলাইন দেখুন",
     "officialSource": "https://dshe.gov.bd/",
     "officialSourceName": "মাধ্যমিক ও উচ্চশিক্ষা অধিদপ্তর (DSHE)",
     "summary": "উচ্চ মাধ্যমিক স্তর (একাদশ-দ্বাদশ শ্রেণি) ও ২০২৭ সালের এইচএসসি পরীক্ষার্থীদের বিষয়ভিত্তিক পূর্ণাঙ্গ পাঠ্যসূচি ও প্র্যাকটিক্যাল নির্দেশিকা।",
     "pdfUrl": "https://dshe.gov.bd/",
-    "content": "উচ্চ মাধ্যমিক স্তরের বিজ্ঞান, মানবিক ও ব্যবসায় শিক্ষা শাখার শিক্ষার্থীদের জন্য একাদশ ও দ্বাদশ শ্রেণির বিষয়ভিত্তিক পাঠ্যসূচি এবং ২০২৭ সালের এইচএসসি পরীক্ষার প্রমিত মূল্যায়ন নির্দেশিকা।",
-    "faq": [
+    "content": "উচ্চ মাধ্যমিক স্তরের বিজ্ঞান, মানবিক ও ব্যবসায় শিক্ষা শাখার শিক্ষার্থীদের জন্য একাদশ ও দ্বাদশ শ্রেণির বিষয়ভিত্তিক পাঠ্যসূচি এবং ২০২৭ সালের এইচএসসি পরীক্ষার প্রমিত মূল্যায়ন নির্দেশিকা। সিলেবাস দেখে আগেই জানা যায় কোন অধ্যায় থেকে কত নম্বরের প্রশ্ন আসবে এবং ব্যবহারিক অংশে কী করতে হবে।\n\n### সিলেবাসে যা যা থাকে\n\n- প্রতিটি বিষয়ের অধ্যায়ভিত্তিক পাঠ্যসূচি ও শিখনফল — একাদশ ও দ্বাদশ শ্রেণির জন্য সাজানো।\n- তত্ত্বীয়, বহুনির্বাচনি (MCQ) ও ব্যবহারিক অংশের নম্বর বিভাজন এবং পাসের শর্ত।\n- বিজ্ঞান শাখার ব্যবহারিক পরীক্ষার নির্দেশিকা।\n\n### এইচএসসি ২০২৭ পরীক্ষা কবে\n\nএইচএসসি ও সমমান পরীক্ষা ২০২৭ শুরু হবে ০৬ জুন ২০২৭। সকালের শিফট সকাল ১০টা থেকে দুপুর ১টা এবং বিকেলের শিফট দুপুর ২টা থেকে বিকেল ৫টা পর্যন্ত চলবে। তত্ত্বীয়, বহুনির্বাচনি ও ব্যবহারিক অংশে আলাদাভাবে পাস করতে হয়। পরীক্ষার পূর্ণাঙ্গ সময়সূচি দেখুন [এইচএসসি রুটিন ২০২৭](/notices/hsc-routine-2027/) পাতায়। প্রবেশপত্রে দেওয়া রোল ও রেজিস্ট্রেশন নম্বর OMR শিটে সঠিকভাবে পূরণ করতে হবে।\n\n### সিলেবাস অনুযায়ী পড়ার নিয়ম\n\n- প্রথমে নিজের শাখার (বিজ্ঞান, মানবিক বা ব্যবসায় শিক্ষা) বিষয়গুলোর সিলেবাস আলাদা করে নিন।\n- প্রতিটি বিষয়ের পাঠ্যবই এই সাইটের [২০২৭ পাঠ্যবই](/books/2027/) সেকশনে একাদশ ও দ্বাদশ শ্রেণি অনুযায়ী সাজানো আছে।\n- সিলেবাসের বাইরের অধ্যায়ে সময় নষ্ট না করে নির্ধারিত অধ্যায়গুলো আগে শেষ করুন, তারপর পুনরালোচনা করুন।\n\n### সিলেবাসের অফিশিয়াল তথ্য কোথায় পাবেন\n\nএই পাতায় সিলেবাসের সরাসরি পিডিএফ লিংক দেওয়া নেই। অফিশিয়াল পাঠ্যসূচি ও পরীক্ষা-সংক্রান্ত নির্দেশনা মাধ্যমিক ও উচ্চশিক্ষা অধিদপ্তরের (DSHE) ওয়েবসাইটে প্রকাশিত হয় — উপরের অফিশিয়াল সোর্স লিংক থেকে DSHE সাইটে গিয়ে সর্বশেষ নির্দেশনা যাচাই করে নিন।",
+        "faq": [
       {
         "q": "এইচএসসি ২০২৭ এর পূর্ণাঙ্গ বই কোথায় পাওয়া যাবে?",
         "a": "janao.online এর কলেজ ও ২০২৭ পাঠ্যবই সেকশনে একাদশ ও দ্বাদশ শ্রেণির বোর্ড অনুমোদিত সকল বই উপলব্ধ রয়েছে।"
+      },
+      {
+        "q": "এইচএসসি ২০২৭ পরীক্ষা কবে শুরু হবে?",
+        "a": "০৬ জুন ২০২৭। সকালের শিফট সকাল ১০টা থেকে দুপুর ১টা এবং বিকেলের শিফট দুপুর ২টা থেকে বিকেল ৫টা পর্যন্ত চলবে।"
+      },
+      {
+        "q": "এইচএসসি ২০২৭-এর বই কি এই সাইটে আছে?",
+        "a": "হ্যাঁ — একাদশ ও দ্বাদশ শ্রেণির ২০২৭ শিক্ষাবর্ষের বই এই সাইটের ২০২৭ পাঠ্যবই সেকশনে আছে। তবে ২০২৭ সংস্করণের অফিশিয়াল পিডিএফ প্রকাশিত না হওয়া পর্যন্ত ২০২৬ সংস্করণ পড়তে হবে।"
       }
     ]
   },
@@ -21321,18 +21473,26 @@ export const NOTICES_DATA: NoticeItem[] = [
     "category": "notice",
     "categoryBn": "নোটিশ",
     "date": "২৫ সেপ্টেম্বর ২০২৬",
-    "lastUpdated": "২৫ সেপ্টেম্বর ২০২৬",
+    "lastUpdated": "১৪ নভেম্বর ২০২৬",
     "isNew": false,
     "linkText": "আবেদন নিয়মাবলী দেখুন",
     "officialSource": "http://www.educationboardresults.gov.bd/",
     "officialSourceName": "আন্তঃশিক্ষা বোর্ড সমন্বয় কমিটি",
     "summary": "টেলিটক সিমের মাধ্যমে এসএমএস পাঠিয়ে এসএসসি পরীক্ষার খাতা চ্যালেঞ্জ ও ফলাফল পুনঃনিরীক্ষণের সঠিক নিয়মাবলি।",
     "pdfUrl": "http://www.educationboardresults.gov.bd/",
-    "content": "এসএসসি পরীক্ষার ফলাফল প্রকাশের পর যাদের কাঙ্ক্ষিত ফল আসেনি, তারা টেলিটকের মাধ্যমে খাতা পুনঃনিরীক্ষণের (Re-scrutiny) আবেদন করতে পারবেন।\n\n### এসএমএস করার নিয়ম:\nমেসেজ অপশনে গিয়ে টাইপ করুন:\n`RSC <স্পেস> বোর্ডের প্রথম ৩ অক্ষর <স্পেস> রোল নম্বর <স্পেস> বিষয় কোড`\nএবং পাঠিয়ে দিন `16222` নম্বরে।",
-    "faq": [
+    "content": "এসএসসি পরীক্ষার ফলাফল প্রকাশের পর যাদের কাঙ্ক্ষিত ফল আসেনি, তারা টেলিটকের মাধ্যমে খাতা পুনঃনিরীক্ষণের (Re-scrutiny) আবেদন করতে পারবেন। আবেদন করতে হয় ফল প্রকাশের পর বোর্ডের নির্ধারিত সময়ের মধ্যে।\n\n### পুনঃনিরীক্ষণে কী যাচাই করা হয়\n\n- সব প্রশ্নের উত্তর মূল্যায়ন করা হয়েছে কি না।\n- নম্বর ঠিকমতো যোগ করা হয়েছে কি না।\n- নম্বর OMR শিটে সঠিকভাবে তোলা হয়েছে কি না।\n\nকোনো বছরে এর বাইরে পুনর্মূল্যায়ন যুক্ত হলে বোর্ড তা নোটিশে জানায় — তাই আবেদনের আগে বোর্ডের সর্বশেষ নোটিশ দেখে নিন।\n\n### এসএমএস করার নিয়ম\n\nমেসেজ অপশনে গিয়ে টাইপ করুন:\n`RSC <স্পেস> বোর্ডের প্রথম ৩ অক্ষর <স্পেস> রোল নম্বর <স্পেস> বিষয় কোড`\nএবং পাঠিয়ে দিন `16222` নম্বরে। জবাবে পিন নম্বর এলে তা দিয়ে আবেদন নিশ্চিত করুন — পিন দিয়ে নিশ্চিত না করলে আবেদন সম্পূর্ণ হয় না।\n\n### আবেদনের আগে যে বিষয়গুলো মিলিয়ে নেবেন\n\n- প্রবেশপত্রের সঙ্গে রোল নম্বর ও বোর্ডের নাম মিলিয়ে নিন — ভুল তথ্যে আবেদন সঠিক খাতার জন্য প্রক্রিয়া হবে না।\n- বিষয় কোড ঠিক আছে কি না যাচাই করুন — একাধিক বিষয়ের কোড কমা (,) দিয়ে আলাদা করে লিখুন, যেমন: 101,102,107।\n- দুই পত্রের বিষয়ে আবেদন করতে হলে দুই পত্রের জন্যই আবেদন করতে হয়।\n- নির্ধারিত সময় পেরিয়ে গেলে আর আবেদন করা যায় না, তাই ফল প্রকাশের পরপরই বোর্ডের নোটিশ দেখে নিন।\n\n### ফি ও ফল জানার নিয়ম\n\nসাধারণত প্রতি পত্রের জন্য ১২৫ থেকে ১৫০ টাকা হারে সরকারি ফি প্রযোজ্য হয়। পুনঃনিরীক্ষণের ফল প্রকাশ হলে আবেদনের সময় দেওয়া মোবাইল নম্বরে এসএমএসের মাধ্যমে জানানো হয়, আর গ্রেড বদলালে নতুন ফল educationboardresults.gov.bd-তেও দেখা যায়।\n\n### এইচএসসি পরীক্ষার্থীদের জন্য\n\nএইচএসসির খাতা চ্যালেঞ্জের আবেদন ও ফল দেখার নিয়ম আলাদা পাতায় আছে — [HSC Board Challenge Result 2026](/notices/hsc-2026-board-challenge/)।",
+        "faq": [
       {
         "q": "একাধিক বিষয়ের আবেদন কীভাবে করব?",
         "a": "কমা (,) দিয়ে বিষয় কোডগুলো আলাদা করে একটি এসএমএসেই পাঠানো যাবে। যেমন: 101,102,107।"
+      },
+      {
+        "q": "পুনঃনিরীক্ষণে কী যাচাই করা হয়?",
+        "a": "বোর্ড যাচাই করে দেখে সব প্রশ্নের উত্তর মূল্যায়ন হয়েছে কি না, নম্বর ঠিকমতো যোগ হয়েছে কি না এবং নম্বর OMR শিটে সঠিকভাবে তোলা হয়েছে কি না।"
+      },
+      {
+        "q": "ফল বদলালে কী করব?",
+        "a": "পুনঃনিরীক্ষণে গ্রেড বদলালে সেটাই চূড়ান্ত ফল হবে। নতুন গ্রেড অনুযায়ী মার্কশিট সংগ্রহ করতে নিজ বোর্ডের নির্দেশনা অনুসরণ করুন।"
       }
     ]
   },
@@ -21389,68 +21549,32 @@ export const NOTICES_DATA: NoticeItem[] = [
     ]
   },
   {
-    "id": "ssc-result-2025",
-    "slug": "ssc-result-2025",
-    "title": "SSC Result 2025 Archive — এসএসসি পরীক্ষার ফলাফল ও পরিসংখ্যান",
-    "category": "result",
-    "categoryBn": "ফলাফল",
-    "date": "১৫ জুন ২০২৫",
-    "lastUpdated": "১৫ জুন ২০২৫",
-    "isNew": false,
-    "linkText": "২০২৫ সালের রেজাল্ট আর্কাইভ দেখুন",
-    "officialSource": "http://www.educationboardresults.gov.bd/",
-    "officialSourceName": "শিক্ষা বোর্ড ফলাফল গেটওয়ে",
-    "summary": "২০২৫ শিক্ষাবর্ষের এসএসসি ও দাখিল পরীক্ষার পূর্ববর্তী পাসের হার, জিপিএ-৫ পরিসংখ্যান ও ফলাফল আর্কাইভ।",
-    "pdfUrl": "http://www.educationboardresults.gov.bd/",
-    "content": "২০২৫ সালের এসএসসি পরীক্ষার ফলাফল রেকর্ড এবং বোর্ডভিত্তিক পাসের হারের তুলনামূলক বিবরণী।",
-    "faq": [
-      {
-        "q": "পুরাতন রেজাল্ট কোথা থেকে পাওয়া যাবে?",
-        "a": "অফিসিয়াল eboardresults.com পোর্টালে গিয়ে পরীক্ষার সাল ২০২৫ সিলেক্ট করে রোল ও রেজিস্ট্রেশন দিয়ে দেখা যাবে।"
-      }
-    ]
-  },
-  {
-    "id": "hsc-result-2025",
-    "slug": "hsc-result-2025",
-    "title": "HSC Result 2025 Archive — এইচএসসি পরীক্ষার ফলাফল ও পরিসংখ্যান",
-    "category": "result",
-    "categoryBn": "ফলাফল",
-    "date": "১০ অক্টোবর ২০২৫",
-    "lastUpdated": "১০ অক্টোবর ২০২৫",
-    "isNew": false,
-    "linkText": "২০২৫ সালের এইচএসসি রেজাল্ট আর্কাইভ",
-    "officialSource": "http://www.educationboardresults.gov.bd/",
-    "officialSourceName": "শিক্ষা বোর্ড ফলাফল গেটওয়ে",
-    "summary": "২০২৫ শিক্ষাবর্ষের এইচএসসি ও সমমান পরীক্ষার ফলাফল আর্কাইভ এবং কলেজভিত্তিক পারফরম্যান্স ডাটা।",
-    "pdfUrl": "http://www.educationboardresults.gov.bd/",
-    "content": "২০২৫ সালের এইচএসসি ও আলিম পরীক্ষার ফলাফল সংক্রান্ত সকল আর্কাইভ তথ্য।",
-    "faq": [
-      {
-        "q": "প্রতিষ্ঠানভিত্তিক ফলাফল (EIIN দিয়ে) দেখা যায়?",
-        "a": "হ্যাঁ, প্রতিষ্ঠানের EIIN নম্বর দিয়ে eboardresults.com থেকে পুরো কলেজের রেজাল্ট শিট ডাউনলোড করা যায়।"
-      }
-    ]
-  },
-  {
     "id": "ssc-board-challenge",
     "slug": "ssc-board-challenge",
-    "title": "SSC Board Challenge 2026-2027 — এসএসসি খাতা চ্যালেঞ্জ ও পুনঃনিরীক্ষণ আবেদন",
+    "title": "SSC Board Challenge | এসএসসি খাতা চ্যালেঞ্জ ও পুনঃনিরীক্ষণ",
     "category": "notice",
     "categoryBn": "নোটিশ",
     "date": "০১ অক্টোবর ২০২৬",
-    "lastUpdated": "০১ অক্টোবর ২০২৬",
+    "lastUpdated": "১৪ নভেম্বর ২০২৬",
     "isNew": true,
     "linkText": "খাতা চ্যালেঞ্জ নিয়ম ও কোড দেখুন",
     "officialSource": "http://www.educationboardresults.gov.bd/",
     "officialSourceName": "আন্তঃশিক্ষা বোর্ড সমন্বয় কমিটি",
     "summary": "টেলিটকের মাধ্যমে এসএসসি ও দাখিল পরীক্ষার খাতা চ্যালেঞ্জ করার বিস্তারিত নিয়মাবলী ও বিষয় কোড তালিকা।",
     "pdfUrl": "http://www.educationboardresults.gov.bd/",
-    "content": "ফলাফল পুনঃনিরীক্ষণের জন্য টেলিটক সিমের মাধ্যমে নির্ধারিত ফি প্রদান করে আবেদন করা যাবে।\n\n### আবেদনের নিয়ম:\n`RSC <Space> Board <Space> Roll <Space> SubjectCode` লিখে পাঠিয়ে দিন `16222` নম্বরে।",
-    "faq": [
+    "content": "এসএসসি ও দাখিল পরীক্ষার ফল প্রকাশের পর যাদের কাঙ্ক্ষিত ফল আসেনি, তারা টেলিটকের মাধ্যমে খাতা পুনঃনিরীক্ষণের (বোর্ড চ্যালেঞ্জ) আবেদন করতে পারবেন। আবেদন করতে হয় ফল প্রকাশের পর বোর্ডের নির্ধারিত সময়ের মধ্যে — নির্ধারিত সময় পেরিয়ে গেলে আর আবেদন করা যায় না।\n\n### খাতা চ্যালেঞ্জ (পুনঃনিরীক্ষণ) কী\n\nপুনঃনিরীক্ষণে বোর্ড যাচাই করে দেখে — সব প্রশ্নের উত্তর মূল্যায়ন করা হয়েছে কি না, নম্বর ঠিকমতো যোগ করা হয়েছে কি না এবং নম্বর OMR শিটে সঠিকভাবে তোলা হয়েছে কি না।\n\n### কারা আবেদন করতে পারবে\n\nফল নিয়ে অসন্তুষ্ট যেকোনো পরীক্ষার্থী — পাস করা বা অকৃতকার্য — নিজের যেকোনো বিষয়ের খাতা পুনঃনিরীক্ষণের আবেদন করতে পারে। একাধিক বিষয়ের জন্য একসঙ্গে আবেদন করা যায়।\n\n### আবেদনের নিয়ম (টেলিটক এসএমএস)\n\n১. টেলিটক প্রিপেইড সিম থেকে মেসেজ অপশনে গিয়ে লিখুন: `RSC <Space> বোর্ডের প্রথম ৩ অক্ষর <Space> রোল নম্বর <Space> বিষয় কোড` — যেমন ঢাকা বোর্ডের জন্য বোর্ড কোড DHA।\n২. মেসেজটি পাঠিয়ে দিন `16222` নম্বরে।\n৩. জবাবি এসএমএসে পিন নম্বর এলে তা দিয়ে আবেদন নিশ্চিত করতে হবে।\n৪. একাধিক বিষয়ের আবেদন একই এসএমএসে করা যায় — বিষয় কোডগুলো কমা (,) দিয়ে আলাদা করে লিখুন, যেমন: 101,102,107।\n৫. দুই পত্রের বিষয়ে আবেদন করতে হলে দুই পত্রের জন্যই আবেদন করতে হয়।\n\n### আবেদন ফি\n\nসাধারণত প্রতি পত্রের জন্য ১২৫ থেকে ১৫০ টাকা হারে সরকারি ফি প্রযোজ্য হয়।\n\n### ফল কবে ও যেভাবে জানবেন\n\nপুনঃনিরীক্ষণের ফল প্রকাশ হলে আবেদনের সময় দেওয়া মোবাইল নম্বরে এসএমএসের মাধ্যমে জানানো হয়। এছাড়া নিজ নিজ শিক্ষা বোর্ডের ওয়েবসাইটে ফলের নোটিশ দেওয়া হয়, আর গ্রেড বদলালে নতুন ফল educationboardresults.gov.bd-তেও দেখা যায়।\n\n### ফল বদলালে কী হবে\n\nপুনঃনিরীক্ষণে গ্রেড বদলালে সেটাই চূড়ান্ত ফল হবে। নতুন গ্রেড অনুযায়ী মার্কশিট সংগ্রহ করতে নিজ বোর্ডের নির্দেশনা অনুসরণ করুন।",
+        "faq": [
       {
         "q": "খাতা চ্যালেঞ্জে প্রতি বিষয়ের ফি কত?",
         "a": "সাধারণত প্রতি পত্রের জন্য ১২৫ থেকে ১৫০ টাকা হারে সরকারি ফি প্রযোজ্য হয়।"
+      },
+      {
+        "q": "এসএমএসে বোর্ডের নাম কীভাবে লিখব?",
+        "a": "বোর্ডের নামের প্রথম ৩ অক্ষর লিখতে হয় — যেমন ঢাকা বোর্ডের জন্য DHA। এরপর রোল নম্বর ও বিষয় কোড লিখে 16222 নম্বরে পাঠাতে হয়।"
+      },
+      {
+        "q": "পুনঃনিরীক্ষণের ফল কবে পাব?",
+        "a": "ফল প্রকাশের তারিখ বোর্ড আলাদা নোটিশে জানায়। ফল প্রকাশ হলে আবেদনের সময় দেওয়া মোবাইল নম্বরে এসএমএসের মাধ্যমে জানানো হয়।"
       }
     ]
   }
@@ -21471,6 +21595,41 @@ export function getBooksByYear(year: number): Book[] {
 
 export function getNoticeBySlug(slug: string): NoticeItem | undefined {
   return NOTICES_DATA.find((n) => n.slug === slug);
+}
+
+/**
+ * H3 — disambiguator for books that share (classLevel, year, titleBn).
+ * 72 such groups (144 books) exist in the data. The suffix is always a
+ * REAL property of the record, never invented:
+ * - medium differs (Bangla medium vs English version): the English-version
+ *   record gets " (ইংরেজি সংস্করণ)", the Bangla-medium one keeps the plain title.
+ * - same title, same medium: the records are two different files of the same
+ *   book and differ in the data only by page count (and file size), so the
+ *   page count — a real property of each file — distinguishes them.
+ */
+export function getBookTitleSuffix(book: Book): string {
+  const peers = BOOKS_DATA.filter(
+    (b) => b.classLevel === book.classLevel && b.year === book.year && b.titleBn === book.titleBn
+  );
+  if (peers.length <= 1) return '';
+  if (peers.some((b) => b.medium !== book.medium)) {
+    return book.medium === 'english' ? ' (ইংরেজি সংস্করণ)' : '';
+  }
+  return ` (${book.pageCount} পৃষ্ঠা)`;
+}
+
+export function getBookDisplayTitleBn(book: Book): string {
+  return `${book.titleBn}${getBookTitleSuffix(book)}`;
+}
+
+/** M2 — truncate an emitted meta description to ~155 chars, at a word boundary. */
+export function truncateMetaDescription(text: string, maxLength = 155): string {
+  const clean = text.replace(/\s+/g, ' ').trim();
+  if (clean.length <= maxLength) return clean;
+  const cut = clean.slice(0, maxLength - 1);
+  const lastSpace = cut.lastIndexOf(' ');
+  const base = lastSpace > 100 ? cut.slice(0, lastSpace) : cut;
+  return `${base.trim()}…`;
 }
 
 /**

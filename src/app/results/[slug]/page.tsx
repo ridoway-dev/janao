@@ -32,10 +32,10 @@ export async function generateMetadata({ params }: ResultPageProps): Promise<Met
   }
 
   return {
-    title: `${item.title} - janao.online`,
+    title: item.title,
     description: item.summary,
     openGraph: {
-      title: `${item.title} - janao.online`,
+      title: item.title,
       description: item.summary,
       url: `https://janao.online/results/${slug}/`,
       siteName: 'janao.online',
@@ -52,12 +52,16 @@ export async function generateMetadata({ params }: ResultPageProps): Promise<Met
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${item.title} - janao.online`,
+      title: item.title,
       description: item.summary,
       images: ['https://janao.online/og-image.png'],
     },
     alternates: {
       canonical: `https://janao.online/results/${slug}/`,
+      languages: {
+        'bn-BD': `https://janao.online/results/${slug}/`,
+        'x-default': `https://janao.online/results/${slug}/`,
+      },
     },
   };
 }
@@ -80,6 +84,7 @@ export default async function ResultArticlePage({ params }: ResultPageProps) {
     datePublished: bnDateToIso(item.date),
     dateModified: bnDateToIso(item.lastUpdated) ?? bnDateToIso(item.date),
     description: item.summary,
+    image: 'https://janao.online/og-image.png',
     author: {
       '@type': 'Organization',
       name: 'janao.online',

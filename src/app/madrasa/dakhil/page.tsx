@@ -12,15 +12,33 @@ export const metadata: Metadata = {
   description: 'বাংলাদেশ মাদ্রাসা শিক্ষা বোর্ড অনুমোদিত দাখিল ৬ষ্ঠ থেকে ১০ম শ্রেণির সকল বিষয়ের পাঠ্যবই (কুরআন মাজীদ, হাদিস শরীফ, ফিকহ, আরবি ও সাধারণ বিজ্ঞান) ডাউনলোড ও পড়ার তালিকা।',
   alternates: {
     canonical: 'https://janao.online/madrasa/dakhil/',
+    languages: {
+      'bn-BD': 'https://janao.online/madrasa/dakhil/',
+      'x-default': 'https://janao.online/madrasa/dakhil/',
+    },
   },
 };
 
 export default function DakhilHubPage() {
   const dakhilBooks = BOOKS_DATA.filter((b) => b.category === 'dakhil' && b.year === 2026);
 
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'হোম', item: 'https://janao.online/' },
+      { '@type': 'ListItem', position: 2, name: 'পাঠ্যবই', item: 'https://janao.online/books/' },
+      { '@type': 'ListItem', position: 3, name: 'মাদ্রাসা দাখিল (৬ষ্ঠ–১০ম)', item: 'https://janao.online/madrasa/dakhil/' },
+    ],
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-white dark:bg-[#0b0f19] text-gray-900 dark:text-gray-100 font-sans">
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
 
       <main className="flex-1 max-w-5xl mx-auto px-4 sm:px-6 py-6 sm:py-10 w-full">
         
@@ -50,6 +68,16 @@ export default function DakhilHubPage() {
             দাখিল পরীক্ষার হাদিস শরীফ, ফিকহ ও উসূলে ফিকহ, কাওয়াইদুল লুগাহ সহ সাধারণ বিষয়ের সকল বই নিচে দেওয়া রয়েছে।
           </p>
         </div>
+
+        {/* About this level */}
+        <section className="mb-8 bg-white dark:bg-[#0f172a] border border-gray-200 dark:border-gray-800 rounded-xl p-6">
+          <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+            দাখিল স্তরে কী কী বিষয় পড়ানো হয়
+          </h2>
+          <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+            দাখিল স্তর মাধ্যমিক পর্যায়ের মাদ্রাসা শিক্ষা—৬ষ্ঠ থেকে ১০ম শ্রেণি পর্যন্ত। এখানে কুরআন মাজিদ ও তাজবীদ, হাদিস শরিফ, ফিকহ, আরবি ১ম ও ২য় পত্রের মতো ধর্মীয় বিষয়ের পাশাপাশি গণিত, বিজ্ঞান, বাংলা ও ইংরেজির মতো সাধারণ বিষয়ও পড়ানো হয়। দাখিল ৯ম ও ১০ম শ্রেণির বই একসঙ্গে তালিকাভুক্ত করা হয়েছে, কারণ এই দুই শ্রেণির পাঠ্যক্রম দাখিল পরীক্ষার প্রস্তুতির সঙ্গে যুক্ত। নিচের তালিকা থেকে শ্রেণি অনুযায়ী বই বেছে নিয়ে সরাসরি পড়ুন বা PDF ডাউনলোড করুন।
+          </p>
+        </section>
 
         {/* Quick Class filter pills */}
         <div className="flex flex-wrap gap-2 mb-6">

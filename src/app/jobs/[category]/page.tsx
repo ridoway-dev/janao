@@ -12,7 +12,7 @@ interface JobsCategoryPageProps {
   }>;
 }
 
-const JOBS_MAP: Record<string, { titleBn: string; titleEn: string; desc: string; officialUrl: string; officialName: string; highlights: string[] }> = {
+const JOBS_MAP: Record<string, { titleBn: string; titleEn: string; desc: string; officialUrl: string; officialName: string; highlights: string[]; guideTitle?: string; guide?: string[] }> = {
   government: {
     titleBn: 'সরকারি চাকরি সার্কুলার ২০২৬–২০২৭',
     titleEn: 'Government Job Circular Bangladesh',
@@ -20,6 +20,11 @@ const JOBS_MAP: Record<string, { titleBn: string; titleEn: string; desc: string;
     officialUrl: 'http://alljobs.teletalk.com.bd/',
     officialName: 'alljobs.teletalk.com.bd',
     highlights: ['মন্ত্রণালয় ও সচিবালয় নিয়োগ', 'অধিদপ্তর ও পরিদপ্তর সার্কুলার', 'প্রাথমিক শিক্ষক নিয়োগ', 'রেলওয়ে ও পুলিশ নিয়োগ'],
+    guideTitle: 'সরকারি চাকরির সার্কুলার: যা জানা দরকার',
+    guide: [
+      'মন্ত্রণালয়, অধিদপ্তর, পরিদপ্তর ও স্বায়ত্তশাসিত প্রতিষ্ঠানের ১১তম থেকে ২০তম গ্রেডের পদের নিয়োগ বিজ্ঞপ্তি এই বিভাগে পাবেন। প্রাথমিক সহকারী শিক্ষক নিয়োগ, রেলওয়ে ও পুলিশ নিয়োগসহ বিভিন্ন দপ্তরের সার্কুলার ও অনলাইন আবেদনের নির্দেশিকা এখানে তুলে ধরা হয়েছে।',
+      'বেশিরভাগ সরকারি নিয়োগের আবেদন করতে হয় টেলিটকের অলজবস পোর্টালের মাধ্যমে। আবেদনের পর ফি জমা দিতে হয় টেলিটক প্রি-পেইড সংযোগ থেকে এসএমএসের মাধ্যমে। প্রতিটি সার্কুলারে পদের সংখ্যা, শিক্ষাগত যোগ্যতা, বয়সসীমা ও আবেদনের শেষ তারিখ আলাদা হয়, তাই আবেদনের আগে অফিশিয়াল বিজ্ঞপ্তিটি ভালোভাবে পড়ে নিন। সার্কুলারে দেওয়া শিক্ষাগত যোগ্যতা ও অভিজ্ঞতার শর্ত পূরণ না হলে আবেদন বাতিল হতে পারে, তাই আবেদনের আগে শর্তগুলো মিলিয়ে নিন। প্রবেশপত্র ডাউনলোডের তারিখ ও পরীক্ষার কেন্দ্রের তথ্য প্রকাশিত হলে সংশ্লিষ্ট পোর্টাল থেকেই জানা যাবে। কোনো নিয়োগের নামে কেউ টাকা চাইলে তা প্রতারণা বলে ধরে নিন—সরকারি চাকরির আবেদনে নির্ধারিত ফি ছাড়া আর কোনো টাকা লাগে না।',
+    ],
   },
   bcs: {
     titleBn: 'বিসিএস ও পিএসসি সার্কুলার প্রস্তুতি',
@@ -28,6 +33,11 @@ const JOBS_MAP: Record<string, { titleBn: string; titleEn: string; desc: string;
     officialUrl: 'http://bpsc.teletalk.com.bd/',
     officialName: 'bpsc.teletalk.com.bd',
     highlights: ['সাধারণ ক্যাডার পদসমূহ', 'টেকনিক্যাল/প্রফেশনাল ক্যাডার', 'বিসিএস প্রিলি মানবণ্টন', 'লিখিত পরীক্ষার সিলেবাস'],
+    guideTitle: 'বিসিএস পরীক্ষা: যা জানা দরকার',
+    guide: [
+      'বিসিএস বাংলাদেশের সবচেয়ে প্রতিযোগিতামূলক সরকারি চাকরির পরীক্ষা। বাংলাদেশ সরকারি কর্ম কমিশন (বিপিএসসি) এই পরীক্ষা পরিচালনা করে। এই পাতায় ৪৬তম ও ৪৭তম বিসিএসের প্রিলিমিনারি সিলেবাস, মানবণ্টন, ক্যাডার পছন্দক্রম সাজানোর নির্দেশিকা ও ভাইভা প্রস্তুতির তথ্য পাবেন। সাধারণ ক্যাডার ও টেকনিক্যাল বা প্রফেশনাল ক্যাডার—দুই ধারার পদের তথ্যই এখানে তুলে ধরা হয়েছে।',
+      'প্রিলিমিনারি পরীক্ষায় উত্তীর্ণ হলে লিখিত পরীক্ষা দিতে হয়, আর লিখিত পরীক্ষায় উত্তীর্ণ হলে ভাইভা। আবেদন করতে হয় বিপিএসসির টেলিটক পোর্টালের মাধ্যমে। ক্যাডার পছন্দক্রম সাজানোর আগে প্রতিটি ক্যাডারের কাজের ধরন ও সুযোগ-সুবিধা সম্পর্কে জেনে নিন। প্রতিটি সার্কুলারে বয়সসীমা, শিক্ষাগত যোগ্যতা ও আবেদনের ফি আলাদা হতে পারে, তাই আবেদনের আগে অফিশিয়াল সার্কুলারটি ভালোভাবে পড়ে নিন। প্রিলিমিনারি পরীক্ষার প্রস্তুতিতে সিলেবাস ধরে বিষয়ভিত্তিক পড়াশোনা সাজান এবং নিয়মিত মডেল টেস্ট দিয়ে নিজের অগ্রগতি যাচাই করুন। ভাইভার আগে নিজের শিক্ষাগত পটভূমি, ক্যাডার পছন্দের কারণ ও সাম্প্রতিক ঘটনাবলি সম্পর্কে প্রস্তুতি নিয়ে রাখুন।',
+    ],
   },
   bank: {
     titleBn: 'ব্যাংক জব সার্কুলার ও প্রস্তুতি ২০২৬',
@@ -44,6 +54,11 @@ const JOBS_MAP: Record<string, { titleBn: string; titleEn: string; desc: string;
     officialUrl: 'https://janao.online/jobs/',
     officialName: 'janao.online/jobs',
     highlights: ['টেলিকম ও আইটি চাকরি', 'ফার্মাসিউটিক্যালস ক্যারিয়ার', 'ব্র্যাক ও এনজিও সেক্টর', 'ম্যানেজমেন্ট ট্রেইনি পদ'],
+    guideTitle: 'বেসরকারি চাকরি: যা জানা দরকার',
+    guide: [
+      'বেসরকারি খাতে ক্যারিয়ার গড়তে চাইলে এই বিভাগে দেশের শীর্ষস্থানীয় বহুজাতিক কোম্পানি, টেলিকম, ফার্মাসিউটিক্যালস ও বেসরকারি উন্নয়ন সংস্থার (এনজিও) নিয়োগ তথ্য পাবেন। ব্র্যাকসহ বিভিন্ন এনজিও, আইটি প্রতিষ্ঠান ও করপোরেট অফিসের ম্যানেজমেন্ট ট্রেইনি পদের সার্কুলার এখানে তুলে ধরা হয়েছে।',
+      'বেসরকারি চাকরিতে সাধারণত প্রতিষ্ঠানের নিজস্ব ক্যারিয়ার পোর্টালের মাধ্যমে সিভি জমা দিতে হয়। আবেদনের আগে প্রতিষ্ঠানটি সম্পর্কে জেনে নিন, সিভিতে আপনার দক্ষতা ও অভিজ্ঞতা স্পষ্টভাবে তুলে ধরুন এবং সাক্ষাৎকারের প্রস্তুতি নিন। চাকরির বিজ্ঞপ্তি দেখার সময় প্রতিষ্ঠানের নাম, পদের বিবরণ ও আবেদনের শেষ তারিখ মিলিয়ে নিন। কিছু প্রতিষ্ঠান ওয়াক-ইন ইন্টারভিউও নেয়—সেক্ষেত্রে হালনাগাদ সিভি ও প্রয়োজনীয় কাগজপত্র সঙ্গে নিয়ে যেতে হয়। সার্কুলার যাচাই না করে কোনো অজানা নম্বরে টাকা পাঠাবেন না—প্রকৃত নিয়োগদাতা কখনো চাকরির বিনিময়ে টাকা চায় না।',
+    ],
   },
 };
 
@@ -67,9 +82,12 @@ export async function generateMetadata({ params }: JobsCategoryPageProps): Promi
   return {
     title: `${data.titleBn} — নিয়োগ বিজ্ঞপ্তি ও আবেদন | Janao.online`,
     description: data.desc,
-    keywords: [data.titleBn, data.titleEn, 'Govt job circular BD', 'চাকরি সার্কুলার ২০২৬'],
     alternates: {
       canonical: `https://janao.online/jobs/${category}/`,
+      languages: {
+        'bn-BD': `https://janao.online/jobs/${category}/`,
+        'x-default': `https://janao.online/jobs/${category}/`,
+      },
     },
   };
 }
@@ -82,9 +100,23 @@ export default async function JobsCategoryPage({ params }: JobsCategoryPageProps
     notFound();
   }
 
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'হোম', item: 'https://janao.online/' },
+      { '@type': 'ListItem', position: 2, name: 'চাকরি হাব', item: 'https://janao.online/jobs/' },
+      { '@type': 'ListItem', position: 3, name: data.titleBn, item: `https://janao.online/jobs/${category}/` },
+    ],
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-gray-50 dark:bg-[#0b0f19] text-gray-900 dark:text-gray-100 font-sans">
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
 
       {/* Breadcrumb */}
       <div className="bg-white dark:bg-[#0f172a] border-b border-gray-200 dark:border-gray-800 py-3">
@@ -141,6 +173,20 @@ export default async function JobsCategoryPage({ params }: JobsCategoryPageProps
             ))}
           </div>
         </section>
+
+        {/* Guide */}
+        {data.guide && (
+          <section className="mb-10 bg-white dark:bg-[#0f172a] border border-gray-200 dark:border-gray-800 rounded-xl p-6">
+            <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+              {data.guideTitle}
+            </h2>
+            {data.guide.map((para, idx) => (
+              <p key={idx} className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-3 last:mb-0">
+                {para}
+              </p>
+            ))}
+          </section>
+        )}
 
         {/* Other Job Categories */}
         <section className="pt-6 border-t border-gray-200 dark:border-gray-800">

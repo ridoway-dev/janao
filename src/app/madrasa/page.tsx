@@ -7,7 +7,6 @@ import { BookOpen, ChevronRight, ArrowRight } from 'lucide-react';
 export const metadata: Metadata = {
   title: 'মাদ্রাসা শিক্ষাক্রম পাঠ্যবই ২০২৬ ও ২০২৭ — ইবতেদায়ি ও দাখিল | Janao.online',
   description: 'বাংলাদেশ মাদ্রাসা শিক্ষা বোর্ড ও NCTB প্রকাশিত ইবতেদায়ি (১ম–৫ম) এবং দাখিল (৬ষ্ঠ–১০ম) শ্রেণির সকল বিষয়ের পাঠ্যবই PDF ও সিলেবাস নির্দেশিকা।',
-  keywords: ['মাদ্রাসা বই ২০২৬', 'ইবতেদায়ি বই', 'দাখিল বই ২০২৬', 'দাখিল গণিত', 'কুরআন মাজিদ বই', 'Madrasa Books PDF'],
   alternates: {
     canonical: 'https://janao.online/madrasa/',
     languages: {
@@ -18,9 +17,22 @@ export const metadata: Metadata = {
 };
 
 export default function MadrasaIndexPage() {
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'হোম', item: 'https://janao.online/' },
+      { '@type': 'ListItem', position: 2, name: 'মাদ্রাসা শিক্ষাক্রম', item: 'https://janao.online/madrasa/' },
+    ],
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-gray-50 dark:bg-[#0b0f19] text-gray-900 dark:text-gray-100 font-sans">
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
 
       {/* Breadcrumb Header */}
       <div className="bg-white dark:bg-[#0f172a] border-b border-gray-200 dark:border-gray-800 py-3">

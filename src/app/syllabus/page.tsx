@@ -16,17 +16,6 @@ import {
 export const metadata: Metadata = {
   title: '২০২৭ সালের এসএসসি ও এইচএসসি রুটিন এবং সিলেবাস — NCTB Syllabus & Routine | Janao.online',
   description: '২০২৭ সালের এসএসসি ও এইচএসসি পরীক্ষার অফিশিয়াল রুটিন, এসএসসি ২০২৭ পূর্ণাঙ্গ সিলেবাস PDF, এসএসসি ২০২৬ সংক্ষিপ্ত সিলেবাস ও ১ম-১০ম শ্রেণি এবং ইবতেদায়ি পাঠ্যবইয়ের তালিকা।',
-  keywords: [
-    'SSC routine 2027',
-    'HSC routine 2027',
-    'SSC syllabus 2027 pdf',
-    'SSC 2026 short syllabus',
-    'NCTB syllabus 2026 2027',
-    '২০২৭ এসএসসি রুটিন',
-    '২০২৭ এইচএসসি রুটিন',
-    'এসএসসি ২০২৭ সিলেবাস',
-    'ইবতেদায়ি সিলেবাস ও বই ২০২৬',
-  ],
   alternates: {
     canonical: 'https://janao.online/syllabus/',
     languages: {
@@ -37,6 +26,15 @@ export const metadata: Metadata = {
 };
 
 export default function SyllabusPage() {
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'হোম', item: 'https://janao.online/' },
+      { '@type': 'ListItem', position: 2, name: 'সিলেবাস ও পরীক্ষার রুটিন', item: 'https://janao.online/syllabus/' },
+    ],
+  };
+
   const primaryClasses = [
     { name: '১ম শ্রেণি', link: '/books/class-1/', code: 'Class 1' },
     { name: '২য় শ্রেণি', link: '/books/class-2/', code: 'Class 2' },
@@ -71,6 +69,10 @@ export default function SyllabusPage() {
   return (
     <div className="min-h-screen flex flex-col bg-gray-50 dark:bg-[#0b0f19] text-gray-900 dark:text-gray-100 font-sans">
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
 
       {/* Breadcrumb Header */}
       <div className="bg-white dark:bg-[#0f172a] border-b border-gray-200 dark:border-gray-800 py-3">

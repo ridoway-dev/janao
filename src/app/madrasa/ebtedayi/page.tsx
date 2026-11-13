@@ -12,15 +12,33 @@ export const metadata: Metadata = {
   description: 'বাংলাদেশ মাদ্রাসা শিক্ষা বোর্ড ও এনসিটিবি প্রণীত ইবতেদায়ি ১ম থেকে ৫ম শ্রেণির সকল পাঠ্যবই (কুরআন মাজীদ, তাজবীদ, আরবি ও সাধারণ বিষয়) সরাসরি ডাউনলোড ও পড়ার তালিকা।',
   alternates: {
     canonical: 'https://janao.online/madrasa/ebtedayi/',
+    languages: {
+      'bn-BD': 'https://janao.online/madrasa/ebtedayi/',
+      'x-default': 'https://janao.online/madrasa/ebtedayi/',
+    },
   },
 };
 
 export default function IbtedaiHubPage() {
   const ibtedaiBooks = BOOKS_DATA.filter((b) => b.category === 'ibtedai' && b.year === 2026);
 
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'হোম', item: 'https://janao.online/' },
+      { '@type': 'ListItem', position: 2, name: 'পাঠ্যবই', item: 'https://janao.online/books/' },
+      { '@type': 'ListItem', position: 3, name: 'মাদ্রাসা ইবতেদায়ি (১ম–৫ম)', item: 'https://janao.online/madrasa/ebtedayi/' },
+    ],
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-white dark:bg-[#0b0f19] text-gray-900 dark:text-gray-100 font-sans">
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
 
       <main className="flex-1 max-w-5xl mx-auto px-4 sm:px-6 py-6 sm:py-10 w-full">
         
@@ -50,6 +68,16 @@ export default function IbtedaiHubPage() {
             মাদ্রাসা ইবতেদায়ি স্তরের কুরআন মাজীদ ও তাজবীদ, আল আকাইদ ওয়াল ফিকহ, আরবি ব্যাকরণ এবং অন্যান্য সাধারণ পাঠ্যবইসমূহ নিচে তালিকাভুক্ত রয়েছে।
           </p>
         </div>
+
+        {/* About this level */}
+        <section className="mb-8 bg-white dark:bg-[#0f172a] border border-gray-200 dark:border-gray-800 rounded-xl p-6">
+          <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+            ইবতেদায়ি স্তরে কী কী বিষয় পড়ানো হয়
+          </h2>
+          <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+            ইবতেদায়ি স্তর মাদ্রাসা শিক্ষার প্রাথমিক ধাপ—১ম থেকে ৫ম শ্রেণি পর্যন্ত। এখানে কুরআন মাজীদ ও তাজবীদ, আল আকাইদ ওয়াল ফিকহ ও আরবি ব্যাকরণের মতো ধর্মীয় বিষয়ের পাশাপাশি আমার বাংলা বই, প্রাথমিক গণিত, ইংরেজি ও পরিবেশ পরিচিতির মতো সাধারণ বিষয় পড়ানো হয়। নিচের তালিকা থেকে শ্রেণি অনুযায়ী বই বেছে নিয়ে সরাসরি পড়ুন বা PDF ডাউনলোড করুন।
+          </p>
+        </section>
 
         {/* Quick Class filter pills */}
         <div className="flex flex-wrap gap-2 mb-6">

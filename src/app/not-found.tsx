@@ -1,7 +1,16 @@
 import Link from 'next/link';
+import type { Metadata } from 'next';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Search, Home, BookOpen, AlertCircle } from 'lucide-react';
+
+// Distinct title: this page previously inherited the home title, so the
+// 404 page shared its <title> with `/` and `/_not-found/`.
+export const metadata: Metadata = {
+  title: 'পেজটি খুঁজে পাওয়া যায়নি (404) | janao.online',
+  description:
+    'আপনি যে ঠিকানাটি খুঁজছেন তা স্থানান্তরিত হয়েছে অথবা লিংকটি সঠিক নয়। মূল পাতা, ২০২৭ পাঠ্যবই, ফলাফল ও চাকরি সার্কুলার থেকে প্রয়োজনীয় তথ্য খুঁজে নিন।',
+};
 
 export default function NotFound() {
   return (

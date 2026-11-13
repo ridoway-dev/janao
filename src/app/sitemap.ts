@@ -187,13 +187,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
   );
 
-  // 2b. Class Pillar Pages (Class 1-12) for 2027
-  const class2027Pillars: MetadataRoute.Sitemap = Array.from({ length: 12 }, (_, i) => ({
-    url: `${baseUrl}/books/2027/class-${i + 1}/`,
-    lastModified: latestContentDate,
-    changeFrequency: 'weekly',
-    priority: 0.9,
-  }));
+  // 2b. Class Pillar Pages (2027) — built from CLASS_SHORTCUTS, the same
+  // source the 2026 pillars and the 2027 pages use, so the 9 madrasa
+  // pillars (ibtedai-1..5, dakhil-6..9) are listed too, not only class-1..12.
+  const class2027Pillars: MetadataRoute.Sitemap = CLASS_SHORTCUTS.flatMap((g) =>
+    g.classes.map((c) => ({
+      url: `${baseUrl}/books/2027/${c.id}/`,
+      lastModified: latestContentDate,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    })),
+  );
 
   // 3. Individual Book Pages (2026) — only year-2026 records. The
   // year-2027 records carry `-2027` slugs that have no built page

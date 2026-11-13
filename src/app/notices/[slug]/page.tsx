@@ -45,7 +45,7 @@ export async function generateMetadata({ params }: NoticePageProps): Promise<Met
     return { title: 'নোটিশ পাওয়া যায়নি | janao.online' };
   }
 
-  const title = `${notice.title} - janao.online`;
+  const title = notice.title;
   // Meta descriptions get truncated by Google at ~155-160 chars, so keep
   // the summary to ~120 chars and do not append the old fixed
   // "রুটিন ডাউনলোড" suffix — it was wrong for non-routine notices.
@@ -81,6 +81,10 @@ export async function generateMetadata({ params }: NoticePageProps): Promise<Met
     },
     alternates: {
       canonical: `https://janao.online/notices/${slug}/`,
+      languages: {
+        'bn-BD': `https://janao.online/notices/${slug}/`,
+        'x-default': `https://janao.online/notices/${slug}/`,
+      },
     },
   };
 }
@@ -113,6 +117,7 @@ export default async function NoticeDetailPage({ params }: NoticePageProps) {
     datePublished: bnDateToIso(notice.date),
     dateModified: bnDateToIso(notice.lastUpdated) ?? bnDateToIso(notice.date),
     description: notice.summary,
+    image: 'https://janao.online/og-image.png',
     author: {
       '@type': 'Organization',
       name: 'janao.online',
@@ -267,20 +272,34 @@ export default async function NoticeDetailPage({ params }: NoticePageProps) {
                 অফিসিয়াল ডকুমেন্ট / রুটিন / সিলেবাস সংরক্ষণ করুন
               </span>
               <span className="text-xs text-gray-600 dark:text-gray-300">
-                শিক্ষা বোর্ড ও এনসিটিবি কর্তৃক প্রকাশিত মূল ফাইল সরাসরি PDF আকারে ডাউনলোড করুন।
+                {notice.pdfUrl
+                  ? 'শিক্ষা বোর্ড ও এনসিটিবি কর্তৃক প্রকাশিত মূল ফাইল সরাসরি PDF আকারে ডাউনলোড করুন।'
+                  : 'অফিশিয়াল ওয়েবসাইটে প্রকাশিত মূল নোটিশটি দেখুন।'}
               </span>
             </div>
 
             <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto">
-              <a
-                href={notice.pdfUrl || notice.officialSource || '#'}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex-1 sm:flex-initial px-4 sm:px-5 py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-lg text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition shadow-xs text-center"
-              >
-                <Download className="w-4 h-4" />
-                <span>📥 PDF ডাউনলোড করুন</span>
-              </a>
+              {notice.pdfUrl ? (
+                <a
+                  href={notice.pdfUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 sm:flex-initial px-4 sm:px-5 py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-lg text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition shadow-xs text-center"
+                >
+                  <Download className="w-4 h-4" />
+                  <span>📥 PDF ডাউনলোড করুন</span>
+                </a>
+              ) : notice.officialSource ? (
+                <a
+                  href={notice.officialSource}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 sm:flex-initial px-4 sm:px-5 py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-lg text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition shadow-xs text-center"
+                >
+                  <ExternalLink className="w-4 h-4" />
+                  <span>অফিশিয়াল নোটিশ দেখুন</span>
+                </a>
+              ) : null}
 
               {notice.officialSource && (
                 <a

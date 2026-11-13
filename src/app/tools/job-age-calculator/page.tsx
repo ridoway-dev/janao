@@ -17,19 +17,12 @@ import {
 export const metadata: Metadata = {
   title: 'সরকারি চাকরির বয়স ক্যালকুলেটর — Job Age Calculator Bangladesh | Janao.online',
   description: 'সরকারি চাকরি ও বিসিএস সার্কুলারের নির্দিষ্ট তারিখে আপনার বয়স কত বছর, মাস ও দিন হয়েছে এবং সাধারণ (১৮–৩০ বছর) বা মুক্তিযোদ্ধা/প্রতিবন্ধী কোটায় (৩২ বছর) আবেদনের যোগ্যতা আছে কিনা তা নির্ভুলভাবে হিসাব করুন।',
-  keywords: [
-    'সরকারি চাকরির বয়স ক্যালকুলেটর',
-    'job age calculator bangladesh',
-    'চাকরির বয়স হিসাব করার নিয়ম',
-    'বিসিএস বয়স হিসাব',
-    'সরকারি চাকরির বয়সসীমা',
-    'বয়স ক্যালকুলেটর অনলাইন',
-    'age calculator for govt job bd',
-    'সরকারি চাকরি ৩০ বছর হিসাব',
-    'মুক্তিযোদ্ধা কোটায় বয়সসীমা'
-  ],
   alternates: {
     canonical: 'https://janao.online/tools/job-age-calculator/',
+    languages: {
+      'bn-BD': 'https://janao.online/tools/job-age-calculator/',
+      'x-default': 'https://janao.online/tools/job-age-calculator/',
+    },
   },
   openGraph: {
     title: 'সরকারি চাকরির বয়স ক্যালকুলেটর — Job Age Calculator Bangladesh',
@@ -40,7 +33,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: 'https://janao.online/opengraph-image.png',
+        url: 'https://janao.online/og-image.png',
         width: 1200,
         height: 630,
         alt: 'সরকারি চাকরির বয়স ক্যালকুলেটর — Janao.online',
@@ -51,7 +44,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'সরকারি চাকরির বয়স ক্যালকুলেটর — Job Age Calculator Bangladesh',
     description: 'সরকারি চাকরি ও বিসিএস সার্কুলারের নির্দিষ্ট তারিখে আপনার বয়স ও আবেদনের যোগ্যতা হিসাব করুন।',
-    images: ['https://janao.online/opengraph-image.png'],
+    images: ['https://janao.online/og-image.png'],
   },
 };
 
@@ -148,7 +141,11 @@ export default function JobAgeCalculatorPage() {
       </div>
 
       <main className="flex-1 max-w-5xl mx-auto px-4 sm:px-6 py-6 sm:py-10 w-full space-y-10">
-        
+        {/* Page title: the calculator component below renders its own h2,
+            so the page-level h1 lives here (kept sr-only to avoid
+            duplicating the visible calculator title). */}
+        <h1 className="sr-only">সরকারি চাকরির বয়স ক্যালকুলেটর — Job Age Calculator Bangladesh</h1>
+
         {/* Main Interactive Tool Component */}
         <JobAgeCalculator />
 

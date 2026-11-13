@@ -19,9 +19,23 @@ export const metadata: Metadata = {
 };
 
 export default function NoticesIndexPage() {
+  const collectionSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'শিক্ষা বোর্ড নোটিশ ও রুটিন ২০২৬-২০২৭',
+    description:
+      'শিক্ষা মন্ত্রণালয়, এনসিটিবি ও শিক্ষা বোর্ডসমূহের সকল জরুরি বিজ্ঞপ্তি, পরীক্ষার রুটিন ও নির্দেশিকা।',
+    url: 'https://janao.online/notices/',
+    inLanguage: 'bn-BD',
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-white dark:bg-[#0b0f19] text-gray-900 dark:text-gray-100 font-sans">
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }}
+      />
 
       <main className="flex-1 max-w-4xl mx-auto px-4 sm:px-6 py-6 sm:py-10 w-full">
         
@@ -40,6 +54,13 @@ export default function NoticesIndexPage() {
         </h1>
         <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mb-6">
           শিক্ষা বোর্ড ও শিক্ষা মন্ত্রণালয় কর্তৃক প্রকাশিত সর্বশেষ বিজ্ঞপ্তি এবং নির্দেশনাবলী।
+        </p>
+
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-2">
+          সর্বশেষ শিক্ষা নোটিশ
+        </h2>
+        <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
+          এই পাতায় ভর্তি বিজ্ঞপ্তি, পরীক্ষার রুটিন, সিলেবাস ও ফলাফল সংক্রান্ত সব নোটিশ এক জায়গায় পাবেন। প্রতিটি নোটিশে অফিশিয়াল উৎসের লিংক, গুরুত্বপূর্ণ তারিখ ও আবেদনের নিয়ম দেওয়া আছে—বিস্তারিত পড়তে নোটিশের শিরোনামে ক্লিক করুন। ফলাফল সংক্রান্ত নোটিশগুলো সরাসরি ফলাফল দেখার পাতায় নিয়ে যাবে।
         </p>
 
         <div className="divide-y divide-gray-200 dark:divide-gray-800 border-t border-b border-gray-200 dark:border-gray-800">

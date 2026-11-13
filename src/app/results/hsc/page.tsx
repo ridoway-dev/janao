@@ -21,21 +21,14 @@ import {
 } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'HSC Result 2026 মার্কশিট সহ রেজাল্ট দেখার নিয়ম ও ৩টি ডিরেক্ট লিংক | janao.online',
+  title: 'HSC Result 2026 মার্কশিট সহ রেজাল্ট দেখার নিয়ম ও ৩টি ডিরেক্ট লিংক',
   description: 'এইচএসসি ও আলিম পরীক্ষা ২০২৬ ফলাফল ও পূর্ণাঙ্গ বিষয়ভিত্তিক মার্কশিট ডাউনলোড করুন। eBoardResults সার্ভার ১, ২ ও ৩ সরাসরি লিঙ্ক, রোল ও রেজিস্ট্রেশন ছাড়া রেজাল্ট এবং সকল বোর্ডের এসএমএস (SMS) পদ্ধতি।',
-  keywords: [
-    'HSC Result 2026',
-    'এইচএসসি রেজাল্ট ২০২৬',
-    'HSC result mark sheet with numbers',
-    'eboardresults',
-    'education board results bd',
-    'hsc result 2026 sms format',
-    'dhaka board hsc result',
-    'hsc board challenge 2026',
-    'hsc result server down problem solve'
-  ],
   alternates: {
     canonical: 'https://janao.online/results/hsc/',
+    languages: {
+      'bn-BD': 'https://janao.online/results/hsc/',
+      'x-default': 'https://janao.online/results/hsc/',
+    },
   },
   openGraph: {
     title: 'HSC Result 2026 মার্কশিট সহ দেখার নিয়ম — janao.online',
@@ -44,6 +37,14 @@ export const metadata: Metadata = {
     siteName: 'Janao.online',
     locale: 'bn_BD',
     type: 'article',
+    images: [
+      {
+        url: 'https://janao.online/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'HSC Result 2026 মার্কশিট সহ দেখার নিয়ম — janao.online',
+      },
+    ],
   },
 };
 

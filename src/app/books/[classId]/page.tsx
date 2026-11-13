@@ -41,17 +41,11 @@ export async function generateMetadata({ params }: ClassPageProps): Promise<Meta
   const className = books[0]?.classNameBn || classId;
 
   const title = `${className}-এর সকল NCTB বই ২০২৬ ও ২০২৭ PDF ডাউনলোড | Janao.online`;
-  const description = `${className}-এর সকল বিষয়ের (বাংলা, গণিত, বিজ্ঞান, ইংরেজি সহ) নতুন শিক্ষাক্রম ২০২৬ সালের মূল বোর্ড পাঠ্যবই সম্পূর্ণ বিনামূল্যে ডাউনলোড ও পড়ার তালিকা।`;
+  const description = `${className}-এর সকল বিষয়ের (বাংলা, গণিত, বিজ্ঞান, ইংরেজি সহ) নতুন শিক্ষাক্রম ২০২৬ ও ২০২৭ সালের মূল বোর্ড পাঠ্যবই সম্পূর্ণ বিনামূল্যে ডাউনলোড ও পড়ার তালিকা।`;
 
   return {
     title,
     description,
-    keywords: [
-      `${className} বই ২০২৬`,
-      `${classId} all books pdf`,
-      `NCTB ${className} পাঠ্যবই`,
-      `Class ${classId} books 2026 bangladesh`,
-    ],
     openGraph: {
       title,
       description,
@@ -59,9 +53,21 @@ export async function generateMetadata({ params }: ClassPageProps): Promise<Meta
       siteName: 'janao.online',
       locale: 'bn_BD',
       type: 'website',
+      images: [
+        {
+          url: 'https://janao.online/og-image.png',
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ],
     },
     alternates: {
       canonical: `https://janao.online/books/${classId}/`,
+      languages: {
+        'bn-BD': `https://janao.online/books/${classId}/`,
+        'x-default': `https://janao.online/books/${classId}/`,
+      },
     },
   };
 }

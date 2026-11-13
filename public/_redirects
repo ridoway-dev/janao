@@ -8,5 +8,10 @@ http://janao.online/* https://janao.online/:splat 301
 /notices/primary-scholarship-result-2025/ /results/primary-scholarship-result-2025/ 301
 /notices/ssc-result-2026/ /results/ssc-result-2026/ 301
 /notices/hsc-result-2026/ /results/hsc-result-2026/ 301
-/notices/ssc-result-2025/ /results/ssc-result-2025/ 301
-/notices/hsc-result-2025/ /results/hsc-result-2025/ 301
+/notices/ssc-result-2025/ /results/ 301
+/notices/hsc-result-2025/ /results/hsc/ 301
+
+# 2025 result stubs merged into the result-checker portals (thin-page fix, 2026-11-14)
+# The two records were removed from NOTICES_DATA, so these URLs are no longer built or listed.
+/results/hsc-result-2025/ /results/hsc/ 301
+/results/ssc-result-2025/ /results/ 301

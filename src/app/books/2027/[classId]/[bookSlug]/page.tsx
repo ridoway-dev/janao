@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { BookOpen, ChevronRight, Clock, AlertCircle, FileText, ArrowLeft, ExternalLink, Calendar, CheckCircle2, HelpCircle } from 'lucide-react';
-import { BOOKS_DATA, getBookByClassAndSlug, getBooksByClass } from '@/data/nctbData';
+import { BOOKS_DATA, getBookByClassAndSlug, getBooksByClass, getBookDisplayTitleBn, truncateMetaDescription } from '@/data/nctbData';
 
 interface Book2027PageProps {
   params: Promise<{
@@ -35,22 +35,23 @@ export async function generateMetadata({ params }: Book2027PageProps): Promise<M
   // the 2027-specific description; fall back to the generic text for
   // the few 2026 books that have no 2027 record.
   const book2027 = getBookByClassAndSlug(classId, `${bookSlug}-2027`);
-  const title = `${book.classNameBn} ${book.titleBn} ২০২৭ PDF Download | Janao.online`;
-  const description =
+  // H3: same disambiguation as the 2026 template (medium or page count,
+  // from the 2026 record — the 2027 pages are generated from it).
+  // M1: "| Janao.online" dropped. M2: meta description truncated to ~155.
+  const displayTitleBn = getBookDisplayTitleBn(book);
+  const title = `${book.classNameBn} ${displayTitleBn} ২০২৭ PDF Download`;
+  const rawDescription =
     book2027?.descriptionBn ??
     `জাতীয় শিক্ষাক্রম ও পাঠ্যপুস্তক বোর্ড (NCTB) ২০২৭ শিক্ষাবর্ষের ${book.classNameBn}-এর ${book.titleBn} পাঠ্যবই PDF ডাউনলোড তথ্য। চূড়ান্ত প্রকাশের সাথে সাথে আপডেট।`;
+  const description = truncateMetaDescription(
+    displayTitleBn === book.titleBn
+      ? rawDescription
+      : rawDescription.replace(book.titleBn, displayTitleBn)
+  );
 
   return {
     title,
     description,
-    keywords: [
-      `${book.classNameBn} ${book.titleBn} 2027`,
-      `${book.titleEn} 2027 PDF`,
-      `${book.titleEn} 2027 PDF download`,
-      `${book.titleBn} ২০২৭ ডাউনলোড`,
-      `Class ${book.classLevel.replace('class-', '')} ${book.titleEn} 2027`,
-      `NCTB Book 2027 ${book.titleBn}`,
-    ],
     openGraph: {
       title,
       description,
@@ -75,6 +76,10 @@ export async function generateMetadata({ params }: Book2027PageProps): Promise<M
     },
     alternates: {
       canonical: `https://janao.online/books/2027/${classId}/${bookSlug}/`,
+      languages: {
+        'bn-BD': `https://janao.online/books/2027/${classId}/${bookSlug}/`,
+        'x-default': `https://janao.online/books/2027/${classId}/${bookSlug}/`,
+      },
     },
   };
 }
@@ -86,6 +91,8 @@ export default async function Book2027Page({ params }: Book2027PageProps) {
   if (!book) {
     notFound();
   }
+
+  const displayTitleBn = getBookDisplayTitleBn(book);
 
   const peerBooks = getBooksByClass(classId, 2026).filter((b) => b.id !== book.id).slice(0, 6);
 
@@ -99,19 +106,19 @@ export default async function Book2027Page({ params }: Book2027PageProps) {
   // from copy already on this page; nothing is invented.
   const faqItems: { q: string; a: string }[] = [
     {
-      q: `২০২৭ শিক্ষাবর্ষের ${book.classNameBn}-এর ${book.titleBn} বইটি কি প্রকাশিত হয়েছে?`,
+      q: `২০২৭ শিক্ষাবর্ষের ${book.classNameBn}-এর ${displayTitleBn} বইটি কি প্রকাশিত হয়েছে?`,
       a: book2027
         ? `না — বইটি বর্তমানে ${book2027.statusText ?? 'প্রকাশনা প্রক্রিয়াধীন'}। বোর্ড কর্তৃক চূড়ান্ত পিডিএফ প্রকাশিত হওয়া মাত্রই এখানে সরাসরি ডাউনলোড লিংক আপডেট করা হবে।`
         : `এই বইটির ২০২৭ সংস্করণের প্রকাশনা তথ্য এখনো NCTB থেকে পাওয়া যায়নি। চূড়ান্ত পিডিএফ প্রকাশিত হওয়া মাত্রই এখানে আপডেট করা হবে।`,
     },
     {
       q: `২০২৭-এর বই না পাওয়া পর্যন্ত কী পড়ব?`,
-      a: `আপাতত ২০২৬ শিক্ষাবর্ষের সংস্করণটি ডাউনলোড করে পড়তে পারেন — উপরের ‘${book.titleBn} ২০২৬ সংস্করণ পড়ুন ও ডাউনলোড করুন’ বোতাম থেকে।`,
+      a: `আপাতত ২০২৬ শিক্ষাবর্ষের সংস্করণটি ডাউনলোড করে পড়তে পারেন — উপরের ‘${displayTitleBn} ২০২৬ সংস্করণ পড়ুন ও ডাউনলোড করুন’ বোতাম থেকে।`,
     },
     ...(book2027?.pageCount
       ? [
           {
-            q: `২০২৭ সংস্করণের ${book.titleBn} বইয়ে কত পৃষ্ঠা থাকবে?`,
+            q: `২০২৭ সংস্করণের ${displayTitleBn} বইয়ে কত পৃষ্ঠা থাকবে?`,
             a: `২০২৭ সংস্করণের রেকর্ড অনুযায়ী বইটিতে প্রায় ${book2027.pageCount} পৃষ্ঠা রয়েছে।`,
           },
         ]
@@ -121,7 +128,7 @@ export default async function Book2027Page({ params }: Book2027PageProps) {
   const bookSchema = {
     '@context': 'https://schema.org',
     '@type': 'Book',
-    name: `${book.titleBn} ২০২৭ (${book.titleEn})`,
+    name: `${displayTitleBn} ২০২৭ (${book.titleEn})`,
     inLanguage: book.medium === 'bangla' ? 'bn' : 'en',
     publisher: {
       '@type': 'Organization',
@@ -130,7 +137,9 @@ export default async function Book2027Page({ params }: Book2027PageProps) {
     educationalLevel: book.classNameBn,
     bookFormat: 'https://schema.org/EBook',
     url: `https://janao.online/books/2027/${classId}/${bookSlug}/`,
-    description: book2027?.descriptionBn ?? book.descriptionBn,
+    description: truncateMetaDescription(
+      (book2027?.descriptionBn ?? book.descriptionBn).replace(book.titleBn, displayTitleBn)
+    ),
   };
 
   const faqSchema = {
@@ -171,7 +180,7 @@ export default async function Book2027Page({ params }: Book2027PageProps) {
       {
         '@type': 'ListItem',
         position: 4,
-        name: `${book.titleBn} ২০২৭`,
+        name: `${displayTitleBn} ২০২৭`,
         item: `https://janao.online/books/2027/${classId}/${bookSlug}/`,
       },
     ],
@@ -205,7 +214,7 @@ export default async function Book2027Page({ params }: Book2027PageProps) {
             {book.classNameBn} ২০২৭
           </Link>
           <ChevronRight className="w-3.5 h-3.5" />
-          <span className="text-gray-900 dark:text-white font-medium">{book.titleBn} ২০২৭</span>
+          <span className="text-gray-900 dark:text-white font-medium">{displayTitleBn} ২০২৭</span>
         </nav>
 
         {/* Hero Card */}
@@ -216,15 +225,15 @@ export default async function Book2027Page({ params }: Book2027PageProps) {
           </div>
 
           <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white tracking-tight">
-            {book.classNameBn} {book.titleBn} ২০২৭ PDF Download
+            {book.classNameBn} {displayTitleBn} ২০২৭ PDF Download
           </h1>
           <p className="text-sm font-medium text-amber-900 dark:text-amber-300 mt-1">
             Class {book.classLevel.replace('class-', '')} {book.titleEn} 2027 PDF Download
           </p>
 
           <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 mt-3 leading-relaxed">
-            {book2027?.descriptionBn ??
-              `জাতীয় শিক্ষাক্রম ও পাঠ্যপুস্তক বোর্ড (NCTB) কর্তৃক প্রণীত ২০২৭ শিক্ষাবর্ষের ${book.classNameBn}-এর ‘${book.titleBn}’ পাঠ্যবইয়ের অফিশিয়াল স্ট্যাটাস।`}
+            {(book2027?.descriptionBn ??
+              `জাতীয় শিক্ষাক্রম ও পাঠ্যপুস্তক বোর্ড (NCTB) কর্তৃক প্রণীত ২০২৭ শিক্ষাবর্ষের ${book.classNameBn}-এর ‘${book.titleBn}’ পাঠ্যবইয়ের অফিশিয়াল স্ট্যাটাস।`).replace(book.titleBn, displayTitleBn)}
           </p>
 
           {/* Honest Notice - No fake link */}
@@ -245,7 +254,7 @@ export default async function Book2027Page({ params }: Book2027PageProps) {
               href={`/books/${classId}/${book.slug}/`}
               className="inline-flex items-center gap-1.5 px-4 py-2 bg-emerald-700 hover:bg-emerald-800 text-white rounded font-semibold transition"
             >
-              <span>{book.titleBn} ২০২৬ সংস্করণ পড়ুন ও ডাউনলোড করুন →</span>
+              <span>{displayTitleBn} ২০২৬ সংস্করণ পড়ুন ও ডাউনলোড করুন →</span>
             </Link>
           </div>
         </div>
@@ -262,7 +271,7 @@ export default async function Book2027Page({ params }: Book2027PageProps) {
             </div>
             <div className="flex justify-between py-2 border-b border-gray-100 dark:border-gray-800">
               <span className="text-gray-500">বিষয়:</span>
-              <span className="font-semibold text-gray-900 dark:text-white">{book.titleBn}</span>
+              <span className="font-semibold text-gray-900 dark:text-white">{displayTitleBn}</span>
             </div>
             <div className="flex justify-between py-2 border-b border-gray-100 dark:border-gray-800">
               <span className="text-gray-500">শিক্ষাবর্ষ:</span>
@@ -299,7 +308,7 @@ export default async function Book2027Page({ params }: Book2027PageProps) {
         <section className="mb-10 bg-gray-50 dark:bg-[#0f172a] border border-gray-200 dark:border-gray-800 rounded-xl p-6">
           <h2 className="text-base font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
             <HelpCircle className="w-4 h-4 text-amber-600 dark:text-amber-400" />
-            <span>{book.classNameBn} {book.titleBn} ২০২৭ — সাধারণ জিজ্ঞাসা</span>
+            <span>{book.classNameBn} {displayTitleBn} ২০২৭ — সাধারণ জিজ্ঞাসা</span>
           </h2>
           <div className="space-y-4 text-xs sm:text-sm">
             {faqItems.map((item, i) => (
@@ -328,7 +337,7 @@ export default async function Book2027Page({ params }: Book2027PageProps) {
                   href={`/books/2027/${classId}/${peer.slug}/`}
                   className="p-3 rounded border border-gray-200 dark:border-gray-800 bg-white dark:bg-[#0f172a] hover:border-emerald-600 transition text-xs font-semibold text-gray-800 dark:text-gray-200"
                 >
-                  {peer.titleBn} ২০২৭ →
+                  {getBookDisplayTitleBn(peer)} ২০২৭ →
                 </Link>
               ))}
             </div>

@@ -56,6 +56,19 @@ const collectionSchema = {
   },
 };
 
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'হোম',
+      item: 'https://janao.online/',
+    },
+  ],
+};
+
 export default function Home() {
   return (
     <>
@@ -63,6 +76,13 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      {/* No visual breadcrumb on home: the header lives inside
+          HomePageClient, so a trail here would render above it. The
+          BreadcrumbList JSON-LD above still applies. */}
       <HomePageClient />
     </>
   );
