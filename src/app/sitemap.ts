@@ -187,10 +187,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.85,
   }));
 
-  // 3b. Individual 2027 Book Tracker Pages
+  // 3b. Individual 2027 Book Pages — retitled to "PDF Download" on
+  // 2026-11-11, so they use the newest content date instead of the
+  // 2026 last_verified stamp; otherwise Google sees them as untouched
+  // since October despite the new titles.
   const book2027Pages: MetadataRoute.Sitemap = BOOKS_DATA.filter((b) => b.year === 2026).map((book) => ({
     url: `${baseUrl}/books/2027/${book.classLevel}/${book.slug}/`,
-    lastModified: bnDateToIso(book.last_verified) ?? latestContentDate,
+    lastModified: latestContentDate,
     changeFrequency: 'weekly',
     priority: 0.85,
   }));
