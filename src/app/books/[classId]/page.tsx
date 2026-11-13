@@ -40,7 +40,7 @@ export async function generateMetadata({ params }: ClassPageProps): Promise<Meta
   const books = getBooksByClass(classId, 2026);
   const className = books[0]?.classNameBn || classId;
 
-  const title = `${className}-এর সকল NCTB বই ২০২৬ PDF ডাউনলোড | Class Books - janao.online`;
+  const title = `${className}-এর সকল NCTB বই ২০২৬ ও ২০২৭ PDF ডাউনলোড | Janao.online`;
   const description = `${className}-এর সকল বিষয়ের (বাংলা, গণিত, বিজ্ঞান, ইংরেজি সহ) নতুন শিক্ষাক্রম ২০২৬ সালের মূল বোর্ড পাঠ্যবই সম্পূর্ণ বিনামূল্যে ডাউনলোড ও পড়ার তালিকা।`;
 
   return {

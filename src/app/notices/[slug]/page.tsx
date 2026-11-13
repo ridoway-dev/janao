@@ -9,6 +9,7 @@ import {
 import { bnDateToIso } from '@/utils/bnDate';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import NoticeContent from '@/components/NoticeContent';
 import AdSlot from '@/components/ads/AdSlot';
 import { 
   Calendar, 
@@ -92,7 +93,15 @@ export default async function NoticeDetailPage({ params }: NoticePageProps) {
     notFound();
   }
 
-  const relatedNotices = NOTICES_DATA.filter((n) => n.slug !== notice.slug);
+  // Related notices: same category first (up to 8 total), so an HSC
+  // notice links to other HSC/routine notices instead of all 30 others.
+  const sameCategory = NOTICES_DATA.filter(
+    (n) => n.slug !== notice.slug && n.category === notice.category
+  );
+  const others = NOTICES_DATA.filter(
+    (n) => n.slug !== notice.slug && n.category !== notice.category
+  );
+  const relatedNotices = [...sameCategory, ...others].slice(0, 8);
 
   // Schema.org Article & FAQ Schemas
   // Dates come from the notice itself — previously every notice was
@@ -248,7 +257,7 @@ export default async function NoticeDetailPage({ params }: NoticePageProps) {
 
           {/* Detailed Content Body */}
           <div className="prose dark:prose-invert max-w-none text-sm leading-relaxed text-gray-800 dark:text-gray-200 whitespace-pre-line py-2 border-t border-b border-gray-100 dark:border-gray-800">
-            {notice.content}
+            <NoticeContent content={notice.content} />
           </div>
 
           {/* Download CTA if applicable */}
@@ -311,6 +320,7 @@ export default async function NoticeDetailPage({ params }: NoticePageProps) {
                   src={notice.pdfUrl.replace('/view', '/preview')}
                   className="w-full h-full border-0"
                   title={notice.title}
+                  loading="lazy"
                   allow="autoplay"
                 />
               </div>

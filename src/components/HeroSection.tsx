@@ -47,7 +47,7 @@ export default function HeroSection({
         
         {/* Title & Tagline - Primary Focus: NCTB Books 2027 */}
         <h1 className="text-xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white tracking-tight leading-snug">
-          NCTB পাঠ্যবই ২০২৬ ও ২০২৭ — ১ম থেকে ১২শ শ্রেণির PDF
+          NCTB পাঠ্যবই ২০২৬ ও ২০২৭ PDF ডাউনলোড — ১ম থেকে ১২শ শ্রেণি
         </h1>
         <p className="text-sm sm:text-lg text-emerald-800 dark:text-emerald-400 font-semibold mt-1">
           Janao.online — শিক্ষা, চাকরি, ভর্তি ও প্রয়োজনীয় তথ্য

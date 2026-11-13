@@ -18,7 +18,7 @@ import {
 } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'NCTB Books 2027 PDF Download | ২০২৭ শিক্ষাবর্ষের সকল শ্রেণির পাঠ্যবই ডাউনলোড - janao.online',
+  title: 'NCTB Books 2027 PDF Download | ২০২৭ শিক্ষাবর্ষের পাঠ্যবই - Janao.online',
   description: 'NCTB 2027 book download — জাতীয় শিক্ষাক্রম ও পাঠ্যপুস্তক বোর্ড (NCTB) ২০২৭ শিক্ষাবর্ষের ১ম থেকে ১২শ শ্রেণির পাঠ্যবই PDF ডাউনলোড। অফিশিয়াল ২০২৭ পিডিএফ প্রকাশের সাথে সাথে এখানে ডাউনলোড লিংক দেওয়া হবে; আপাতত ২০২৬ সংস্করণ ডাউনলোড করুন।',
   keywords: [
     'NCTB 2027 book download',
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     'NCTB 2027 syllabus',
   ],
   openGraph: {
-    title: 'NCTB Books 2027 PDF Download | ২০২৭ শিক্ষাবর্ষের সকল শ্রেণির পাঠ্যবই ডাউনলোড - janao.online',
+    title: 'NCTB Books 2027 PDF Download | ২০২৭ শিক্ষাবর্ষের পাঠ্যবই - Janao.online',
     description: 'NCTB 2027 book download — ১ম থেকে ১২শ শ্রেণির ২০২৭ শিক্ষাবর্ষের পাঠ্যবই PDF ডাউনলোড। অফিশিয়াল পিডিএফ প্রকাশের সাথে সাথে লিংক আপডেট করা হবে।',
     url: 'https://janao.online/books/2027/',
     siteName: 'janao.online',
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'NCTB Books 2027 PDF Download | ২০২৭ শিক্ষাবর্ষের সকল শ্রেণির পাঠ্যবই ডাউনলোড - janao.online',
+    title: 'NCTB Books 2027 PDF Download | ২০২৭ শিক্ষাবর্ষের পাঠ্যবই - Janao.online',
     description: 'NCTB 2027 book download — ১ম থেকে ১২শ শ্রেণির ২০২৭ শিক্ষাবর্ষের পাঠ্যবই PDF ডাউনলোড।',
     images: ['https://janao.online/og-image.png'],
   },

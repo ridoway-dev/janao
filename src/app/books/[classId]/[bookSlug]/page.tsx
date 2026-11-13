@@ -120,7 +120,9 @@ export default async function BookDetailPage({ params }: BookPageProps) {
       '@type': 'Organization',
       name: book.publisher,
     },
-    datePublished: `${book.year}-01-01`,
+    // No datePublished: the only date in the data is last_verified
+    // ("০৫ অক্টোবর ২০২৬", Bengali text, not a publication date), so the
+    // old `${book.year}-01-01` was a fabricated 1 January date.
     description: book.descriptionBn,
     url: `https://janao.online/books/${classId}/${bookSlug}/`,
   };
@@ -204,9 +206,9 @@ export default async function BookDetailPage({ params }: BookPageProps) {
                 </div>
                 <div className="my-auto">
                   <BookOpen className="w-10 h-10 mx-auto text-emerald-700 dark:text-emerald-400 mb-2" />
-                  <h3 className="font-bold text-base text-gray-900 dark:text-white leading-snug">
+                  <p className="font-bold text-base text-gray-900 dark:text-white leading-snug">
                     {book.titleBn}
-                  </h3>
+                  </p>
                   <p className="text-xs text-gray-500 italic mt-0.5">{book.titleEn}</p>
                 </div>
                 <div className="text-[11px] font-semibold text-emerald-800 dark:text-emerald-300 border-t border-emerald-200 dark:border-emerald-800 pt-1">
@@ -227,7 +229,7 @@ export default async function BookDetailPage({ params }: BookPageProps) {
                   {book.classNameBn} · {book.year} শিক্ষাবর্ষ
                 </span>
                 <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mt-2 leading-tight">
-                  {book.titleBn}
+                  {book.classNameBn} {book.titleBn} {book.year} PDF ডাউনলোড
                 </h1>
                 <p className="text-sm text-gray-500 font-mono mt-0.5">
                   Class {book.classLevel.replace('class-', '')} {book.titleEn} Book {book.year} PDF

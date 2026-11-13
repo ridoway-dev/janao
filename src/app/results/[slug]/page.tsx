@@ -6,6 +6,7 @@ import { NOTICES_DATA, getNoticeBySlug } from '@/data/nctbData';
 import { bnDateToIso } from '@/utils/bnDate';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import NoticeContent from '@/components/NoticeContent';
 import HscResultChecker from '@/components/HscResultChecker';
 import AdSlot from '@/components/ads/AdSlot';
 import { CheckCircle2, Calendar, ExternalLink, ChevronRight, Download } from 'lucide-react';
@@ -226,7 +227,7 @@ export default async function ResultArticlePage({ params }: ResultPageProps) {
           )}
 
           <div className="text-sm leading-relaxed text-gray-800 dark:text-gray-200 whitespace-pre-line py-2 border-t border-b border-gray-100 dark:border-gray-800">
-            {item.content}
+            <NoticeContent content={item.content} />
           </div>
         </article>
 
