@@ -19,9 +19,24 @@ export const metadata: Metadata = {
 };
 
 export default function AllBooksIndexPage() {
+  const collectionSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'NCTB সকল শ্রেণির পাঠ্যবই ২০২৬ ও ২০২৭ PDF ডাউনলোড',
+    description:
+      'জাতীয় শিক্ষাক্রম ও পাঠ্যপুস্তক বোর্ড (NCTB) অনুমোদিত প্রাথমিক, মাধ্যমিক, মাদ্রাসা ও কলেজ পর্যায়ের সকল বিষয়ের বোর্ড বই ডাউনলোড ও পড়ার সূচি।',
+    url: 'https://janao.online/books/',
+    inLanguage: 'bn-BD',
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-white dark:bg-[#0b0f19] text-gray-900 dark:text-gray-100 font-sans">
       <Header />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }}
+      />
 
       <main className="flex-1 max-w-5xl mx-auto px-4 sm:px-6 py-6 sm:py-10 w-full">
         

@@ -49,7 +49,13 @@ export async function generateMetadata({ params }: BookPageProps): Promise<Metad
     return { title: 'বই পাওয়া যায়নি | janao.online' };
   }
 
-  const title = `${book.classNameBn} ${book.titleBn} ${book.year} PDF ডাউনলোড | ${book.titleEn} - janao.online`;
+  // Short title: when titleEn duplicates titleBn (Bangla-medium books
+  // and English books whose titleBn is already English), repeating the
+  // name twice only pushes the title past Google's truncation limit.
+  const title =
+    book.titleEn === book.titleBn
+      ? `${book.classNameBn} ${book.titleBn} ${book.year} PDF ডাউনলোড | Janao.online`
+      : `${book.classNameBn} ${book.titleBn} ${book.year} PDF ডাউনলোড | ${book.titleEn} | Janao.online`;
   const description = `জাতীয় শিক্ষাক্রম ও পাঠ্যপুস্তক বোর্ড (NCTB) প্রকাশিত ${book.classNameBn}-এর ${book.titleBn} (${book.year} শিক্ষাবর্ষ) মূল পাঠ্যবই সম্পূর্ণ বিনামূল্যে ডাউনলোড ও অনলাইনে সরাসরি পড়ুন।`;
 
   return {

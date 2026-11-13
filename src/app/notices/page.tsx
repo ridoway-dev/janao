@@ -43,14 +43,19 @@ export default function NoticesIndexPage() {
         </p>
 
         <div className="divide-y divide-gray-200 dark:divide-gray-800 border-t border-b border-gray-200 dark:border-gray-800">
-          {NOTICES_DATA.map((n) => (
+          {NOTICES_DATA.map((n) => {
+            // Result notices live only under /results/<slug>/ — the hub
+            // must point there, not at the (removed) /notices/<slug>/ copy.
+            const href =
+              n.category === 'result' ? `/results/${n.slug}/` : `/notices/${n.slug}/`;
+            return (
             <div key={n.id} className="py-4 flex items-center justify-between gap-4 group">
               <div>
                 <span className="text-[10px] px-1.5 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 font-bold uppercase">
                   {n.categoryBn}
                 </span>
                 <Link
-                  href={`/notices/${n.slug}/`}
+                  href={href}
                   className="font-bold text-sm sm:text-base text-gray-900 dark:text-white group-hover:text-emerald-700 block mt-1"
                 >
                   {n.title}
@@ -60,13 +65,14 @@ export default function NoticesIndexPage() {
               </div>
 
               <Link
-                href={`/notices/${n.slug}/`}
+                href={href}
                 className="text-xs text-emerald-700 dark:text-emerald-400 font-semibold hover:underline shrink-0"
               >
                 বিস্তারিত পড়ুন →
               </Link>
             </div>
-          ))}
+            );
+          })}
         </div>
 
       </main>

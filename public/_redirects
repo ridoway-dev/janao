@@ -2,3 +2,11 @@
 https://www.janao.online/* https://janao.online/:splat 301
 http://www.janao.online/* https://janao.online/:splat 301
 http://janao.online/* https://janao.online/:splat 301
+
+# Result notices moved from /notices/ to /results/ (duplicate-page fix, 2026-11-13)
+# Old /notices/<result-slug>/ URLs 301 to their /results/ equivalents
+/notices/primary-scholarship-result-2025/ /results/primary-scholarship-result-2025/ 301
+/notices/ssc-result-2026/ /results/ssc-result-2026/ 301
+/notices/hsc-result-2026/ /results/hsc-result-2026/ 301
+/notices/ssc-result-2025/ /results/ssc-result-2025/ 301
+/notices/hsc-result-2025/ /results/hsc-result-2025/ 301

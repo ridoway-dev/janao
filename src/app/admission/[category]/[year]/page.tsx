@@ -102,6 +102,26 @@ export default async function AdmissionYearPage({ params }: AdmissionYearPagePro
             </Link>
           </div>
         </div>
+
+        {/* Other 2027 admission trackers — keeps all four year pages linked */}
+        <section className="mb-8">
+          <h2 className="text-base font-bold text-gray-900 dark:text-white mb-3">
+            অন্যান্য বিভাগের ২০২৭ ভর্তি ট্র্যাকার
+          </h2>
+          <div className="flex flex-wrap gap-2 text-xs">
+            {Object.entries(CATEGORY_NAMES)
+              .filter(([key]) => key !== category)
+              .map(([key, name]) => (
+                <Link
+                  key={key}
+                  href={`/admission/${key}/2027/`}
+                  className="px-3 py-1.5 rounded border border-gray-200 dark:border-gray-700 bg-white dark:bg-[#0f172a] text-gray-700 dark:text-gray-300 hover:border-emerald-600 transition"
+                >
+                  {name} ২০২৭ →
+                </Link>
+              ))}
+          </div>
+        </section>
       </main>
 
       <Footer />

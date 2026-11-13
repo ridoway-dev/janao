@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next';
-import { BOOKS_DATA, NOTICES_DATA } from '@/data/nctbData';
+import { BOOKS_DATA, NOTICES_DATA, CLASS_SHORTCUTS } from '@/data/nctbData';
 import { bnDateToIso } from '@/utils/bnDate';
 
 export const dynamic = 'force-static';
@@ -120,6 +120,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: `${baseUrl}/admission/medical/2027/`,
+      lastModified: latestContentDate,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/admission/engineering/2027/`,
+      lastModified: latestContentDate,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
       url: `${baseUrl}/jobs/government/`,
       lastModified: latestContentDate,
       changeFrequency: 'weekly',
@@ -163,13 +175,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  // 2. Class Pillar Pages (Class 1-12) for 2026
-  const classPillars: MetadataRoute.Sitemap = Array.from({ length: 12 }, (_, i) => ({
-    url: `${baseUrl}/books/class-${i + 1}/`,
-    lastModified: latestContentDate,
-    changeFrequency: 'weekly',
-    priority: 0.9,
-  }));
+  // 2. Class Pillar Pages (2026) — built from CLASS_SHORTCUTS, the same
+  // source the class pages use, so madrasa pillars (ibtedai-1..5,
+  // dakhil-6..9) are listed too instead of only class-1..12.
+  const classPillars: MetadataRoute.Sitemap = CLASS_SHORTCUTS.flatMap((g) =>
+    g.classes.map((c) => ({
+      url: `${baseUrl}/books/${c.id}/`,
+      lastModified: latestContentDate,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    })),
+  );
 
   // 2b. Class Pillar Pages (Class 1-12) for 2027
   const class2027Pillars: MetadataRoute.Sitemap = Array.from({ length: 12 }, (_, i) => ({
@@ -179,8 +195,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.9,
   }));
 
-  // 3. Individual Book Pages (2026)
-  const bookPages: MetadataRoute.Sitemap = BOOKS_DATA.map((book) => ({
+  // 3. Individual Book Pages (2026) — only year-2026 records. The
+  // year-2027 records carry `-2027` slugs that have no built page
+  // (the 2027 pages live under /books/2027/...), so listing them here
+  // put 438 dead URLs in the sitemap.
+  const bookPages: MetadataRoute.Sitemap = BOOKS_DATA.filter((b) => b.year === 2026).map((book) => ({
     url: `${baseUrl}/books/${book.classLevel}/${book.slug}/`,
     lastModified: bnDateToIso(book.last_verified) ?? latestContentDate,
     changeFrequency: 'weekly',

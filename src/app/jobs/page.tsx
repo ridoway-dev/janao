@@ -22,6 +22,7 @@ export default function JobsPage() {
   const jobCategories = [
     {
       id: 'bcs',
+      categoryPage: 'bcs',
       title: 'বিসিএস ও বাংলাদেশ সরকারি কর্ম কমিশন (BPSC)',
       tag: 'শীর্ষ অগ্রাধিকার',
       badge: 'BPSC',
@@ -32,6 +33,7 @@ export default function JobsPage() {
     },
     {
       id: 'primary-teacher',
+      categoryPage: 'government',
       title: 'প্রাথমিক সহকারী শিক্ষক নিয়োগ',
       tag: 'চলমান নিয়োগ',
       badge: 'DPE',
@@ -42,6 +44,7 @@ export default function JobsPage() {
     },
     {
       id: 'ntrca',
+      categoryPage: 'private',
       title: 'বেসরকারি শিক্ষক নিবন্ধন (NTRCA)',
       tag: 'শিক্ষক নিয়োগ',
       badge: 'NTRCA',
@@ -52,6 +55,7 @@ export default function JobsPage() {
     },
     {
       id: 'bank-jobs',
+      categoryPage: 'bank',
       title: 'বাংলাদেশ ব্যাংক ও সমন্বিত ৯ ব্যাংক নিয়োগ',
       tag: 'ব্যাংকার্স সিলেকশন',
       badge: 'BBSC',
@@ -62,6 +66,7 @@ export default function JobsPage() {
     },
     {
       id: 'ministry-jobs',
+      categoryPage: 'government',
       title: 'মন্ত্রণালয় ও সরকারি অধিদপ্তর সার্কুলার (১১-২০তম গ্রেড)',
       tag: 'সরকারি চাকরি',
       badge: 'All Govt',
@@ -72,6 +77,7 @@ export default function JobsPage() {
     },
     {
       id: 'defense',
+      categoryPage: 'government',
       title: 'প্রতিরক্ষা ও বাংলাদেশ পুলিশ নিয়োগ',
       tag: 'নিরাপত্তা বাহিনী',
       badge: 'Police/Armed',
@@ -136,12 +142,25 @@ export default function JobsPage() {
                 </div>
 
                 <h2 className="text-base font-bold text-gray-900 dark:text-white leading-snug">
-                  {item.title}
+                  <Link
+                    href={`/jobs/${item.categoryPage}/`}
+                    className="hover:text-emerald-700 dark:hover:text-emerald-400 hover:underline"
+                  >
+                    {item.title}
+                  </Link>
                 </h2>
 
                 <p className="text-xs text-gray-600 dark:text-gray-400 mt-2 leading-relaxed">
                   {item.desc}
                 </p>
+
+                <Link
+                  href={`/jobs/${item.categoryPage}/`}
+                  className="inline-flex items-center gap-1 mt-2 text-xs text-emerald-700 dark:text-emerald-400 font-semibold hover:underline"
+                >
+                  <span>বিস্তারিত গাইড দেখুন</span>
+                  <ArrowRight className="w-3 h-3" />
+                </Link>
               </div>
 
               <div className="mt-5 pt-3 border-t border-gray-100 dark:border-gray-800/80 flex items-center justify-between text-xs">

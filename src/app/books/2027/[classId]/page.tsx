@@ -76,6 +76,19 @@ export default async function Class2027Page({ params }: Class2027PageProps) {
     ],
   };
 
+  // ItemList of the 2027 books on this class page
+  const itemListSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: `${classNameBn} শ্রেণির পাঠ্যবই ২০২৭`,
+    itemListElement: books2026.map((b, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      url: `https://janao.online/books/2027/${classId}/${b.slug}/`,
+      name: `${b.titleBn} ২০২৭`,
+    })),
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-white dark:bg-[#0b0f19] text-gray-900 dark:text-gray-100 font-sans">
       <Header />
@@ -83,6 +96,10 @@ export default async function Class2027Page({ params }: Class2027PageProps) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
       />
 
       <main className="flex-1 max-w-5xl mx-auto px-4 sm:px-6 py-6 sm:py-10 w-full">

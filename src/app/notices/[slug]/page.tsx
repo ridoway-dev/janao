@@ -29,7 +29,9 @@ interface NoticePageProps {
 }
 
 export async function generateStaticParams() {
-  return NOTICES_DATA.map((n) => ({
+  // Result notices live only under /results/<slug>/ — generating them
+  // here too created duplicate pages with self-canonicals.
+  return NOTICES_DATA.filter((n) => n.category !== 'result').map((n) => ({
     slug: n.slug,
   }));
 }
@@ -43,18 +45,17 @@ export async function generateMetadata({ params }: NoticePageProps): Promise<Met
   }
 
   const title = `${notice.title} - janao.online`;
-  const description = `${notice.summary} অফিসিয়াল নির্দেশনা, রুটিন ডাউনলোড ও পূর্ণাঙ্গ তথ্য।`;
+  // Meta descriptions get truncated by Google at ~155-160 chars, so keep
+  // the summary to ~120 chars and do not append the old fixed
+  // "রুটিন ডাউনলোড" suffix — it was wrong for non-routine notices.
+  const description =
+    notice.summary.length > 120
+      ? `${notice.summary.slice(0, 117).trimEnd()}…`
+      : notice.summary;
 
   return {
     title,
     description,
-    keywords: [
-      notice.title,
-      'শিক্ষা বোর্ড নোটিশ',
-      'SSC Routine 2027',
-      'HSC Routine 2027',
-      'খাতা চ্যালেঞ্জ',
-    ],
     openGraph: {
       title,
       description,
@@ -103,10 +104,19 @@ export default async function NoticeDetailPage({ params }: NoticePageProps) {
     datePublished: bnDateToIso(notice.date),
     dateModified: bnDateToIso(notice.lastUpdated) ?? bnDateToIso(notice.date),
     description: notice.summary,
+    author: {
+      '@type': 'Organization',
+      name: 'janao.online',
+    },
     publisher: {
       '@type': 'Organization',
       name: 'janao.online',
     },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `https://janao.online/notices/${slug}/`,
+    },
+    inLanguage: 'bn-BD',
   };
 
   const faqSchema =
@@ -340,7 +350,7 @@ export default async function NoticeDetailPage({ params }: NoticePageProps) {
                 {relatedNotices.map((rel) => (
                   <Link
                     key={rel.id}
-                    href={`/notices/${rel.slug}/`}
+                    href={rel.category === 'result' ? `/results/${rel.slug}/` : `/notices/${rel.slug}/`}
                     className="py-2.5 flex items-center justify-between gap-2 group block"
                   >
                     <span className="text-xs sm:text-sm text-gray-800 dark:text-gray-200 group-hover:text-emerald-700 dark:group-hover:text-emerald-400 group-hover:underline">

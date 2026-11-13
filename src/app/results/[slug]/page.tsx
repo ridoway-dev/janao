@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { NOTICES_DATA, getNoticeBySlug } from '@/data/nctbData';
+import { bnDateToIso } from '@/utils/bnDate';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import HscResultChecker from '@/components/HscResultChecker';
@@ -68,9 +69,90 @@ export default async function ResultArticlePage({ params }: ResultPageProps) {
     notFound();
   }
 
+  // Schema.org Article, FAQ & Breadcrumb — same as the notice template
+  // (the /results/ URL is the sitemap-listed canonical copy, so it must
+  // carry the same structured data the duplicate /notices/ copy had).
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: item.title,
+    datePublished: bnDateToIso(item.date),
+    dateModified: bnDateToIso(item.lastUpdated) ?? bnDateToIso(item.date),
+    description: item.summary,
+    author: {
+      '@type': 'Organization',
+      name: 'janao.online',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'janao.online',
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `https://janao.online/results/${slug}/`,
+    },
+    inLanguage: 'bn-BD',
+  };
+
+  const faqSchema =
+    item.faq && item.faq.length > 0
+      ? {
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: item.faq.map((faqItem) => ({
+            '@type': 'Question',
+            name: faqItem.q,
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: faqItem.a,
+            },
+          })),
+        }
+      : null;
+
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'হোম',
+        item: 'https://janao.online/',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'ফলাফল',
+        item: 'https://janao.online/results/',
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: item.title,
+        item: `https://janao.online/results/${slug}/`,
+      },
+    ],
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-white dark:bg-[#0b0f19] text-gray-900 dark:text-gray-100 font-sans">
       <Header />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
 
       <main className="flex-1 max-w-4xl mx-auto px-4 sm:px-6 py-6 sm:py-10 w-full">
         

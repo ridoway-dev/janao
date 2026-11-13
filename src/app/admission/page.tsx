@@ -20,11 +20,11 @@ export const metadata: Metadata = {
 
 export default function AdmissionHubPage() {
   const categories = [
-    { name: 'জিএসটি গুচ্ছ বিশ্ববিদ্যালয়', count: '২৪টি বিশ্ববিদ্যালয়', status: 'আসন্ন' },
-    { name: 'মেডিকেল ও ডেন্টাল ভর্তি', count: 'এমবিবিএস ও বিডিএস', status: 'আসন্ন' },
-    { name: 'বুয়েট ও ইঞ্জিনিয়ারিং গুচ্ছ', count: 'প্রকৌশল ভর্তি', status: 'আসন্ন' },
-    { name: 'ঢাকা বিশ্ববিদ্যালয় (DU)', count: 'ক, খ, গ, চ ইউনিট', status: 'আসন্ন' },
-    { name: 'জাতীয় বিশ্ববিদ্যালয় (NU)', count: 'ডিগ্রি ও অনার্স ভর্তি', status: 'চলমান' },
+    { name: 'জিএসটি গুচ্ছ বিশ্ববিদ্যালয়', count: '২৪টি বিশ্ববিদ্যালয়', status: 'আসন্ন', href: '/admission/university/2027/' },
+    { name: 'মেডিকেল ও ডেন্টাল ভর্তি', count: 'এমবিবিএস ও বিডিএস', status: 'আসন্ন', href: '/admission/medical/2027/' },
+    { name: 'বুয়েট ও ইঞ্জিনিয়ারিং গুচ্ছ', count: 'প্রকৌশল ভর্তি', status: 'আসন্ন', href: '/admission/engineering/2027/' },
+    { name: 'ঢাকা বিশ্ববিদ্যালয় (DU)', count: 'ক, খ, গ, চ ইউনিট', status: 'আসন্ন', href: '/admission/university/2027/' },
+    { name: 'জাতীয় বিশ্ববিদ্যালয় (NU)', count: 'ডিগ্রি ও অনার্স ভর্তি', status: 'চলমান', href: '/admission/nu/2027/' },
   ];
 
   return (
@@ -51,15 +51,18 @@ export default function AdmissionHubPage() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {categories.map((cat, i) => (
-            <div key={i} className="p-4 rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-[#0f172a] flex items-center justify-between">
+            <Link key={i} href={cat.href} className="p-4 rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-[#0f172a] flex items-center justify-between hover:border-emerald-600 dark:hover:border-emerald-500 transition group">
               <div>
-                <h3 className="font-bold text-sm text-gray-900 dark:text-white">{cat.name}</h3>
+                <h3 className="font-bold text-sm text-gray-900 dark:text-white group-hover:text-emerald-700 dark:group-hover:text-emerald-400">{cat.name}</h3>
                 <span className="text-xs text-gray-500">{cat.count}</span>
+                <span className="block text-xs text-emerald-700 dark:text-emerald-400 font-semibold mt-1">
+                  ২০২৭ ভর্তি ট্র্যাকার →
+                </span>
               </div>
-              <span className="text-xs px-2 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 font-medium">
+              <span className="text-xs px-2 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 font-medium shrink-0">
                 {cat.status}
               </span>
-            </div>
+            </Link>
           ))}
         </div>
 
