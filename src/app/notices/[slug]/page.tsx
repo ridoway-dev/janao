@@ -265,56 +265,72 @@ export default async function NoticeDetailPage({ params }: NoticePageProps) {
             <NoticeContent content={notice.content} />
           </div>
 
-          {/* Download CTA if applicable */}
-          <div className="p-5 rounded-xl border border-emerald-300 dark:border-emerald-700/60 bg-emerald-50/40 dark:bg-emerald-950/20 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <div>
-              <span className="font-bold text-sm sm:text-base text-gray-900 dark:text-white block">
-                অফিসিয়াল ডকুমেন্ট / রুটিন / সিলেবাস সংরক্ষণ করুন
-              </span>
-              <span className="text-xs text-gray-600 dark:text-gray-300">
-                {notice.pdfUrl
-                  ? 'শিক্ষা বোর্ড ও এনসিটিবি কর্তৃক প্রকাশিত মূল ফাইল সরাসরি PDF আকারে ডাউনলোড করুন।'
-                  : 'অফিশিয়াল ওয়েবসাইটে প্রকাশিত মূল নোটিশটি দেখুন।'}
-              </span>
-            </div>
+          {/* Download / Buy CTA if applicable */}
+          {(notice.pdfUrl || notice.officialSource || notice.buyUrl) && (
+            <div className="p-5 rounded-xl border border-emerald-300 dark:border-emerald-700/60 bg-emerald-50/40 dark:bg-emerald-950/20 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div>
+                <span className="font-bold text-sm sm:text-base text-gray-900 dark:text-white block">
+                  {notice.buyUrl
+                    ? 'বইটি কিনতে চান?'
+                    : 'অফিসিয়াল ডকুমেন্ট / রুটিন / সিলেবাস সংরক্ষণ করুন'}
+                </span>
+                <span className="text-xs text-gray-600 dark:text-gray-300">
+                  {notice.buyUrl
+                    ? 'অফিশিয়াল দোকান থেকে অর্ডার করুন।'
+                    : notice.pdfUrl
+                      ? 'শিক্ষা বোর্ড ও এনসিটিবি কর্তৃক প্রকাশিত মূল ফাইল সরাসরি PDF আকারে ডাউনলোড করুন।'
+                      : 'অফিশিয়াল ওয়েবসাইটে প্রকাশিত মূল নোটিশটি দেখুন।'}
+                </span>
+              </div>
 
-            <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto">
-              {notice.pdfUrl ? (
-                <a
-                  href={notice.pdfUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 sm:flex-initial px-4 sm:px-5 py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-lg text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition shadow-xs text-center"
-                >
-                  <Download className="w-4 h-4" />
-                  <span>📥 PDF ডাউনলোড করুন</span>
-                </a>
-              ) : notice.officialSource ? (
-                <a
-                  href={notice.officialSource}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 sm:flex-initial px-4 sm:px-5 py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-lg text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition shadow-xs text-center"
-                >
-                  <ExternalLink className="w-4 h-4" />
-                  <span>অফিশিয়াল নোটিশ দেখুন</span>
-                </a>
-              ) : null}
+              <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto">
+                {notice.buyUrl ? (
+                  <a
+                    href={notice.buyUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 sm:flex-initial px-4 sm:px-5 py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-lg text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition shadow-xs text-center"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    <span>বইটি কিনুন{notice.buyUrlName ? ` — ${notice.buyUrlName}` : ''}</span>
+                  </a>
+                ) : notice.pdfUrl ? (
+                  <a
+                    href={notice.pdfUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 sm:flex-initial px-4 sm:px-5 py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-lg text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition shadow-xs text-center"
+                  >
+                    <Download className="w-4 h-4" />
+                    <span>📥 PDF ডাউনলোড করুন</span>
+                  </a>
+                ) : notice.officialSource ? (
+                  <a
+                    href={notice.officialSource}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 sm:flex-initial px-4 sm:px-5 py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-lg text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition shadow-xs text-center"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    <span>অফিশিয়াল নোটিশ দেখুন</span>
+                  </a>
+                ) : null}
 
-              {notice.officialSource && (
-                <a
-                  href={notice.officialSource}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-3 py-2.5 bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg text-xs font-semibold flex items-center justify-center gap-1 transition"
-                  title="অফিসিয়াল পোর্টাল"
-                >
-                  <ExternalLink className="w-3.5 h-3.5" />
-                  <span>মূল সাইট</span>
-                </a>
-              )}
+                {notice.officialSource && notice.officialSource !== notice.buyUrl && (
+                  <a
+                    href={notice.officialSource}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-3 py-2.5 bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg text-xs font-semibold flex items-center justify-center gap-1 transition"
+                    title="অফিসিয়াল পোর্টাল"
+                  >
+                    <ExternalLink className="w-3.5 h-3.5" />
+                    <span>মূল সাইট</span>
+                  </a>
+                )}
+              </div>
             </div>
-          </div>
+          )}
 
           {/* Embedded Google Drive PDF Preview if available */}
           {notice.pdfUrl && notice.pdfUrl.includes('drive.google.com/file/d/') && (

@@ -5,6 +5,33 @@
 // so the markers showed up as literal "### ..." text and Google saw no
 // content structure. This splits the text into blocks: `### ...` lines
 // become <h2>, everything else stays a paragraph (whitespace preserved).
+//
+// Plain http(s) URLs in the text are turned into clickable links, so
+// source and download links written in the content actually work.
+function renderWithLinks(text: string) {
+  const parts = text.split(/(https?:\/\/[^\s<>"')]+)/g);
+  return parts.map((part, i) => {
+    if (!/^https?:\/\//.test(part)) return <span key={i}>{part}</span>;
+    // Strip trailing punctuation (Bengali danda, period, comma...) that
+    // is not part of the URL.
+    const m = part.match(/^(.*?)([।.,;:!?)\]]+)$/);
+    const url = m ? m[1] : part;
+    const trail = m ? m[2] : '';
+    return (
+      <span key={i}>
+        <a
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-emerald-700 dark:text-emerald-400 hover:underline break-all"
+        >
+          {url}
+        </a>
+        {trail}
+      </span>
+    );
+  });
+}
 export default function NoticeContent({ content }: { content?: string }) {
   if (!content) return null;
 
@@ -27,7 +54,7 @@ export default function NoticeContent({ content }: { content?: string }) {
         }
         return (
           <p key={i} className="whitespace-pre-line">
-            {block}
+            {renderWithLinks(block)}
           </p>
         );
       })}
