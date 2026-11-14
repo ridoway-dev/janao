@@ -23087,6 +23087,7 @@ export const NOTICES_DATA: NoticeItem[] = [
       { "q": "বই দুটির ফ্রি পিডিএফ কি আছে?", "a": "না। এগুলো কিনে পড়ার বই; কোনো বিনামূল্যের পিডিএফ সংস্করণ নেই। ফ্রি পিডিএফের নামে ছড়ানো কপিগুলো চুরি করা — সেগুলো এড়িয়ে চলুন।" }
     ]
   },
+  // Batch I (2026-11-15): 15 question-bank & guide posts — BCS, BUET, IUT, DU-B, nursing, NU, Fazil, NTRCA, pre-primary
   {
     "id": "bcs-question-bank-10th-44th",
     "slug": "bcs-question-bank-10th-44th",
