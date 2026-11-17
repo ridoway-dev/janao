@@ -15,3 +15,12 @@ http://janao.online/* https://janao.online/:splat 301
 # The two records were removed from NOTICES_DATA, so these URLs are no longer built or listed.
 /results/hsc-result-2025/ /results/hsc/ 301
 /results/ssc-result-2025/ /results/ 301
+
+# Degenerate "-" slugs fixed (SEO audit #3 P1-1, 2026-11-18)
+# সাহিত্য-কণিকা books had "-" / "--2" slugs; renamed to sahitya-kanika / sahitya-kanika-2.
+/books/class-8/-/ /books/class-8/sahitya-kanika/ 301
+/books/class-8/--2/ /books/class-8/sahitya-kanika-2/ 301
+/books/dakhil-8/-/ /books/dakhil-8/sahitya-kanika/ 301
+/books/2027/class-8/-/ /books/2027/class-8/sahitya-kanika/ 301
+/books/2027/class-8/--2/ /books/2027/class-8/sahitya-kanika-2/ 301
+/books/2027/dakhil-8/-/ /books/2027/dakhil-8/sahitya-kanika/ 301
