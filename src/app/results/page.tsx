@@ -210,7 +210,7 @@ export default function ResultsHubPage() {
               <div key={n.id} className="py-3.5 flex items-center justify-between gap-4 group">
                 <div>
                   <Link
-                    href={`/results/${n.slug}/`}
+                    href={n.category === 'result' ? `/results/${n.slug}/` : `/notices/${n.slug}/`}
                     className="font-bold text-sm text-gray-900 dark:text-white group-hover:text-emerald-700 dark:group-hover:text-emerald-400 block"
                   >
                     {n.title}
@@ -220,7 +220,7 @@ export default function ResultsHubPage() {
                 </div>
 
                 <Link
-                  href={`/results/${n.slug}/`}
+                  href={n.category === 'result' ? `/results/${n.slug}/` : `/notices/${n.slug}/`}
                   className="text-xs text-emerald-700 dark:text-emerald-400 font-semibold hover:underline shrink-0 flex items-center gap-1"
                 >
                   <span>বিস্তারিত</span>
